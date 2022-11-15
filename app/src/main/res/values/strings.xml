@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Umbrella Health</string>
+    <string name="umbrella_corporation">UMBRELLA CORPORATION</string>
+    <string name="umbrella">UMBRELLA</string>
+    <string name="has_you_covered">has you covered</string>
+    <string name="all_rights_reserved_by_phong_kaster">All rights reserved by UMBRELLA CORPORATION</string>
+    <string name="login_with_phone_number">Đăng nhập bằng số điện thoại</string>
+    <string name="vietnam_phone_prefix">+84</string>
+    <string name="get_authorization_code">Nhập mã xác thực</string>
+    <string name="or">Hoặc</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="my_phone_number">366253623</string>
+    <string name="enter_your_verification_code">Nhập mã xác thực</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="verification_code">Mã xác thực</string>
+    <string name="do_not_let_phone_number_empty">Không bỏ trống số điện thoại</string>
+    <string name="only_enter_number_except_first_zero">Chỉ nhập các chữ số sau số 0</string>
+    <string name="resend_verification_code">Gửi lại mã xác thực</string>
+    <string name="do_not_receive_verification_code_try_again">Không nhận được mã xác thực? Hãy thử lại</string>
+    <string name="empty_phone_number_or_verificationId">Số điện thoại hoặc mã xác thực bị trống</string>
+</resources>

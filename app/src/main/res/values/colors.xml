@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <!-- THEME & BACKGROUND -->
+    <color name="colorThemeBlue">#2196F3</color>
+    <color name="colorTheme">#fe001a</color>
+    <color name="colorBackground">@color/white</color>
+
+    <!-- TEXT -->
+    <color name="colorText">#FF000000</color>
+    <color name="colorTextWhite">@color/white</color>
+    <color name="colorTextBlack">#FF000000</color>
+    <color name="colorTextSupport">#8D8F97</color>
+    <color name="colorTextDialog">#2196F3</color>
+
+    <color name="colorInputBackground">#ECEEF0</color>
+    <color name="colorTransparentWhite">#cccccc</color>
+    <color name="colorIconBackground">#F9FAFB</color>
+    <color name="colorTransparent">#00000000</color>
+
+    <color name="colorBottomNavigationMenu">@color/white</color>
+    <color name="colorButtomNavigationMenuPressed">#1D3A70</color>
+    <color name="colorButtomNavigationMenuEnable">#8D8F97</color>
+
+    <color name="colorRed">#FC0303</color>
+    <color name="colorGreen">#43A047</color>
+    <color name="colorYellow">#fb3</color>
+    <color name="colorBlue">#2196F3</color>
+    <color name="colorOrange">#FF5722</color>
+    <color name="colorGrey">#31818689</color>
+
+    <color name="colorBackgroundClickOnVoucher">#FFEE58</color>
+
+    <color name="colorBackgroundImageButton">#E5E7EB</color>
+
+    <color name="colorSeparator">#e6e6e6</color>
+
+    <color name="colorBackgroundSettingAvatar">#F9FAFB</color>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/umbrella_logo" />
+
+
+<!--    <LinearLayout-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:id="@+id/title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/umbrella"-->
+<!--            android:textColor="#D71515"-->
+<!--            android:textSize="13sp"-->
+<!--            android:textStyle="bold|italic" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingStart="5dp"-->
+<!--            android:text="@string/has_you_covered"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="13sp"-->
+<!--            tools:ignore="RtlSymmetry" />-->
+
+<!--    </LinearLayout>-->
+
+    <TextView
+        android:padding="16dp"
+        android:text="@string/all_rights_reserved_by_phong_kaster"
+        android:textSize="8sp"
+        android:textAlignment="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="SmallSp" />
+
+</RelativeLayout>

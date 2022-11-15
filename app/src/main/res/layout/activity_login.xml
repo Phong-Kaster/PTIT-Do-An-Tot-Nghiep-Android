@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".Login.LoginActivity">
+
+    <!-- LOGO -->
+    <ImageView
+        android:layout_marginTop="80dp"
+        android:src="@drawable/umbrella_logo_3"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/><!-- end LOGO -->
+
+    <!-- SLOGAN -->
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/umbrella"
+            android:textColor="@color/colorTheme"
+            android:textSize="13sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="@string/has_you_covered"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout><!-- end SLOGAN -->
+
+    <!-- LOGIN WITH PHONE NUMBER -->
+    <TextView
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        android:text="@string/login_with_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/><!-- end LOGIN WITH PHONE NUMBER -->
+
+    <!-- INPUT PHONE NUMBER -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/vietnam_phone_prefix"
+            android:textColor="@color/colorText"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/txtPhoneNumber"
+            android:textColor="@color/colorTextBlack"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:text="@string/my_phone_number"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout><!-- end INPUT PHONE NUMBER -->
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <!-- BUTTON Get Authorization Code-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGetVerificationCode"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:text="@string/get_authorization_code"
+        style="@style/button_style_danger" /><!-- BUTTON Get Authorization Code -->
+
+    <TextView
+        android:textColor="@color/colorTextBlack"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:layout_marginVertical="20dp"
+        android:text="@string/or"/>
+
+    <!-- LOGIN WITH GOOGLE ACCOUNT -->
+    <ImageButton
+        android:layout_gravity="center"
+        android:id="@+id/btnGoogleLogin"
+        android:src="@drawable/google_logo"
+        android:background="@drawable/button_login_with_social_account"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/><!-- end LOGIN WITH GOOGLE ACCOUNT -->
+</LinearLayout>

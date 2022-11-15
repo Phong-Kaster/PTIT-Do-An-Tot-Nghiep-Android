@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".Login.VerificationActivity">
+
+    <!-- LOGO -->
+    <ImageView
+        android:layout_marginTop="80dp"
+        android:src="@drawable/umbrella_logo_3"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/><!-- end LOGO -->
+
+    <!-- SLOGAN -->
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/umbrella"
+            android:textColor="@color/colorTheme"
+            android:textSize="13sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="@string/has_you_covered"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout><!-- end SLOGAN -->
+
+    <!-- LOGIN WITH PHONE NUMBER -->
+    <TextView
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorText"
+        android:textSize="12sp"
+        android:text="@string/enter_your_verification_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/><!-- end LOGIN WITH PHONE NUMBER -->
+
+
+    <!-- INPUT VERIFICATION -->
+    <EditText
+        android:id="@+id/txtVerificationCode"
+        android:drawableStart="@drawable/ic_key"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/input_style"
+        android:drawablePadding="20dp"
+        android:hint="@string/verification_code"
+        android:paddingHorizontal="20dp"
+        android:textSize="10sp"
+        tools:ignore="SmallSp" /><!-- end INPUT VERIFICATION -->
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <!-- BUTTON Get Authorization Code-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnConfirm"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:text="@string/confirm"
+        style="@style/button_style_info" /><!-- BUTTON Get Authorization Code -->
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="80dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="10sp"
+        android:text="@string/do_not_receive_verification_code_try_again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <!-- BUTTON Get Authorization Code-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnResend"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:text="@string/resend_verification_code"
+        style="@style/button_style_danger" /><!-- BUTTON Get Authorization Code -->
+
+</LinearLayout>
