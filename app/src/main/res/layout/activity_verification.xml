@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context=".Login.VerificationActivity">
+    tools:context=".Loginpage.VerificationActivity">
 
     <!-- LOGO -->
     <ImageView
@@ -61,14 +61,17 @@
     <!-- INPUT VERIFICATION -->
     <EditText
         android:id="@+id/txtVerificationCode"
-        android:drawableStart="@drawable/ic_key"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
+        android:autofillHints=""
         android:background="@drawable/input_style"
+        android:drawableStart="@drawable/ic_key"
         android:drawablePadding="20dp"
         android:hint="@string/verification_code"
+        android:inputType="numberDecimal"
         android:paddingHorizontal="20dp"
+        android:text="123456"
         android:textSize="10sp"
         tools:ignore="SmallSp" /><!-- end INPUT VERIFICATION -->
 
@@ -91,7 +94,7 @@
     <TextView
         android:gravity="center"
         android:textColor="@color/colorTextBlack"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:text="@string/do_not_receive_verification_code_try_again"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

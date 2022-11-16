@@ -1,14 +1,48 @@
 package com.example.do_an_tot_nghiep.Model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User {
+
+    @SerializedName("id")
+    @Expose
+    private int id;
+
+    @SerializedName("email")
+    @Expose
     private String email;
+
+    @SerializedName("phone")
+    @Expose
     private String phone;
+
+    @SerializedName("name")
+    @Expose
     private String name;
+
+    @SerializedName("gender")
+    @Expose
     private int gender;
+
+    @SerializedName("birthday")
+    @Expose
     private String birthday;
+
+    @SerializedName("address")
+    @Expose
     private String address;
+
+    @SerializedName("avatar")
+    @Expose
     private String avatar;
+
+    @SerializedName("create_at")
+    @Expose
     private String createAt;
+
+    @SerializedName("update_at")
+    @Expose
     private String updateAt;
 
     public String getEmail() {

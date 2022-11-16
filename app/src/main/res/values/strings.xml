@@ -18,4 +18,15 @@
     <string name="resend_verification_code">Gửi lại mã xác thực</string>
     <string name="do_not_receive_verification_code_try_again">Không nhận được mã xác thực? Hãy thử lại</string>
     <string name="empty_phone_number_or_verificationId">Số điện thoại hoặc mã xác thực bị trống</string>
+    <string name="verification_failed">Xác minh thất bại!</string>
+    <string name="loading">Loading</string>
+    <string name="ok">OK</string>
+    <string name="success">Thành công</string>
+    <string name="add_account_info_successfully">Thêm thông tin tài khoản thành công</string>
+    <string name="cancel">Hủy</string>
+    <string name="attention">Chú ý</string>
+    <string name="oops_there_is_an_issue">Oops! Đã xảy ra sự cố</string>
+    <string name="login_successfully">Đăng nhập thành công</string>
+    <string name="login_failed">Đăng nhập thất bại</string>
+    <string name="login_with_google_successfully">Đăng nhập thành công với Google</string>
 </resources>

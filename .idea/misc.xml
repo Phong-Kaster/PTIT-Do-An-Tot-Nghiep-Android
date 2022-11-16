@@ -9,12 +9,21 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/button_style_state.xml" value="0.1685" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/button_style_state_danger.xml" value="0.149" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/button_style_success.xml" value="0.149" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/dialog_background.xml" value="0.149" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/dialog_background_confirm.xml" value="0.149" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/dialog_background_danger.xml" value="0.149" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/dialog_background_info.xml" value="0.149" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/dialog_background_success.xml" value="0.149" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/dialog_confirm.xml" value="0.149" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_key.xml" value="0.1685" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/input_style.xml" value="0.1685" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_homepage.xml" value="0.16770833333333332" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_login.xml" value="0.12553846522224033" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_main.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_verification.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/dialog_annouce.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/dialog_confirm.xml" value="0.16770833333333332" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/loading_screen.xml" value="0.125" />
       </map>
     </option>
   </component>

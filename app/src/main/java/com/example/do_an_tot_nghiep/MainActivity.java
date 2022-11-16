@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.example.do_an_tot_nghiep.Login.LoginActivity;
+import com.example.do_an_tot_nghiep.Loginpage.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

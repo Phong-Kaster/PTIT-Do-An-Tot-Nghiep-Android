@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context=".Login.LoginActivity">
+    tools:context=".Loginpage.LoginActivity">
 
     <!-- LOGO -->
     <ImageView
