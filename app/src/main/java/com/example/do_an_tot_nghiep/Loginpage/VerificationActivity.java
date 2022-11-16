@@ -121,7 +121,7 @@ public class VerificationActivity extends AppCompatActivity {
         dialog.announce();
         dialog.btnOK.setOnClickListener(view->dialog.close());
 
-        viewModel.getResponse().observe(this, loginResponse -> {
+        viewModel.getLoginWithPhoneResponse().observe(this, loginResponse -> {
 
             if (loginResponse == null) {
                 dialog.show(getString(R.string.attention),
@@ -206,7 +206,7 @@ public class VerificationActivity extends AppCompatActivity {
                         String phone = "0" + phoneNumber;// append the zero letter in the first position of phone number
                         String password = user.getUid();
 
-                        viewModel.login(phone, password);
+                        viewModel.loginWithPhone(phone, password);
 
                     }
                     else

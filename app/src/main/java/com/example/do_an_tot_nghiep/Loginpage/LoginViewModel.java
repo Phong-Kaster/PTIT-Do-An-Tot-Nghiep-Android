@@ -25,15 +25,15 @@ import retrofit2.Retrofit;
 public class LoginViewModel extends ViewModel {
 
     private String TAG = "LoginViewModel";
-    private MutableLiveData<Login> response;
+    private MutableLiveData<Login> loginWithPhoneResponse;
     private MutableLiveData<Boolean> animation;
 
     /*************** GETTER ******************/
-    public MutableLiveData<Login> getResponse() {
-        if( response == null ){
-            response = new MutableLiveData<>();
+    public MutableLiveData<Login> getLoginWithPhoneResponse() {
+        if( loginWithPhoneResponse == null ){
+            loginWithPhoneResponse = new MutableLiveData<>();
         }
-        return response;
+        return loginWithPhoneResponse;
     }
 
     public MutableLiveData<Boolean> getAnimation() {
@@ -44,12 +44,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     /*************** FUNCTION ******************/
-    public void login(String phone, String password){
-
-        Log.d(TAG,"login view model receive");
-        Log.d(TAG,phone);
-        Log.d(TAG,password);
-
+    public void loginWithPhone(String phone, String password){
         animation.setValue(true);
         /*Step 1*/
         Retrofit service = HTTPService.getInstance();
@@ -67,22 +62,18 @@ public class LoginViewModel extends ViewModel {
                 {
                     Login content = result.body();
                     assert content != null;
-                    Log.d(TAG, "result: "+ content.getResult());
-                    Log.d(TAG, "accessToken: "+ content.getAccessToken());
-                    Log.d(TAG, "msg: "+ content.getMsg());
-                    response.setValue(content);
+                    loginWithPhoneResponse.setValue(content);
                 }else
                 {
-                    response.setValue(null);
+                    loginWithPhoneResponse.setValue(null);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
-                //animation.setValue(false);
-                //response.setValue(null);
-                System.out.println("Login - throwable: " + t.getMessage());
-                //animation.setValue(false);
+                animation.setValue(false);
+                loginWithPhoneResponse.setValue(null);
+                System.out.println("Login with Phone Number - throwable: " + t.getMessage());
             }
         });
     }
@@ -93,27 +84,24 @@ public class LoginViewModel extends ViewModel {
      * @param idToken is the id token from google API returns when
      * users authorize us to access their information from their google account
      */
-    private MutableLiveData<Login> authWithGoogleResponse;
-    public MutableLiveData<Login> getAuthWithGoogleResponse()
+    private MutableLiveData<Login> loginWithGoogleResponse;
+    public MutableLiveData<Login> getLoginWithGoogleResponse()
     {
-        if(authWithGoogleResponse == null)
+        if(loginWithGoogleResponse == null)
         {
-            authWithGoogleResponse = new MutableLiveData<>();
+            loginWithGoogleResponse = new MutableLiveData<>();
         }
-        return authWithGoogleResponse;
+        return loginWithGoogleResponse;
     }
 
-    public void authWithGoogleAccount(String idToken)
+    /**
+     * @author Phong-Kaster
+     * @since 16-11-2022
+     * @param email
+     * @param password
+     */
+    public void loginWithGoogle(String email, String password)
     {
-        if(authWithGoogleResponse == null)
-        {
-            authWithGoogleResponse = new MutableLiveData<>();
-        }
-        if( animation == null )
-        {
-            animation = new MutableLiveData<>();
-        }
-
         animation.setValue(true);
         /*Step 1 - create api connection */
         Retrofit service = HTTPService.getInstance();
@@ -121,7 +109,7 @@ public class LoginViewModel extends ViewModel {
 
 
         /*Step 2 - auth with google account*/
-        Call<Login> container = api.authWithGoogleAccount(idToken);
+        Call<Login> container = api.loginWithGoogle(email, password, "patient");
         container.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(@NonNull Call<Login> call,
@@ -130,7 +118,7 @@ public class LoginViewModel extends ViewModel {
                 {
                     Login content = dataResponse.body();
                     assert content != null;
-                    authWithGoogleResponse.setValue(content);
+                    loginWithGoogleResponse.setValue(content);
                     animation.setValue(false);
                 }
                 if(dataResponse.errorBody() != null)
@@ -145,7 +133,7 @@ public class LoginViewModel extends ViewModel {
                         System.out.println( e.getMessage() );
                     }
 
-                    authWithGoogleResponse.setValue(null);
+                    loginWithGoogleResponse.setValue(null);
                     animation.setValue(false);
                 }
             }
@@ -153,8 +141,9 @@ public class LoginViewModel extends ViewModel {
             @Override
             public void onFailure(@NonNull Call<Login> call,
                                   @NonNull Throwable t) {
-                System.out.println("Auth with Google account - throwable: " + t.getMessage());
+                System.out.println("Login With Google - throwable: " + t.getMessage());
                 animation.setValue(false);
+                loginWithGoogleResponse.setValue(null);
             }
         });
     }

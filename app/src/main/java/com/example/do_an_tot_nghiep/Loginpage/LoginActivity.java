@@ -26,12 +26,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.FirebaseTooManyRequestsException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,7 +38,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private String TAG = "login";
+    private final String TAG = "Login Activity";
     private EditText txtPhoneNumber;
     private AppCompatButton btnGetVerificationCode;
     private ImageButton btnGoogleLogin;
@@ -218,7 +213,8 @@ public class LoginActivity extends AppCompatActivity {
         dialog.announce();
         dialog.btnOK.setOnClickListener(view->dialog.close());
 
-        viewModel.getResponse().observe(this, loginResponse -> {
+        /* *******************************OPTION LOGIN WITH PHONE NUMBER*********************************************/
+        viewModel.getLoginWithPhoneResponse().observe(this, loginResponse -> {
 
             if (loginResponse == null) {
                 dialog.show(getString(R.string.attention),
@@ -236,8 +232,7 @@ public class LoginActivity extends AppCompatActivity {
                 /*Lay du lieu tu API ra*/
                 String token = loginResponse.getAccessToken();
                 User user = loginResponse.getData();
-                Log.d(TAG,"ACCESS TOKEN: " + token);
-                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
 
                 /*Lay du lieu vao Global Variable*/
                 globalVariable.setAccessToken( "JWT " + token );
@@ -261,7 +256,41 @@ public class LoginActivity extends AppCompatActivity {
 
             }
 
-        });
+        });/*end OPTION LOGIN WITH PHONE NUMBER*/
+
+
+        /* *******************************OPTION LOGIN WITH GOOGLE*********************************************/
+        viewModel.getLoginWithGoogleResponse().observe(this, response->{
+            int result = response.getResult();
+            String message = response.getMsg();
+
+            if( result == 1)
+            {
+                /*Lay du lieu tu API ra*/
+                String token = response.getAccessToken();
+                User user = response.getData();
+
+
+                /*Lay du lieu vao Global Variable*/
+                globalVariable.setAccessToken( "JWT " + token );
+                globalVariable.setAuthUser(user);
+
+                /*luu accessToken vao Shared Reference*/
+                sharedPreferences.edit().putString("accessToken", "JWT " + token.trim()).apply();
+
+                /*hien thi thong bao la dang nhap thanh cong*/
+                Toast.makeText(this, getString(R.string.login_successfully), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                startActivity(intent);
+            }
+            else
+            {
+                dialog.show(getString(R.string.attention),
+                        message,
+                        R.drawable.ic_close);
+                Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
+            }
+        });/*end OPTION LOGIN WITH GOOGLE*/
     }
 
 
@@ -283,7 +312,7 @@ public class LoginActivity extends AppCompatActivity {
                         String phone = "0" + phoneNumber;// append the zero letter in the first position of phone number
                         String password = user.getUid();
 
-                        viewModel.login(phone, password);
+                        viewModel.loginWithPhone(phone, password);
                     }
                     else
                     {
@@ -311,26 +340,17 @@ public class LoginActivity extends AppCompatActivity {
 
                 if( statusResult == RESULT_OK)
                 {
-                    createAccountWithGoogle(account);
+                    /*Step 1 - get email & password to server to authentication | sign up*/
+                    assert account != null;
+                    String email = account.getEmail();
+                    String password = account.getId();
+
+                    /*Step 2 - login*/
+                    viewModel.loginWithGoogle(email, password);
                 }
                 else
                 {
                     Toast.makeText(this, R.string.oops_there_is_an_issue, Toast.LENGTH_SHORT).show();
                 }
-            });
-
-
-    /**
-     * @author Phong-Kaster
-     * @param account is user's google account.
-     */
-    private void createAccountWithGoogle(GoogleSignInAccount account)
-    {
-        /*Step 1 - send id token to server to authentication | sign up*/
-        String idToken = account.getIdToken();
-        Log.d(TAG, "id Token: " + idToken);
-        Log.d(TAG, "id name: " + account.getDisplayName());
-        Log.d(TAG, "id email: " + account.getEmail());
-        Log.d(TAG, "id password: " + account.getId());
-    }
+            });/*end startGoogleSignInForResult*/
 }

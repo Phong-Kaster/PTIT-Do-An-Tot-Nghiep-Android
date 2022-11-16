@@ -29,4 +29,5 @@
     <string name="login_successfully">Đăng nhập thành công</string>
     <string name="login_failed">Đăng nhập thất bại</string>
     <string name="login_with_google_successfully">Đăng nhập thành công với Google</string>
+    <string name="check_your_internet_connection">Hãy kiểm tra kết nối internet</string>
 </resources>

@@ -4,6 +4,8 @@
     package="com.example.do_an_tot_nghiep">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:usesCleartextTraffic="true"
