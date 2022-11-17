@@ -30,4 +30,28 @@
     <string name="login_failed">Đăng nhập thất bại</string>
     <string name="login_with_google_successfully">Đăng nhập thành công với Google</string>
     <string name="check_your_internet_connection">Hãy kiểm tra kết nối internet</string>
+    <string name="home">Trang chủ</string>
+    <string name="notification">Thông báo</string>
+    <string name="personality">Cá nhân</string>
+    <string name="appointment">Lịch hẹn</string>
+    <string name="are_you_sure_about_that">Bạn có chắc chắn?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="what_do_you_want_to_search_today">Bạn muốn tìm gì hôm nay?</string>
+    <string name="general_examination">Khám tổng quát</string>
+    <string name="heart_examination">Khám tim mạch</string>
+    <string name="pregnant_examination">Khám sản khoa</string>
+    <string name="covid19_examination">Xét nghiệm COVID 19</string>
+    <string name="medical_test_examination">Xét nghiệm y học</string>
+    <string name="tooth_examination">Khám nha khoa</string>
+    <string name="eye_examination">Khám da liễu</string>
+    <string name="speciality_examination">Khám chuyên khoa</string>
+    <string name="popular_specialities">Chuyên khoa phổ biến</string>
+    <string name="read_more">Xem thêm</string>
+    <string name="musculoskeletal">Cơ xương khớp</string>
+    <string name="popular_doctors">Bác sĩ nổi bật</string>
+    <string name="default_doctor_name">Bác sĩ Nguyễn Thành Phong</string>
+    <string name="default_speciality">Ngoại khoa</string>
+    <string name="default_price">Giá khám: 1.896.000 VND</string>
+
 </resources>

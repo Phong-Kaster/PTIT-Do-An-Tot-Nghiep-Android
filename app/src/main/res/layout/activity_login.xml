@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:text="@string/has_you_covered"
-            android:textColor="@color/black"
+            android:textColor="@color/colorTextBlack"
             android:textSize="13sp"
             tools:ignore="RtlSymmetry" />
 
@@ -51,7 +51,7 @@
     <TextView
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorTextBlack"
         android:textSize="12sp"
         android:text="@string/login_with_phone_number"
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:text="@string/vietnam_phone_prefix"
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorTextBlack"
             android:textSize="12sp" />
 
         <EditText

@@ -1,7 +1,9 @@
 package com.example.do_an_tot_nghiep.Configuration;
 
+import com.example.do_an_tot_nghiep.Container.DoctorReadAll;
 import com.example.do_an_tot_nghiep.Container.Login;
 import com.example.do_an_tot_nghiep.Container.PatientProfile;
+import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
 
 import java.util.Map;
 
@@ -34,4 +36,16 @@ public interface HTTPRequest {
     /**********************PATIENT PROFILE - GET - READ PERSONAL INFORMATION**********************/
     @GET("api/patient/profile")
     Call<PatientProfile> readPersonalInformation(@HeaderMap Map<String, String> headers);
+
+
+
+    /**********************SPECIALITY**********************/
+    @GET("api/specialities")
+    Call<SpecialityReadAll> specialityReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
+
+
+
+    /**********************DOCTOR**********************/
+    @GET("api/doctors")
+    Call<DoctorReadAll> doctorReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
 }

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".Homepage.HomeFragment">
+
+    <!-- LOGO -->
+    <LinearLayout
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btnMenuSidebar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:src="@drawable/ic_menu" />
+
+        <ImageView
+            android:layout_gravity="start"
+            android:src="@drawable/umbrella_logo_4"
+            android:layout_width="200dp"
+            android:layout_height="50dp"/>
+
+    </LinearLayout><!-- end LOGO -->
+
+
+    <!-- SPECIALITY SEARCH BAR -->
+    <EditText
+        android:id="@+id/txtSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/background_search_bar"
+        android:drawableStart="@drawable/ic_search"
+        android:focusable="false"
+        android:hint="@string/what_do_you_want_to_search_today"
+        android:padding="10sp"
+        android:textSize="12sp"
+        tools:ignore="RtlSymmetry" /><!-- end SPECIALITY SEARCH BAR -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ============================= BUTTON EXAM - PART 1 ============================= -->
+            <LinearLayout
+                android:paddingTop="20dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- BUTTON EXAM SPECIALITY -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamSpeciality"
+                        android:src="@drawable/ic_i_exam_speciality"
+                        style="@style/style_background_button_exam" />
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/speciality_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM SPECIALITY -->
+
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"/>
+
+                <!-- BUTTON EXAM HEART -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamHeart"
+                        android:src="@drawable/ic_exam_heart"
+                        style="@style/style_background_button_exam"/>
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/heart_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM HEART -->
+
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"/>
+
+                <!-- BUTTON EXAM PREGNANT -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamPregnant"
+                        style="@style/style_background_button_exam"
+                        android:src="@drawable/ic_exam_pregnant" />
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/pregnant_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM PREGNANT -->
+
+            </LinearLayout><!-- end 3 BUTTON EXAM - PART 1 -->
+
+
+
+
+            <!-- ============================= 3 BUTTON EXAM - PART 2 ============================= -->
+            <LinearLayout
+                android:paddingTop="20dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- BUTTON EXAM TOOTH -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamTooth"
+                        android:src="@drawable/ic_exam_tooth"
+                        style="@style/style_background_button_exam" />
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/tooth_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM TOOTH -->
+
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"/>
+
+                <!-- BUTTON EXAM EYE -->
+                <LinearLayout
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamEye"
+                        android:src="@drawable/ic_exam_eye"
+                        style="@style/style_background_button_exam" />
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_gravity="center"
+                        android:text="@string/eye_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM EYE -->
+
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"/>
+
+                <!-- BUTTON EXAM GENERAL -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamGeneral"
+                        android:src="@drawable/ic_exam_general"
+                        style="@style/style_background_button_exam" />
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/general_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM GENERAL -->
+
+
+            </LinearLayout><!-- end 3 BUTTON EXAM - PART 2 -->
+
+            <!--- ============================= BUTTON EXAM - PART 3 ============================= -->
+            <LinearLayout
+                android:paddingTop="20dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- BUTTON EXAM COVID-19 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamMedicalTest"
+                        android:src="@drawable/ic_exam_medical_test"
+                        style="@style/style_background_button_exam" />
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/medical_test_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM COVID-19 -->
+
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"/>
+
+                <!-- BUTTON EXAM COVID-19 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnExamCOVID19"
+                        android:src="@drawable/ic_exam_covid19"
+                        style="@style/style_background_button_exam" />
+
+                    <TextView
+                        style="@style/style_button_exam_text"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/covid19_examination"
+                        tools:ignore="SmallSp" />
+                </LinearLayout><!-- end BUTTON EXAM COVID-19 -->
+
+            </LinearLayout><!-- end  BUTTON EXAM - PART 3 -->
+
+            <View
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorSeparator" />
+
+            <!-- SPECIALITY - RECYCLER VIEW & BUTTON READ MORE -->
+            <LinearLayout
+                android:paddingHorizontal="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:gravity="start"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="@string/popular_specialities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/txtReadMoreSpeciality"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:layout_marginEnd="20dp"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorBlue"
+                    android:text="@string/read_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout><!-- end SPECIALITY - RECYCLER VIEW & BUTTON READ MORE -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewSpeciality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="10dp" />
+
+            <View
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorSeparator" />
+
+            <!-- DOCTOR - RECYCLER VIEW & BUTTON READ MORE -->
+            <LinearLayout
+                android:paddingHorizontal="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:gravity="start"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="@string/popular_doctors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/txtReadMoreDoctor"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:layout_marginEnd="20dp"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorBlue"
+                    android:text="@string/read_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout><!-- end DOCTOR - RECYCLER VIEW & BUTTON READ MORE -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDoctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="70dp"/>
+
+        </LinearLayout>
+
+    </ScrollView><!-- end Scroll View -->
+
+
+
+
+
+
+</LinearLayout>

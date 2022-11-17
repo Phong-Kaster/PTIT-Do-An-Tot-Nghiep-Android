@@ -55,4 +55,10 @@ dependencies {
 
     // login with google
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
+
+    // picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

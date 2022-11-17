@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/elementLayout"
+    android:background="@color/colorBackground"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_gravity="start"
+        android:id="@+id/elementImage"
+        android:src="@drawable/default_speciality"
+        android:layout_width="200dp"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/elementName"
+        android:gravity="center"
+        android:textSize="11sp"
+        android:textColor="@color/colorTextBlack"
+        android:text="@string/musculoskeletal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

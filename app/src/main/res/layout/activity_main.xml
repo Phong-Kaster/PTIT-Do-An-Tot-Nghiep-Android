@@ -49,6 +49,7 @@
         android:padding="16dp"
         android:text="@string/all_rights_reserved_by_phong_kaster"
         android:textSize="8sp"
+        android:textColor="@color/black"
         android:textAlignment="center"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

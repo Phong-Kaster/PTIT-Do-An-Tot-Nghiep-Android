@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         /*Step 2 - is AccessToken null?*/
         String accessToken = sharedPreferences.getString("accessToken", null);
+        System.out.println(TAG);
+        System.out.println(accessToken);
         if(accessToken != null)
         {
             /*global variable chi hoat dong trong phien lam viec nen phai gan lai accessToken cho no*/
@@ -79,20 +81,34 @@ public class MainActivity extends AppCompatActivity {
 
             /*lang nghe phan hoi*/
             viewModel.getResponse().observe(this, response->{
-                int result = response.getResult();
-                /*result == 1 => luu thong tin nguoi dung va vao homepage*/
-                if( result == 1)
+                try
                 {
-                    User user = response.getData();
-                    globalVariable.setAuthUser( user );
+                    int result = response.getResult();
+                    /*result == 1 => luu thong tin nguoi dung va vao homepage*/
+                    if( result == 1)
+                    {
+                        User user = response.getData();
+                        globalVariable.setAuthUser( user );
 
-                    Intent intent = new Intent(MainActivity.this, HomepageActivity.class);
-                    startActivity(intent);
-                    finish();
+                        Intent intent = new Intent(MainActivity.this, HomepageActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    /*result == 0 => thong bao va thoat ung dung*/
+                    if( result == 0)
+                    {
+                        dialog.announce();
+                        dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
+                        dialog.btnOK.setOnClickListener(view->{
+                            dialog.close();
+                            finish();
+                        });
+                    }
+
                 }
-                /*result == 0 => thong bao va thoat ung dung*/
-                if( result == 0)
+                catch(Exception ex)
                 {
+                    /*Neu truy van lau qua ma khong nhan duoc phan hoi thi cung dong ung dung*/
                     dialog.announce();
                     dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
                     dialog.btnOK.setOnClickListener(view->{
@@ -100,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     });
                 }
+
+
+
             });
 
         }
