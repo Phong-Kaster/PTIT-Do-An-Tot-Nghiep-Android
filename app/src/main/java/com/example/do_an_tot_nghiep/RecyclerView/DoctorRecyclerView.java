@@ -49,7 +49,7 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
         String uploadUri = Constant.UPLOAD_URI();
 
         int id = element.getId();
-        String speciality = element.getSpeciality().getName();
+        String speciality = "Chuyên khoa " + element.getSpeciality().getName();
         String price = "Giá khám/lần: " + element.getPrice();
         String name = "Bác sĩ " + element.getName();
         @SuppressLint("ResourceType") String image = element.getAvatar().length() > 0 ?

@@ -22,6 +22,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.do_an_tot_nghiep.Configuration.QueueBroadcastReceiver;
@@ -31,6 +32,7 @@ import com.example.do_an_tot_nghiep.Model.Speciality;
 import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.RecyclerView.DoctorRecyclerView;
 import com.example.do_an_tot_nghiep.RecyclerView.SpecialityRecyclerView;
+import com.example.do_an_tot_nghiep.Searchpage.SearchpageActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -58,6 +60,8 @@ public class HomeFragment extends Fragment{
     private AppCompatImageButton btnExamSpeciality;
     private AppCompatImageButton btnExamHeart;
     private AppCompatImageButton btnExamPregnant;
+
+    private EditText searchBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,6 +93,8 @@ public class HomeFragment extends Fragment{
         btnExamSpeciality = view.findViewById(R.id.btnExamSpeciality);
         btnExamHeart = view.findViewById(R.id.btnExamHeart);
         btnExamPregnant = view.findViewById(R.id.btnExamPregnant);
+
+        searchBar = view.findViewById(R.id.searchBar);
     }
 
     /**
@@ -176,6 +182,12 @@ public class HomeFragment extends Fragment{
     @SuppressLint({"UnspecifiedImmutableFlag", "ShortAlarm"})
     private void setupEvent()
     {
+        /*SEARCH BAR*/
+        searchBar.setOnClickListener(view->{
+            Intent intent = new Intent(requireContext(), SearchpageActivity.class);
+            startActivity(intent);
+        });
+
         /*BUTTON EXAM SPECIALITY*/
         btnExamSpeciality.setOnClickListener(view->{
 
@@ -188,8 +200,6 @@ public class HomeFragment extends Fragment{
 
         /*BUTTON EXAM PREGNANT - cancel alarm*/
         btnExamPregnant.setOnClickListener(view->{
-
-
 
         });
     }

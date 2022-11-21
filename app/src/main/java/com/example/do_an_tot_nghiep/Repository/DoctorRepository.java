@@ -34,7 +34,6 @@ public class DoctorRepository {
     }
 
     /*********************************READ ALL*********************************/
-
     /*GETTER*/
     private final MutableLiveData<DoctorReadAll> readAllResponse = new MutableLiveData<>();
     public MutableLiveData<DoctorReadAll> getReadAllResponse()

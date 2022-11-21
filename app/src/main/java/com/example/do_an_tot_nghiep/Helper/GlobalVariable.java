@@ -2,9 +2,13 @@ package com.example.do_an_tot_nghiep.Helper;
 
 import android.app.Application;
 
+import com.example.do_an_tot_nghiep.Model.Option;
 import com.example.do_an_tot_nghiep.Model.User;
+import com.example.do_an_tot_nghiep.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GlobalVariable extends Application {
@@ -66,5 +70,38 @@ public class GlobalVariable extends Application {
 
     public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
+    }
+
+
+    /**
+     * @since 21-11-2022
+     */
+    public List<Option> getFilterOptions()
+    {
+        List<Option> list = new ArrayList<>();
+
+//        Option option0 = new Option();
+//        option0.setIcon(R.drawable.ic_all);
+//        option0.setName(getString(R.string.all));
+
+        Option option1 = new Option();
+        option1.setIcon(R.drawable.ic_doctor);
+        option1.setName(getString(R.string.doctor));
+
+        Option option2 = new Option();
+        option2.setIcon(R.drawable.ic_speciality);
+        option2.setName(getString(R.string.speciality));
+
+        Option option3 = new Option();
+        option3.setIcon(R.drawable.ic_service);
+        option3.setName(getString(R.string.service));
+
+//        list.add(option0);
+        list.add(option1);
+        list.add(option2);
+        list.add(option3);
+
+
+        return list;
     }
 }
