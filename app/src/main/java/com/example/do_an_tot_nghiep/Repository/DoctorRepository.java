@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
 import com.example.do_an_tot_nghiep.Configuration.HTTPService;
 import com.example.do_an_tot_nghiep.Container.DoctorReadAll;
-import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
+import com.example.do_an_tot_nghiep.Container.DoctorReadByID;
 
 import org.json.JSONObject;
 
@@ -36,12 +36,11 @@ public class DoctorRepository {
     /*********************************READ ALL*********************************/
 
     /*GETTER*/
-    private MutableLiveData<DoctorReadAll> readAllResponse = new MutableLiveData<>();
+    private final MutableLiveData<DoctorReadAll> readAllResponse = new MutableLiveData<>();
     public MutableLiveData<DoctorReadAll> getReadAllResponse()
     {
         return readAllResponse;
     }
-    /*FUNCTION*/
     /*FUNCTION*/
     public MutableLiveData<DoctorReadAll> readAll(Map<String, String> headers,
                                                       Map<String,String> parameters)
@@ -68,9 +67,6 @@ public class DoctorRepository {
                     assert content != null;
                     readAllResponse.setValue(content);
                     animation.setValue(false);
-//                    System.out.println(TAG);
-//                    System.out.println("result: " + content.getResult());
-//                    System.out.println("quantity: " + content.getQuantity());
                 }
                 if(response.errorBody() != null)
                 {
@@ -96,5 +92,68 @@ public class DoctorRepository {
         });
 
         return readAllResponse;
+    }
+
+    /*********************************READ BY ID*********************************/
+    /*GETTER*/
+    private MutableLiveData<DoctorReadByID> readByIdResponse = new MutableLiveData<>();
+    public MutableLiveData<DoctorReadByID> getReadByIdResponse()
+    {
+        return readByIdResponse;
+    }
+    /*FUNCTION*/
+    public MutableLiveData<DoctorReadByID> readById(Map<String, String> headers,
+                                                  String doctorId)
+    {
+        /*Step 1*/
+        animation.setValue(true);
+
+
+        /*Step 2*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        Call<DoctorReadByID> container = api.doctorReadByID(headers, doctorId);
+
+        /*Step 4*/
+        container.enqueue(new Callback<DoctorReadByID>() {
+            @Override
+            public void onResponse(@NonNull Call<DoctorReadByID> call, @NonNull Response<DoctorReadByID> response) {
+                if(response.isSuccessful())
+                {
+                    DoctorReadByID content = response.body();
+                    assert content != null;
+                    readByIdResponse.setValue(content);
+                    animation.setValue(false);
+                    System.out.println(TAG);
+                    System.out.println("result: " + content.getResult());
+                    System.out.println("msg: " + content.getMsg());
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+                    readByIdResponse.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<DoctorReadByID> call, @NonNull Throwable t) {
+                System.out.println("Doctor Repository - Read By ID - error: " + t.getMessage());
+                //readAllResponse.setValue(null);
+                animation.setValue(false);
+            }
+        });
+
+        return readByIdResponse;
     }
 }

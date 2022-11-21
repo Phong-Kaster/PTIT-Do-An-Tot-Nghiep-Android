@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.do_an_tot_nghiep">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:name=".Helper.GlobalVariable"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,12 +19,24 @@
         android:roundIcon="@drawable/umbrella_logo_3"
         android:supportsRtl="true"
         android:theme="@style/Theme.DoAnTotNghiep"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Specialitypage.SpecialitypageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Doctorpage.DoctorpageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Notificationpage.NotificationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Homepage.HomepageActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Loginpage.VerificationActivity"
             android:exported="false"
@@ -45,6 +58,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".Configuration.QueueBroadcastReceiver" />
+
+        <service android:name=".Notificationpage.NotificationService" />
     </application>
 
 </manifest>

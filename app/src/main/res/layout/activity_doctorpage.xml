@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Doctorpage.DoctorpageActivity">
+
+    <!--TITLE -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:paddingVertical="20dp"
+        android:text="@string/doctor_information"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="15sp"
+        android:textStyle="bold" /><!--end TITLE -->
+
+    <!-- AVATAR -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/title"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/umbrella_logo_3" /><!-- end AVATAR -->
+
+    <!-- NAME -->
+    <LinearLayout
+        android:id="@+id/lytName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgAvatar"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/doctor_name"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5sp"
+            android:text="@string/default_personal_name"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout><!-- end NAME -->
+
+    <!-- SPECIALITY -->
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingHorizontal="20dp"
+        android:id="@+id/lytSpecialty"
+        android:layout_below="@id/lytName"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/speciality_name"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
+            android:paddingStart="5sp"
+            android:id="@+id/txtSpeciality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_speciality"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout><!-- end SPECIALITY -->
+
+    <!-- PHONE -->
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingHorizontal="20dp"
+        android:id="@+id/lytPhone"
+        android:layout_below="@id/lytSpecialty"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number_2"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
+            android:paddingStart="5sp"
+            android:id="@+id/txtPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_phone_number"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout><!-- end PHONE -->
+
+    <!-- DESCRIPTION -->
+    <LinearLayout
+        android:id="@+id/lytDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lytPhone"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/working_process"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <WebView
+            android:id="@+id/wvwDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="WebViewLayout" />
+
+    </LinearLayout><!-- end DESCRIPTION -->
+</RelativeLayout>

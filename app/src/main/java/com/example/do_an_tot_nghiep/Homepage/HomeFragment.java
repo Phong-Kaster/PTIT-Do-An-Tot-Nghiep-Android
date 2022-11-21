@@ -1,16 +1,30 @@
 package com.example.do_an_tot_nghiep.Homepage;
 
+import static android.content.Context.ALARM_SERVICE;
+
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.do_an_tot_nghiep.Configuration.QueueBroadcastReceiver;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Speciality;
@@ -27,7 +41,8 @@ import java.util.Map;
  * @since 17-11-2022
  * Home fragment
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
+
 
     private final String TAG = "Home Fragment";
     private HomepageViewModel viewModel;
@@ -39,17 +54,26 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewDoctor;
     private DoctorRecyclerView doctorAdapter;
 
+    /*EXAMINATION BUTTON*/
+    private AppCompatImageButton btnExamSpeciality;
+    private AppCompatImageButton btnExamHeart;
+    private AppCompatImageButton btnExamPregnant;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+
         setupComponent(view);
         setupViewModel();
+        setupEvent();
 
         return view;
     }
+
+
 
     /**
      * @since 17-11-2022
@@ -59,8 +83,12 @@ public class HomeFragment extends Fragment {
     {
         globalVariable = (GlobalVariable) requireActivity().getApplication();
         recyclerViewSpeciality = view.findViewById(R.id.recyclerViewSpeciality);
-
         recyclerViewDoctor = view.findViewById(R.id.recyclerViewDoctor);
+
+
+        btnExamSpeciality = view.findViewById(R.id.btnExamSpeciality);
+        btnExamHeart = view.findViewById(R.id.btnExamHeart);
+        btnExamPregnant = view.findViewById(R.id.btnExamPregnant);
     }
 
     /**
@@ -138,5 +166,31 @@ public class HomeFragment extends Fragment {
 
         LinearLayoutManager manager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerViewDoctor.setLayoutManager(manager);
+    }
+
+
+    /**
+     * @since 18-11-2022
+     * setup event for buttons
+     */
+    @SuppressLint({"UnspecifiedImmutableFlag", "ShortAlarm"})
+    private void setupEvent()
+    {
+        /*BUTTON EXAM SPECIALITY*/
+        btnExamSpeciality.setOnClickListener(view->{
+
+        });/*end BUTTON EXAM SPECIALITY*/
+
+        /*BUTTON EXAM HEART - set alarm*/
+        btnExamHeart.setOnClickListener(view->{
+
+        });
+
+        /*BUTTON EXAM PREGNANT - cancel alarm*/
+        btnExamPregnant.setOnClickListener(view->{
+
+
+
+        });
     }
 }

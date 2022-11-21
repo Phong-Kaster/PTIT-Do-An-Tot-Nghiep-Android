@@ -9,6 +9,7 @@
     <string name="get_authorization_code">Nhập mã xác thực</string>
     <string name="or">Hoặc</string>
     <string name="phone_number">Số điện thoại</string>
+    <string name="phone_number_2">Số điện thoại:</string>
     <string name="my_phone_number">366253623</string>
     <string name="enter_your_verification_code">Nhập mã xác thực</string>
     <string name="confirm">Xác nhận</string>
@@ -53,5 +54,17 @@
     <string name="default_doctor_name">Bác sĩ Nguyễn Thành Phong</string>
     <string name="default_speciality">Ngoại khoa</string>
     <string name="default_price">Giá khám: 1.896.000 VND</string>
-
+    <string name="app_description">Chào mừng đến Umbrella Health - Ứng dụng chăm sóc sức khỏe hàng đầu Việt Nam</string>
+    <string name="app_short_description">Chào mừng đến Umbrella Health</string>
+    <string name="it_is_your_turn">Sắp tới lượt khám của bạn rồi. Hãy chuẩn bị!</string>
+    <string name="umbreall_health_is_running_in_background">Umbrella Health đang chạy ngầm</string>
+    <string name="doctor_information">Thông tin bác sĩ</string>
+    <string name="doctor_name">Bác sĩ:</string>
+    <string name="default_personal_name">Nguyễn Thành Phong</string>
+    <string name="speciality_name">Chuyên khoa:</string>
+    <string name="default_phone_number">0366253623</string>
+    <string name="working_process">Quá trình công tác:</string>
+    <string name="default_description"><![CDATA[\<p>- Hướng dẫn đặt t&ecirc;n file b&aacute;o c&aacute;o định kỳ:</p>\n\n<p>&nbsp; &nbsp; ** Lớp (m&atilde; chữ)_M&atilde; sinh vi&ecirc;n(3 số cuối)_Họ v&agrave; t&ecirc;n _BCDK1</p>\n\n<p>VD: AT_069_LuongMinhTien_BCĐK1</p>\]]></string>
+    <string name="speciality_information">Thông tin chuyên khoa</string>
+    <string name="description">Mô tả:</string>
 </resources>

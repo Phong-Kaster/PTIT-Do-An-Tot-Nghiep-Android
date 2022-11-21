@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
 import com.example.do_an_tot_nghiep.Configuration.HTTPService;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
-import com.example.do_an_tot_nghiep.Model.Speciality;
+import com.example.do_an_tot_nghiep.Container.SpecialityReadByID;
 
 import org.json.JSONObject;
 
@@ -28,7 +28,7 @@ public class SpecialityRepository {
     private final String TAG = "SpecialityRepository";
 
     /*ANIMATION*/
-    private MutableLiveData<Boolean> animation = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> animation = new MutableLiveData<>();
     public MutableLiveData<Boolean> getAnimation()
     {
         return animation;
@@ -37,11 +37,7 @@ public class SpecialityRepository {
     /*********************************READ ALL*********************************/
 
     /*GETTER*/
-    private MutableLiveData<SpecialityReadAll> readAllResponse = new MutableLiveData<>();
-    public MutableLiveData<SpecialityReadAll> getReadAllResponse()
-    {
-        return readAllResponse;
-    }
+    private final MutableLiveData<SpecialityReadAll> readAllResponse = new MutableLiveData<>();
     /*FUNCTION*/
     public MutableLiveData<SpecialityReadAll> readAll(Map<String, String> headers,
                                                       Map<String,String> parameters)
@@ -96,5 +92,64 @@ public class SpecialityRepository {
         });
 
         return readAllResponse;
+    }
+
+    /*********************************READ BY ID*********************************/
+    /*GETTER*/
+    private final MutableLiveData<SpecialityReadByID> readByID = new MutableLiveData<>();
+    /*FUNCTION*/
+    public MutableLiveData<SpecialityReadByID> readById(Map<String, String> headers,
+                                                      String specialityId)
+    {
+        /*Step 1*/
+        animation.setValue(true);
+
+
+        /*Step 2*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        Call<SpecialityReadByID> container = api.specialityReadByID(headers, specialityId);
+
+        /*Step 4*/
+        container.enqueue(new Callback<SpecialityReadByID>() {
+            @Override
+            public void onResponse(@NonNull Call<SpecialityReadByID> call, @NonNull Response<SpecialityReadByID> response) {
+                if(response.isSuccessful())
+                {
+                    SpecialityReadByID content = response.body();
+                    assert content != null;
+                    readByID.setValue(content);
+                    animation.setValue(false);
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("quantity: " + content.getQuantity());
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+                    readByID.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<SpecialityReadByID> call, @NonNull Throwable t) {
+                System.out.println("Speciality Repository - Read By ID - error: " + t.getMessage());
+                readByID.setValue(null);
+                animation.setValue(false);
+            }
+        });
+
+        return readByID;
     }
 }

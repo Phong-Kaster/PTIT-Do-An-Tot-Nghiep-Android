@@ -2,31 +2,30 @@ package com.example.do_an_tot_nghiep.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
+import com.example.do_an_tot_nghiep.Doctorpage.DoctorpageActivity;
+import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Model.Doctor;
-import com.example.do_an_tot_nghiep.Model.Speciality;
 import com.example.do_an_tot_nghiep.R;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.ViewHolder> {
 
-    private Context context;
-    private List<Doctor> list;
+    private final Context context;
+    private final List<Doctor> list;
 
     public DoctorRecyclerView(Context context, List<Doctor> list)
     {
@@ -49,9 +48,10 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
         Doctor element = list.get(position);
         String uploadUri = Constant.UPLOAD_URI();
 
-
-        String price = "Giá khám: " + element.getPrice();
-        String name = element.getName();
+        int id = element.getId();
+        String speciality = element.getSpeciality().getName();
+        String price = "Giá khám/lần: " + element.getPrice();
+        String name = "Bác sĩ " + element.getName();
         @SuppressLint("ResourceType") String image = element.getAvatar().length() > 0 ?
                 uploadUri + element.getAvatar() : context.getString(R.drawable.default_speciality);
 
@@ -61,10 +61,13 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
             Picasso.get().load(image).into(holder.image);
         }
 
+        holder.speciality.setText(speciality);
         holder.price.setText(price);
         holder.name.setText(name);
         holder.layout.setOnClickListener(view->{
-            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, DoctorpageActivity.class);
+            intent.putExtra("doctorId", String.valueOf(id));
+            context.startActivity(intent);
         });
     }
 
@@ -75,11 +78,11 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
 
     protected static class ViewHolder extends RecyclerView.ViewHolder{
 
-        private LinearLayout layout;
-        private ImageView image;
-        private TextView name;
-        private TextView price;
-
+        private final LinearLayout layout;
+        private final ImageView image;
+        private final TextView name;
+        private final TextView price;
+        private final TextView speciality;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -88,6 +91,7 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
             image = itemView.findViewById(R.id.elementImage);
             name = itemView.findViewById(R.id.elementName);
             price = itemView.findViewById(R.id.elementPrice);
+            speciality = itemView.findViewById(R.id.elementSpeciality);
         }
     }
 }

@@ -1,9 +1,11 @@
 package com.example.do_an_tot_nghiep.Configuration;
 
 import com.example.do_an_tot_nghiep.Container.DoctorReadAll;
+import com.example.do_an_tot_nghiep.Container.DoctorReadByID;
 import com.example.do_an_tot_nghiep.Container.Login;
 import com.example.do_an_tot_nghiep.Container.PatientProfile;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
+import com.example.do_an_tot_nghiep.Container.SpecialityReadByID;
 
 import java.util.Map;
 
@@ -14,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 public interface HTTPRequest {
@@ -43,9 +46,14 @@ public interface HTTPRequest {
     @GET("api/specialities")
     Call<SpecialityReadAll> specialityReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
 
+    @GET("api/specialities/{id}")
+    Call<SpecialityReadByID> specialityReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
 
     /**********************DOCTOR**********************/
     @GET("api/doctors")
     Call<DoctorReadAll> doctorReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
+
+    @GET("api/doctors/{id}")
+    Call<DoctorReadByID> doctorReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 }

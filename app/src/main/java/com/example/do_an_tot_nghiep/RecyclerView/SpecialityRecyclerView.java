@@ -2,6 +2,7 @@ package com.example.do_an_tot_nghiep.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Model.Speciality;
 import com.example.do_an_tot_nghiep.R;
+import com.example.do_an_tot_nghiep.Specialitypage.SpecialitypageActivity;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -49,7 +53,7 @@ public class SpecialityRecyclerView extends RecyclerView.Adapter<SpecialityRecyc
         Speciality element = list.get(position);
         String uploadUri = Constant.UPLOAD_URI();
 
-
+        int id = element.getId();
         String name = element.getName();
         String image = element.getImage().length() > 0 ?
                 uploadUri + element.getImage() : context.getString(R.drawable.default_speciality);
@@ -60,10 +64,11 @@ public class SpecialityRecyclerView extends RecyclerView.Adapter<SpecialityRecyc
             Picasso.get().load(image).into(holder.image);
         }
 
-
         holder.name.setText(name);
         holder.layout.setOnClickListener(view->{
-            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, SpecialitypageActivity.class);
+            intent.putExtra("specialityId",String.valueOf(id) );
+            context.startActivity(intent);
         });
     }
 
@@ -77,6 +82,7 @@ public class SpecialityRecyclerView extends RecyclerView.Adapter<SpecialityRecyc
         private LinearLayout layout;
         private ImageView image;
         private TextView name;
+
 
 
 

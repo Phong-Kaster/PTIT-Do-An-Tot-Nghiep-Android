@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Notification;
 import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Loginpage.LoginActivity;
 import com.example.do_an_tot_nghiep.Model.User;
@@ -47,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
                 .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         dialog = new Dialog(this);
+
+        //If we wanna use notification on Android 8 or higher, this function must be run
+        Notification notification = new Notification(this);
+        notification.createChannel();
+
+        //show a notification
+//        notification.setup(getString(R.string.app_name),
+//                getString(R.string.app_short_description),
+//                getString(R.string.app_description) );
+//        notification.show();
 
 
         /*Step 1 - does the application connect to Internet? - NO, close the application*/

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Specialitypage.SpecialitypageActivity">
+
+
+    <!--TITLE -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:paddingVertical="20dp"
+        android:text="@string/speciality_information"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="15sp"
+        android:textStyle="bold" /><!--end TITLE -->
+
+    <ScrollView
+        android:layout_below="@id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- IMAGE -->
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/title"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/default_speciality" /><!-- end IMAGE -->
+
+            <!-- NAME -->
+            <LinearLayout
+                android:id="@+id/lytName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgAvatar"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/speciality_name"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5sp"
+                    android:text="@string/default_speciality"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+            </LinearLayout><!-- end NAME -->
+
+            <!-- DESCRIPTION -->
+            <LinearLayout
+                android:id="@+id/lytDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lytName"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:fillViewport="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <WebView
+                        android:id="@+id/wvwDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="WebViewLayout" />
+
+                </androidx.core.widget.NestedScrollView>
+
+
+
+            </LinearLayout><!-- end DESCRIPTION -->
+
+            <!-- POPULAR DOCTORS -->
+            <LinearLayout
+                android:id="@+id/lytDoctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lytDescription"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/popular_doctors"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="12sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:paddingVertical="20dp"
+                    android:id="@+id/recyclerViewDoctor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout><!-- end DESCRIPTION -->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

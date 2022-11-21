@@ -6,15 +6,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Notificationpage.NotificationActivity;
+import com.example.do_an_tot_nghiep.Notificationpage.NotificationFragment;
 import com.example.do_an_tot_nghiep.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Phong-Kaster
@@ -29,15 +34,25 @@ public class HomepageActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment;
+    private String fragmentTag;
+
+
+    /*Weak Activity & GETTER*/
+    public static WeakReference<HomepageActivity> weakActivity;
+    public static HomepageActivity getInstance() {
+        return weakActivity.get();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        weakActivity = new WeakReference<>(HomepageActivity.this);
 
         /*Enable HomeFragment by default*/
         fragment = new HomeFragment();
-        enableFragment(fragment);
+        fragmentTag = "homeFragment";
+        enableFragment(fragment, fragmentTag);
 
         /*Run necessary functions*/
         setupVariable();
@@ -69,16 +84,21 @@ public class HomepageActivity extends AppCompatActivity {
             switch (shortcut){
                 case R.id.shortcutHome:
                     fragment = new HomeFragment();
+                    fragmentTag = "homeFragment";
                     break;
                 case R.id.shortcutNotification:
+                    fragment = new NotificationFragment();
+                    fragmentTag = "notificationFragment";
                     break;
                 case R.id.shortcutAppointment:
+                    Intent intent = new Intent(this, NotificationActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.shortcutPersonality:
                     break;
             }
 
-            enableFragment(fragment);
+            enableFragment(fragment, fragmentTag);
             return true;
         });
     }
@@ -88,8 +108,11 @@ public class HomepageActivity extends AppCompatActivity {
      * @author Phong-Kaster
      * activate a fragment right away
      * */
-    public void enableFragment(Fragment fragment)
+    public void enableFragment(Fragment fragment, String fragmentTag)
     {
+        /*Step 0 - update again fragmentTag to handle onBackPress()*/
+        this.fragmentTag = fragmentTag;
+
         /*Step 1*/
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -115,7 +138,7 @@ public class HomepageActivity extends AppCompatActivity {
 
 
         /*Step 4*/
-        transaction.replace(R.id.frameLayout, fragment, "myFragment");
+        transaction.replace(R.id.frameLayout, fragment, fragmentTag);
         transaction.commit();
     }
 
@@ -126,14 +149,13 @@ public class HomepageActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-
-        dialog.confirm();
-        dialog.show(getString(R.string.attention),
-                getString(R.string.are_you_sure_about_that), R.drawable.ic_info);
-        dialog.btnOK.setOnClickListener(view->{
-            super.onBackPressed();
-            finish();
-        });
-        dialog.btnCancel.setOnClickListener(view-> dialog.close());
+            dialog.confirm();
+            dialog.show(getString(R.string.attention),
+                    getString(R.string.are_you_sure_about_that), R.drawable.ic_info);
+            dialog.btnOK.setOnClickListener(view->{
+                super.onBackPressed();
+                finish();
+            });
+            dialog.btnCancel.setOnClickListener(view-> dialog.close());
     }
 }
