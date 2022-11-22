@@ -5,6 +5,7 @@ import com.example.do_an_tot_nghiep.Container.DoctorReadByID;
 import com.example.do_an_tot_nghiep.Container.Login;
 import com.example.do_an_tot_nghiep.Container.PatientProfile;
 import com.example.do_an_tot_nghiep.Container.ServiceReadAll;
+import com.example.do_an_tot_nghiep.Container.ServiceReadByID;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadByID;
 
@@ -62,4 +63,7 @@ public interface HTTPRequest {
     /**********************SERVICE**********************/
     @GET("api/services")
     Call<ServiceReadAll> serviceReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
+
+    @GET("api/services/{id}")
+    Call<ServiceReadByID> serviceReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 }

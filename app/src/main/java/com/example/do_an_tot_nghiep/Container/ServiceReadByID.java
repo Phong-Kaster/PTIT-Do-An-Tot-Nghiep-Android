@@ -1,29 +1,26 @@
 package com.example.do_an_tot_nghiep.Container;
 
-import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Service;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class ServiceReadAll {
+/**
+ * @author Phong-Kaster
+ * @since 22-11-2022
+ * service read by id
+ */
+public class ServiceReadByID {
     @SerializedName("result")
     @Expose
     private int result;
-
-    @SerializedName("quantity")
-    @Expose
-    private int quantity;
 
     @SerializedName("msg")
     @Expose
     private String msg;
 
-
     @SerializedName("data")
     @Expose
-    private List<Service> data;
+    private Service data;
 
     public int getResult() {
         return result;
@@ -33,11 +30,7 @@ public class ServiceReadAll {
         return msg;
     }
 
-    public List<Service> getData() {
+    public Service getData() {
         return data;
-    }
-
-    public int getQuantity() {
-        return quantity;
     }
 }

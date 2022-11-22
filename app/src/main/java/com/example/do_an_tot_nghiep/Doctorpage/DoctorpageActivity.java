@@ -2,6 +2,7 @@ package com.example.do_an_tot_nghiep.Doctorpage;
 
 import android.os.Bundle;
 import android.webkit.WebView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class DoctorpageActivity extends AppCompatActivity {
     private GlobalVariable globalVariable;
     private LoadingScreen loadingScreen;
 
+    private ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,7 @@ public class DoctorpageActivity extends AppCompatActivity {
 
         setupComponent();
         setupViewModel();
-
-
+        setupEvent();
     }
 
 
@@ -70,6 +71,7 @@ public class DoctorpageActivity extends AppCompatActivity {
 
         globalVariable = (GlobalVariable) this.getApplication();
         loadingScreen = new LoadingScreen(this);
+        btnBack = findViewById(R.id.btnBack);
     }
 
     /**
@@ -122,6 +124,15 @@ public class DoctorpageActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * @since 22-11-2022
+     * setup event
+     */
+    private void setupEvent()
+    {
+        btnBack.setOnClickListener(view->finish());
+    }
 
     /**
      * @since 20-11-2022

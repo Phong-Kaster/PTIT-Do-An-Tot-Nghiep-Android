@@ -153,7 +153,7 @@ public class HomeFragment extends Fragment{
      */
     private void setupRecyclerViewSpeciality(List<Speciality> list)
     {
-        specialityAdapter = new SpecialityRecyclerView(requireActivity(), list);
+        specialityAdapter = new SpecialityRecyclerView(requireActivity(), list, R.layout.recycler_view_element_speciality);
         recyclerViewSpeciality.setAdapter(specialityAdapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);

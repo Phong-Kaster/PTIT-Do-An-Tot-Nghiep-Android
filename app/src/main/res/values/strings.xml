@@ -71,4 +71,10 @@
     <string name="doctor">Bác sĩ</string>
     <string name="all">Tất cả</string>
     <string name="service">Dịch vụ</string>
+    <string name="image">Ảnh</string>
+    <string name="title_activity_servicepage">ServicepageActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="service_information">Thông tin dịch vụ</string>
 </resources>

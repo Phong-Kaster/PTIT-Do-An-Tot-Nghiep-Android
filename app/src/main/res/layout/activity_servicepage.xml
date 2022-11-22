@@ -2,17 +2,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorBackground"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Specialitypage.SpecialitypageActivity">
+    tools:context=".Servicepage.ServicepageActivity">
 
     <!-- LOGO -->
     <LinearLayout
         android:id="@+id/logo"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:paddingHorizontal="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -23,14 +20,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/colorBackground"
-            android:src="@drawable/ic_arrow_back" />
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/image"/>
 
         <ImageView
             android:layout_gravity="start"
             android:src="@drawable/umbrella_logo_4"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:contentDescription="@string/image" />
+            android:contentDescription="@string/image"/>
 
     </LinearLayout><!-- end LOGO -->
 
@@ -44,7 +42,7 @@
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:paddingVertical="10dp"
-        android:text="@string/speciality_information"
+        android:text="@string/service_information"
         android:textColor="@color/colorTextBlack"
         android:textSize="15sp"
         android:textStyle="bold" /><!--end TITLE -->
@@ -65,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/default_speciality"
-                android:contentDescription="@string/image" /><!-- end IMAGE -->
+                android:contentDescription="@string/image"/><!-- end IMAGE -->
 
             <!-- NAME -->
             <LinearLayout
@@ -123,39 +121,11 @@
                         tools:ignore="WebViewLayout" />
 
                 </androidx.core.widget.NestedScrollView>
-
-
-
-            </LinearLayout><!-- end DESCRIPTION -->
-
-            <!-- POPULAR DOCTORS -->
-            <LinearLayout
-                android:id="@+id/lytDoctor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="20dp"
-                android:paddingTop="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/popular_doctors"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="12sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:paddingVertical="20dp"
-                    android:id="@+id/recyclerViewDoctor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
             </LinearLayout><!-- end DESCRIPTION -->
 
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </RelativeLayout>

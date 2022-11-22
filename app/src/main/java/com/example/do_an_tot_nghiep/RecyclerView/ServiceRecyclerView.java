@@ -1,6 +1,7 @@
 package com.example.do_an_tot_nghiep.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Model.Service;
 import com.example.do_an_tot_nghiep.R;
+import com.example.do_an_tot_nghiep.Servicepage.ServicepageActivity;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -47,6 +49,7 @@ public class ServiceRecyclerView extends RecyclerView.Adapter<ServiceRecyclerVie
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Service element = list.get(position);
 
+        int serviceId = element.getId();
         String name = element.getName();
         String image = Constant.UPLOAD_URI() + element.getImage();
 
@@ -56,7 +59,9 @@ public class ServiceRecyclerView extends RecyclerView.Adapter<ServiceRecyclerVie
             Picasso.get().load(image).into(holder.image);
         }
         holder.layout.setOnClickListener(view->{
-            Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            intent.putExtra("serviceId", String.valueOf(serviceId));
+            context.startActivity(intent);
         });
     }
 

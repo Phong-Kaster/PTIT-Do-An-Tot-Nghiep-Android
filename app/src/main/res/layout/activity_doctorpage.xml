@@ -6,16 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".Doctorpage.DoctorpageActivity">
 
+    <!-- LOGO -->
+    <LinearLayout
+        android:id="@+id/logo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:src="@drawable/ic_arrow_back" />
+
+        <ImageView
+            android:layout_gravity="start"
+            android:src="@drawable/umbrella_logo_4"
+            android:layout_width="200dp"
+            android:layout_height="50dp"/>
+
+    </LinearLayout><!-- end LOGO -->
+
     <!--TITLE -->
     <TextView
         android:id="@+id/title"
+        android:layout_below="@id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
-        android:paddingVertical="20dp"
+        android:paddingVertical="10dp"
         android:text="@string/doctor_information"
         android:textColor="@color/colorTextBlack"
         android:textSize="15sp"

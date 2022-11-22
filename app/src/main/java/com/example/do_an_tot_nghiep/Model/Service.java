@@ -17,6 +17,10 @@ public class Service {
     @Expose
     private String image;
 
+    @SerializedName("description")
+    @Expose
+    private String description;
+
     public int getId() {
         return id;
     }
@@ -27,5 +31,9 @@ public class Service {
 
     public String getImage() {
         return image;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

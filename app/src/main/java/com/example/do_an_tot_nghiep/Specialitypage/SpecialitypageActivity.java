@@ -1,17 +1,16 @@
 package com.example.do_an_tot_nghiep.Specialitypage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.webkit.WebView;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
@@ -21,7 +20,6 @@ import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Speciality;
 import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.RecyclerView.DoctorRecyclerView;
-import com.example.do_an_tot_nghiep.RecyclerView.SpecialityRecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -42,7 +40,6 @@ public class SpecialitypageActivity extends AppCompatActivity {
     private RecyclerView recyclerViewDoctor;
 
 
-    private SpecialitypageViewModel viewModel;
     private GlobalVariable globalVariable;
     private String specialityId;
 
@@ -50,7 +47,7 @@ public class SpecialitypageActivity extends AppCompatActivity {
     private Dialog dialog;
     private ImageView imgAvatar;
 
-    private DoctorRecyclerView doctorAdapter;
+    private ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +56,7 @@ public class SpecialitypageActivity extends AppCompatActivity {
 
         setupComponent();
         setupViewModel();
+        setupEvent();
     }
 
     /**
@@ -79,6 +77,8 @@ public class SpecialitypageActivity extends AppCompatActivity {
         loadingScreen = new LoadingScreen(this);
         dialog = new Dialog(this);
         imgAvatar = findViewById(R.id.imgAvatar);
+
+        btnBack = findViewById(R.id.btnBack);
     }
 
     /**
@@ -88,7 +88,7 @@ public class SpecialitypageActivity extends AppCompatActivity {
     private void setupViewModel()
     {
         /*declare*/
-        viewModel = new ViewModelProvider(this).get(SpecialitypageViewModel.class);
+        SpecialitypageViewModel viewModel = new ViewModelProvider(this).get(SpecialitypageViewModel.class);
         viewModel.instantiate();
 
 
@@ -168,13 +168,21 @@ public class SpecialitypageActivity extends AppCompatActivity {
     }
 
     /**
+     * @since 22-11-2022
+     */
+    private void setupEvent()
+    {
+        btnBack.setOnClickListener(view->finish());
+    }
+
+    /**
      * @author Phong-Kaster
      * @since 21-11-2022
      * setup doctor recycler view
      */
     private void setupDoctorRecyclerView(List<Doctor> list)
     {
-        doctorAdapter = new DoctorRecyclerView(this, list);
+        DoctorRecyclerView doctorAdapter = new DoctorRecyclerView(this, list);
         recyclerViewDoctor.setAdapter(doctorAdapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

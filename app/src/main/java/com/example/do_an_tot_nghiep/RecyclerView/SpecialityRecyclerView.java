@@ -24,15 +24,23 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+/**
+ * @author Phong-Kaster
+ * @since 22-11-2022
+ * speciality recycler view
+ */
 public class SpecialityRecyclerView extends RecyclerView.Adapter<SpecialityRecyclerView.ViewHolder> {
 
     private Context context;
     private List<Speciality> list;
+    private int layoutElement;// is the layout for the recyclerView, include 2 layouts: recycler_view_element_speciality
+    // & recycler_view_element_speciality_2
 
-    public SpecialityRecyclerView(Context context, List<Speciality> list)
+    public SpecialityRecyclerView(Context context, List<Speciality> list, int layoutElement)
     {
         this.context = context;
         this.list = list;
+        this.layoutElement = layoutElement;
     }
 
 
@@ -42,7 +50,7 @@ public class SpecialityRecyclerView extends RecyclerView.Adapter<SpecialityRecyc
 
         View view = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.recycler_view_element_speciality, parent, false);
+                .inflate(layoutElement, parent, false);
 
         return new SpecialityRecyclerView.ViewHolder(view);
     }

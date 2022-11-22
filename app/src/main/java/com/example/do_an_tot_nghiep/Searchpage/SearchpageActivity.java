@@ -1,20 +1,17 @@
 package com.example.do_an_tot_nghiep.Searchpage;
 
-import static android.R.layout.simple_spinner_item;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.Spinner;
 
 import com.example.do_an_tot_nghiep.Adapter.FilterOptionAdapter;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
@@ -27,8 +24,6 @@ import com.example.do_an_tot_nghiep.RecyclerView.DoctorRecyclerView;
 import com.example.do_an_tot_nghiep.RecyclerView.ServiceRecyclerView;
 import com.example.do_an_tot_nghiep.RecyclerView.SpecialityRecyclerView;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,10 +54,6 @@ public class SearchpageActivity extends AppCompatActivity {
     private RecyclerView doctorRecyclerView;
     private RecyclerView specialityRecyclerView;
     private RecyclerView serviceRecyclerView;
-
-    private DoctorRecyclerView doctorAdapter;
-    private SpecialityRecyclerView specialityAdapter;
-    private ServiceRecyclerView serviceAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,7 +195,7 @@ public class SearchpageActivity extends AppCompatActivity {
     private void sendRequestWithFilterKey()
     {
         List<Option> options = globalVariable.getFilterOptions();
-        String option1 = options.get(0).getName();// doctor
+        //String option1 = options.get(0).getName();// doctor
         String option2 = options.get(1).getName();// speciality
         String option3 = options.get(2).getName();// service
 
@@ -238,7 +229,7 @@ public class SearchpageActivity extends AppCompatActivity {
      */
     private void setupRecyclerViewDoctor(List<Doctor> list)
     {
-        doctorAdapter = new DoctorRecyclerView(this, list);
+        DoctorRecyclerView doctorAdapter = new DoctorRecyclerView(this, list);
         doctorRecyclerView.setAdapter(doctorAdapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -251,7 +242,7 @@ public class SearchpageActivity extends AppCompatActivity {
      */
     private void setupRecyclerViewSpeciality(List<Speciality> list)
     {
-        specialityAdapter = new SpecialityRecyclerView(this, list);
+        SpecialityRecyclerView specialityAdapter = new SpecialityRecyclerView(this, list, R.layout.recycler_view_element_speciality_2);
         specialityRecyclerView.setAdapter(specialityAdapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -264,7 +255,7 @@ public class SearchpageActivity extends AppCompatActivity {
      */
     private void setupRecyclerViewService(List<Service> list)
     {
-        serviceAdapter = new ServiceRecyclerView(this, list);
+        ServiceRecyclerView serviceAdapter = new ServiceRecyclerView(this, list);
         serviceRecyclerView.setAdapter(serviceAdapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
