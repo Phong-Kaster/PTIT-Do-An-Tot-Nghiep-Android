@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     /*result == 0 => thong bao va thoat ung dung*/
                     if( result == 0)
                     {
+                        System.out.println(TAG + "- result: " + result);
                         dialog.announce();
                         dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
                         dialog.btnOK.setOnClickListener(view->{
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 catch(Exception ex)
                 {
                     /*Neu truy van lau qua ma khong nhan duoc phan hoi thi cung dong ung dung*/
+                    System.out.println(TAG + "- exception: " + ex.getMessage());
                     dialog.announce();
                     dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
                     dialog.btnOK.setOnClickListener(view->{

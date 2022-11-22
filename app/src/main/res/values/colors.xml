@@ -10,6 +10,7 @@
 
 
     <!-- THEME & BACKGROUND -->
+    <color name="colorThemeBlueNavy">#1D3A70</color>
     <color name="colorThemeBlue">#2196F3</color>
     <color name="colorTheme">#fe001a</color>
     <color name="colorBackground">@color/white</color>

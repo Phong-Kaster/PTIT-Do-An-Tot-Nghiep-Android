@@ -10,13 +10,13 @@
     <!-- LOGO -->
     <LinearLayout
         android:id="@+id/logo"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:paddingHorizontal="20dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
 
         <ImageButton
             android:id="@+id/btnBack"
@@ -26,11 +26,11 @@
             android:src="@drawable/ic_arrow_back" />
 
         <ImageView
-            android:layout_gravity="start"
-            android:src="@drawable/umbrella_logo_4"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:contentDescription="@string/image" />
+            android:layout_gravity="start"
+            android:contentDescription="@string/image"
+            android:src="@drawable/umbrella_logo_4" />
 
     </LinearLayout><!-- end LOGO -->
 

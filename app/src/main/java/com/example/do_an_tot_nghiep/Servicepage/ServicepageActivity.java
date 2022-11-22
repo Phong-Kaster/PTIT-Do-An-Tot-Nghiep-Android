@@ -1,6 +1,7 @@
 package com.example.do_an_tot_nghiep.Servicepage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.do_an_tot_nghiep.Bookingpage.BookingpageActivity;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
@@ -44,6 +46,7 @@ public class ServicepageActivity extends AppCompatActivity {
     private ImageView imgAvatar;
 
     private ImageButton btnBack;
+    private AppCompatButton btnCreateBooking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class ServicepageActivity extends AppCompatActivity {
         imgAvatar = findViewById(R.id.imgAvatar);
 
         btnBack = findViewById(R.id.btnBack);
+        btnCreateBooking = findViewById(R.id.btnCreateBooking);
     }
 
     /**
@@ -121,6 +125,19 @@ public class ServicepageActivity extends AppCompatActivity {
                 });
             }
         });/*end viewModel.getResponse()*/
+
+
+        /*animation*/
+        viewModel.getAnimation().observe(this, aBoolean -> {
+            if( aBoolean )
+            {
+                loadingScreen.start();
+            }
+            else
+            {
+                loadingScreen.stop();
+            }
+        });
     }
 
 
@@ -148,5 +165,12 @@ public class ServicepageActivity extends AppCompatActivity {
     private void setupEvent()
     {
         btnBack.setOnClickListener(view->finish());
+
+
+        btnCreateBooking.setOnClickListener(view->{
+            Intent intent = new Intent(this, BookingpageActivity.class);
+            intent.putExtra("serviceId", serviceId);
+            startActivity(intent);
+        });
     }
 }

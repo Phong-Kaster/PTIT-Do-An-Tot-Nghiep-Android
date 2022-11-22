@@ -22,10 +22,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Servicepage.ServicepageActivity"
+            android:name=".Bookingpage.BookingpageActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".Servicepage.ServicepageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Searchpage.SearchpageActivity"
             android:exported="false"

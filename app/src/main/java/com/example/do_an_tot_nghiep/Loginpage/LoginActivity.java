@@ -311,6 +311,8 @@ public class LoginActivity extends AppCompatActivity {
                         assert user != null;
                         String phone = "0" + phoneNumber;// append the zero letter in the first position of phone number
                         String password = user.getUid();
+                        System.out.println(TAG);
+                        System.out.println("password: " + password);
 
                         viewModel.loginWithPhone(phone, password);
                     }

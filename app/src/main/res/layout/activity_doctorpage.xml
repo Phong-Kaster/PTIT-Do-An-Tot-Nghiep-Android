@@ -35,9 +35,9 @@
     <!--TITLE -->
     <TextView
         android:id="@+id/title"
-        android:layout_below="@id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:gravity="center_horizontal"

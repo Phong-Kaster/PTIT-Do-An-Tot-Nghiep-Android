@@ -34,6 +34,9 @@ public class VerificationActivity extends AppCompatActivity {
     private String phoneNumber;
     private String verificationId;
 
+    private String phone;
+    private String password;
+
 
     private EditText txtVerificationCode;
     private AppCompatButton btnConfirm;
@@ -139,12 +142,13 @@ public class VerificationActivity extends AppCompatActivity {
                 /*Lay du lieu tu API ra*/
                 String token = loginResponse.getAccessToken();
                 User user = loginResponse.getData();
-                Log.d(TAG,"ACCESS TOKEN: " + token);
+
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
                 /*Lay du lieu vao Global Variable*/
                 globalVariable.setAccessToken( "JWT " + token );
                 globalVariable.setAuthUser(user);
+                Log.d(TAG,"ACCESS TOKEN: " + globalVariable.getAccessToken());
 
                 /*luu accessToken vao Shared Reference*/
                 sharedPreferences.edit().putString("accessToken", "JWT " + token.trim()).apply();

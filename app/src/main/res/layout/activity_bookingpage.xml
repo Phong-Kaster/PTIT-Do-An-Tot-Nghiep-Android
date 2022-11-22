@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackground"
+    android:layout_height="match_parent"
+    tools:context=".Bookingpage.BookingpageActivity">
+
+    <!-- LOGO -->
+    <LinearLayout
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Image" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/image"
+            android:src="@drawable/umbrella_logo_4" />
+
+    </LinearLayout><!-- end LOGO -->
+
+    <!-- SERVICE INFO -->
+   <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="140dp">
+
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_margin="10dp"
+           android:id="@+id/imgServiceAvatar"
+           android:src="@drawable/default_speciality"
+           android:layout_width="90dp"
+           android:layout_height="90dp"/>
+
+       <LinearLayout
+           android:paddingVertical="10dp"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:id="@+id/title"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:textAllCaps="true"
+               android:text="@string/booking"
+               android:textColor="@color/colorTextBlack"
+               android:textSize="15sp"
+               android:textStyle="bold" /><!--end TITLE -->
+
+           <TextView
+               android:paddingVertical="10dp"
+               android:id="@+id/txtServiceName"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="start"
+               android:text="@string/default_service_name"
+               android:textColor="@color/colorBlue"
+               android:textSize="15sp"
+               android:textStyle="bold" /><!--end TITLE -->
+
+           <TextView
+               android:textSize="12sp"
+               android:textColor="@color/colorTextBlack"
+               android:text="@string/free_booking_fee"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+
+       </LinearLayout>
+
+   </LinearLayout><!-- end SERVICE INFO -->
+
+    <!-- BODY -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- BOOKING NAME -->
+            <EditText
+                android:id="@+id/txtBookingName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_all"
+                android:drawablePadding="10dp"
+                android:hint="@string/bookingName"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+            <!-- BOOKING PHONE -->
+            <EditText
+                android:id="@+id/txtBookingPhone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="10dp"
+                android:hint="@string/bookingPhone"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+
+            <!-- PATIENT NAME -->
+            <EditText
+                android:id="@+id/txtPatientName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_patient_name"
+                android:drawablePadding="10dp"
+                android:hint="@string/patientName"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+            <!-- PATIENT GENDER -->
+            <TextView
+                android:textSize="12sp"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/gender"
+                android:paddingHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rdMale"
+                    android:checked="true"
+                    android:text="@string/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:id="@+id/rdFemale"
+                    android:text="@string/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RadioGroup><!-- end PATIENT GENDER -->
+
+            <!-- PATIENT BIRTHDAY -->
+            <EditText
+                android:id="@+id/txtPatientBirthday"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_patient_birthday"
+                android:drawablePadding="10dp"
+                android:hint="@string/patientBirthday"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+            <!-- PATIENT ADDRESS -->
+            <EditText
+                android:id="@+id/txtPatientAddress"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_patient_address"
+                android:drawablePadding="10dp"
+                android:hint="@string/patientAddress"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+            <!-- PATIENT REASON -->
+            <EditText
+                android:id="@+id/txtPatientReason"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_patient_reason"
+                android:drawablePadding="10dp"
+                android:hint="@string/patientReason"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+            <!-- APPOINTMENT DATE -->
+            <EditText
+                android:id="@+id/txtAppointmentDate"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_patient_birthday"
+                android:drawablePadding="10dp"
+                android:hint="@string/appointmentDate"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+            <!-- APPOINTMENT TIME -->
+            <EditText
+                android:id="@+id/txtAppointmentTime"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/input_style_booking"
+                android:drawableStart="@drawable/ic_appointment_time"
+                android:drawablePadding="10dp"
+                android:hint="@string/appointmentTime"
+                android:paddingHorizontal="10dp"
+                android:textSize="11sp" />
+
+            <TextView
+                android:textAlignment="textStart"
+                android:textColor="@color/colorTextSupport"
+                android:text="@string/please_fulfill_mandatory_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- NOTE -->
+            <LinearLayout
+                android:layout_marginVertical="10dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/background_booking_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/note"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/note_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/note_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/note_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/note_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginVertical="10dp"
+                android:id="@+id/btnConfirm"
+                android:text="@string/confirm"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextWhite"
+                android:textAllCaps="false"
+                android:background="@drawable/button_style_booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="12sp"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/note_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView><!-- end BODY -->
+
+</LinearLayout>
