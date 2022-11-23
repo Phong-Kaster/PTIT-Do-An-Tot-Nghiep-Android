@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.do_an_tot_nghiep.Guidepage.GuidepageActivity;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Notificationpage.NotificationActivity;
@@ -87,8 +88,10 @@ public class HomepageActivity extends AppCompatActivity {
                     fragmentTag = "homeFragment";
                     break;
                 case R.id.shortcutNotification:
-                    fragment = new NotificationFragment();
-                    fragmentTag = "notificationFragment";
+                    Intent intent1= new Intent(this, GuidepageActivity.class);
+                    startActivity(intent1);
+//                    fragment = new NotificationFragment();
+//                    fragmentTag = "notificationFragment";
                     break;
                 case R.id.shortcutAppointment:
                     Intent intent = new Intent(this, NotificationActivity.class);

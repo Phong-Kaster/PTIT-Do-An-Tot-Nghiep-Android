@@ -1,5 +1,6 @@
 package com.example.do_an_tot_nghiep.Configuration;
 
+import com.example.do_an_tot_nghiep.Container.BookingCreate;
 import com.example.do_an_tot_nghiep.Container.DoctorReadAll;
 import com.example.do_an_tot_nghiep.Container.DoctorReadByID;
 import com.example.do_an_tot_nghiep.Container.Login;
@@ -66,4 +67,20 @@ public interface HTTPRequest {
 
     @GET("api/services/{id}")
     Call<ServiceReadByID> serviceReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
+
+
+    /**********************BOOKING**********************/
+    @FormUrlEncoded
+    @POST("api/patient/booking")
+    Call<BookingCreate> bookingCreate(@HeaderMap Map<String, String> headers,
+                                      @Field("service_id") String serviceId,
+                                      @Field("booking_name") String bookingName,
+                                      @Field("booking_phone") String bookingPhone,
+                                      @Field("name") String name,
+                                      @Field("gender") String gender,
+                                      @Field("address") String address,
+                                      @Field("reason") String reason,
+                                      @Field("birthday") String birthday,
+                                      @Field("appointment_time") String appointmentTime,
+                                      @Field("appointment_date") String appointmentDate);
 }

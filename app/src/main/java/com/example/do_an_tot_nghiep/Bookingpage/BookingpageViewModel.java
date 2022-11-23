@@ -16,12 +16,15 @@ import java.util.Map;
 public class BookingpageViewModel extends ViewModel {
 
     private MutableLiveData<ServiceReadByID> serviceReadByIdResponse;
+
+
     private MutableLiveData<Boolean> animation;
     private ServiceRepository serviceRepository;
 
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
     }
+
 
     /**
      * @since 23-11-2022
@@ -49,4 +52,24 @@ public class BookingpageViewModel extends ViewModel {
         serviceReadByIdResponse = serviceRepository.readByID(header, serviceId);
         animation = serviceRepository.getAnimation();
     }
+
+    /* ***********************SERVICE READ BY ID**************************
+     * we do not use View model to observe send POST request to server
+     * */
+//    private BookingRepository bookingRepository;
+//    private MutableLiveData<BookingCreate> bookingCreateResponse;
+//    public MutableLiveData<BookingCreate> getBookingCreateResponse() {
+//        if(bookingCreateResponse == null)
+//        {
+//            bookingCreateResponse = new MutableLiveData<>();
+//        }
+//        return bookingCreateResponse;
+//    }
+//    public void bookingCreate(Map<String, String> header, Map<String, String> body)
+//    {
+//        bookingRepository.create(header, body);
+//        bookingCreateResponse = bookingRepository.create(header, body);
+//
+//        animation = bookingRepository.getAnimation();
+//    }
 }

@@ -70,6 +70,7 @@
 
             <!-- BOOKING NAME -->
             <EditText
+                android:text="PhongKaster"
                 android:id="@+id/txtBookingName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -97,6 +98,7 @@
 
             <!-- PATIENT NAME -->
             <EditText
+                android:text="PhongKaster"
                 android:id="@+id/txtPatientName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -209,6 +211,7 @@
 
             <TextView
                 android:textAlignment="textStart"
+                android:textSize="12sp"
                 android:textColor="@color/colorTextSupport"
                 android:text="@string/please_fulfill_mandatory_information"
                 android:layout_width="match_parent"
@@ -218,7 +221,7 @@
             <LinearLayout
                 android:layout_marginVertical="10dp"
                 android:orientation="vertical"
-                android:paddingHorizontal="10dp"
+                android:padding="10dp"
                 android:background="@drawable/background_booking_note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

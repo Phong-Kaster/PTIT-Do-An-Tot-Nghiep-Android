@@ -1,8 +1,11 @@
 package com.example.do_an_tot_nghiep.Bookingpage;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +16,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
+import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
+import com.example.do_an_tot_nghiep.Configuration.HTTPService;
+import com.example.do_an_tot_nghiep.Container.BookingCreate;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
@@ -28,7 +35,16 @@ import com.example.do_an_tot_nghiep.Model.User;
 import com.example.do_an_tot_nghiep.R;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class BookingFragment1 extends Fragment {
 
@@ -54,8 +70,6 @@ public class BookingFragment1 extends Fragment {
     private EditText txtPatientName;
 
     private RadioGroup rdPatientGender;
-    private RadioButton rdMale;
-    private RadioButton rdFemale;
     private EditText txtPatientBirthday;
 
     private EditText txtPatientAddress;
@@ -106,8 +120,6 @@ public class BookingFragment1 extends Fragment {
         txtPatientName = view.findViewById(R.id.txtPatientName);
 
         rdPatientGender = view.findViewById(R.id.rdPatientGender);
-        rdMale = view.findViewById(R.id.rdMale);
-        rdFemale = view.findViewById(R.id.rdFemale);
 
         txtPatientBirthday = view.findViewById(R.id.txtPatientBirthday);
         txtPatientAddress = view.findViewById(R.id.txtPatientAddress);
@@ -117,11 +129,11 @@ public class BookingFragment1 extends Fragment {
         txtAppointmentTime = view.findViewById(R.id.txtAppointmentTime);
 
         /*SET UP FORM*/
-        System.out.println(TAG);
         txtBookingPhone.setText(user.getPhone());
         txtPatientBirthday.setText(user.getBirthday());
         txtPatientAddress.setText(user.getAddress());
         txtAppointmentDate.setText(Tooltip.getToday());
+        txtAppointmentTime.setText(R.string.default_appointment_time);
     }
 
     /**
@@ -185,7 +197,7 @@ public class BookingFragment1 extends Fragment {
                     activity.finish();
                 });
             }
-        });/*end get service read by id response*/
+        });/*end Step 4*/
     }
 
     /**
@@ -210,22 +222,237 @@ public class BookingFragment1 extends Fragment {
      */
     private void setupEvent(View view)
     {
+        /*-************************PREPARE TIME & DATE PICKER FOR BUTTON**************************************/
+        /*GET TODAY*/
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        /*DATE PICKER FOR BIRTHDAY - if day or month less than 10, we will insert 0 in front of the value*/
+        DatePickerDialog.OnDateSetListener birthday = (view13, year1, month1, day1) -> {
+            calendar.set(Calendar.YEAR, year1);
+            calendar.set(Calendar.MONTH, month1);
+            calendar.set(Calendar.DAY_OF_MONTH, day1);
+
+            String dayFormatted = String.valueOf(day1);
+            String monthFormatted = String.valueOf(month1);
+
+            if( day1 < 10)
+            {
+                dayFormatted = "0" + day1;
+            }
+            if( month1 < 10 )
+            {
+                monthFormatted = "0" + month1;
+            }
+            String output = year1 + "-" + monthFormatted + "-" + dayFormatted;
+            txtPatientBirthday.setText(output);
+        };
+
+        /*DATE PICKER FOR APPOINTMENT DATE - if day or month less than 10, we will insert 0 in front of the value*/
+        DatePickerDialog.OnDateSetListener appointmentDateDialog = (view13, year1, month1, day1) -> {
+            calendar.set(Calendar.YEAR, year1);
+            calendar.set(Calendar.MONTH, month1);
+            calendar.set(Calendar.DAY_OF_MONTH, day1);
+
+            String dayFormatted = String.valueOf(day1);
+            String monthFormatted = String.valueOf(month1);
+            if( day1 < 10)
+            {
+                dayFormatted = "0" + day1;
+            }
+            if( month1 < 10 )
+            {
+                monthFormatted = "0" + month1;
+            }
+            String output = year1 + "-" + monthFormatted + "-" + dayFormatted;
+            txtAppointmentDate.setText(output);
+        };
+
+        /*TIME PICKER FOR APPOINTMENT TIME*/
+        TimePickerDialog.OnTimeSetListener appointmentTimeDialog = (timePicker, hour, minute) -> {
+            String hourFormatted = String.valueOf(hour);
+            String minuteFormatted = String.valueOf(minute);
+            if(hour < 10)
+            {
+                hourFormatted = "0" + hour;
+            }
+            if( minute < 10)
+            {
+                minuteFormatted = "0" + minute;
+            }
+            String output = hourFormatted + ":" + minuteFormatted;
+            txtAppointmentTime.setText(output);
+        };
+
+
+        /* *************************LISTEN CLICK EVENT FOR BUTTONS**************************************/
+        /*EDIT TEXT BIRTHDAY*/
+        txtPatientBirthday.setOnClickListener(birthdayView -> new DatePickerDialog(context,birthday,year,month,day).show());
+
+        /*EDIT TEXT APPOINTMENT DATE*/
+        txtAppointmentDate.setOnClickListener(appointmentDateView-> new DatePickerDialog(context, appointmentDateDialog, year, month, day).show());
+
+        /*EDIT TEXT APPOINTMENT TIME*/
+        txtAppointmentTime.setOnClickListener(appointmentTimeView-> new TimePickerDialog(context, appointmentTimeDialog, 9, 0, true).show() );
+
         /*BUTTON CONFIRM*/
         btnConfirm.setOnClickListener(view1->{
-//            String fragmentTag = "bookingFragment2";
-//            BookingFragment2 nextFragment = new BookingFragment2();
-//            requireActivity().getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.frameLayout, nextFragment, fragmentTag)
-//                    .addToBackStack(fragmentTag)
-//                    .commit();
+            /*Step 1 - user must fill up all mandatory fields*/
+            boolean flag = areMandatoryFieldsFilledUp();
+            if( !flag ){
+                return;
+            }
 
-            // get patient gender
+            /*Step 2 - get date that user enters*/
+            String bookingName = txtBookingName.getText().toString();
+            String bookingPhone = txtBookingPhone.getText().toString();
+            String patientName = txtPatientName.getText().toString();
+
             int selectedId = rdPatientGender.getCheckedRadioButtonId();
-            RadioButton radioButton = (RadioButton) view.findViewById(selectedId);
+            RadioButton radioButton = view.findViewById(selectedId);
             String patientGender = radioButton.getHint().toString();
+            String patientAddress = txtPatientAddress.getText().toString();
+            String patientReason = txtPatientReason.getText().toString();
 
-            Toast.makeText(context, patientGender, Toast.LENGTH_SHORT).show();
+            String patientBirthday = txtPatientBirthday.getText().toString();
+            String appointmentDate = txtAppointmentDate.getText().toString();
+            String appointmentTime = txtAppointmentTime.getText().toString();
 
+
+            /*Step 3 - setup header and body for POST request*/
+            Map<String, String> header = globalVariable.getHeaders();
+            Map<String, String> body = new HashMap<>();
+            body.put("serviceId", serviceId);
+            body.put("bookingName", bookingName);
+            body.put("bookingPhone", bookingPhone);
+            body.put("name", patientName);
+            body.put("gender", patientGender);
+            body.put("address", patientAddress);
+            body.put("reason", patientReason);
+            body.put("birthday", patientBirthday);
+            body.put("appointmentTime", appointmentTime);
+            body.put("appointmentDate", appointmentDate);
+
+            /*ở đây sẽ gửi trực tiếp POST request bằng retrofit để tránh việc tạo ra nhiều observer mỗi lần ấn nút gửi yêu cầu*/
+            sendBookingCreate(header, body);
         });/*end BUTTON CONFIRM*/
+    }
+
+    /**
+     * @since 23-11-2022
+     * are mandatory fields filled up?
+     * YES, it returns TRUE
+     * NO, it returns FALSE
+     */
+    private boolean areMandatoryFieldsFilledUp()
+    {
+        String bookingName = txtBookingName.getText().toString();
+        String bookingPhone = txtBookingPhone.getText().toString();
+        String patientName = txtPatientName.getText().toString();
+        String appointmentDate = txtAppointmentDate.getText().toString();
+        String appointmentTime = txtAppointmentTime.getText().toString();
+
+        String[] requiredFields = { bookingName, bookingPhone, patientName, appointmentTime, appointmentDate };
+
+        for (String element : requiredFields) {
+            if (TextUtils.isEmpty(element)) {
+                dialog.announce();
+                dialog.show(R.string.attention, context.getString(R.string.you_do_not_fill_mandatory_field_try_again), R.drawable.ic_info);
+                dialog.btnOK.setOnClickListener(view -> dialog.close());
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    private void sendBookingCreate(Map<String, String> header, Map<String,String> body)
+    {
+        /*Step 2*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+        /*Step 3*/
+        String serviceId = body.get("serviceId");
+        String bookingName = body.get("bookingName");
+        String bookingPhone = body.get("bookingPhone");
+        String name = body.get("name");
+        String gender = body.get("gender");
+        String address = body.get("address");
+        String reason = body.get("reason");
+        String birthday = body.get("birthday");
+        String appointmentTime = body.get("appointmentTime");
+        String appointmentDate = body.get("appointmentDate");
+
+        Call<BookingCreate> container = api.bookingCreate(header, serviceId,
+                bookingName, bookingPhone, name, gender, address, reason, birthday, appointmentTime, appointmentDate);
+
+        /*Step 4*/
+        container.enqueue(new Callback<BookingCreate>() {
+            @Override
+            public void onResponse(@NonNull Call<BookingCreate> call, @NonNull Response<BookingCreate> response) {
+                if(response.isSuccessful())
+                {
+                    BookingCreate content = response.body();
+                    assert content != null;
+                    processWithPOSTResponse(content);
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BookingCreate> call, @NonNull Throwable t) {
+                System.out.println("Booking Fragment - Create - error: " + t.getMessage());
+            }
+        });
+    }
+
+    /**
+     * @since 23-11-2022
+     * process with the response from POST request that we send to server
+     */
+    private void processWithPOSTResponse(BookingCreate response)
+    {
+        /*Step 1 - prepare Dialog if we have error*/
+        dialog.announce();
+        dialog.btnOK.setOnClickListener(view -> dialog.close());
+
+
+        /*Step 2 - show result*/
+        try
+        {
+            int result = response.getResult();
+            if( result == 1)// create successfully -> go to next booking fragment
+            {
+                Toast.makeText(context, context.getString(R.string.success), Toast.LENGTH_SHORT).show();
+                String fragmentTag = "bookingFragment2";
+                BookingFragment2 nextFragment = new BookingFragment2();
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout, nextFragment, fragmentTag)
+                        .addToBackStack(fragmentTag)
+                        .commit();
+            }
+            else// create failed -> show error message
+            {
+                String message = response.getMsg();
+                dialog.show(R.string.attention, message, R.drawable.ic_info);
+            }
+        }
+        catch (Exception exception)
+        {
+            dialog.show(R.string.attention, context.getString(R.string.oops_there_is_an_issue), R.drawable.ic_info);
+        }
     }
 }

@@ -30,7 +30,7 @@
             <stroke
                 android:width="2dip"
                 android:color="#1D3A70" />
-            <corners android:radius= "16dp" />
+            <corners android:radius= "5dp" />
         </shape>
     </item>
     <item
@@ -49,13 +49,13 @@
             <stroke
                 android:width="2dip"
                 android:color="#FFFFFF" />
-            <corners android:radius= "16dp" />
+            <corners android:radius= "5dp" />
         </shape>
     </item>
     <item
         android:state_enabled="true">
         <shape  android:shape="rectangle">
-            <solid android:color="@color/colorTheme"/>
+            <solid android:color="@color/colorRed"/>
             <padding android:left="7dp"
                 android:top="7dp"
                 android:right="7dp"
@@ -63,7 +63,7 @@
             <stroke
                 android:width="2dip"
                 android:color="#FFFFFF" />
-            <corners android:radius= "16dp" />
+            <corners android:radius= "5dp" />
         </shape>
     </item>
 </selector>

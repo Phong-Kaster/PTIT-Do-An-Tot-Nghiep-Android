@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Bookingpage.BookingFragment2">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="BOOKING FRAGMENT 2" />
+    <ImageView
+        android:layout_marginVertical="30dp"
+        android:id="@+id/iconAlert"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/dialog_background_success"
+        android:src="@drawable/ic_check"
+        android:padding="8dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/success" />
 
-</FrameLayout>
+    <TextView
+        android:textColor="@color/colorGreen"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="@string/booking_successfully"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textColor="@color/colorGreen"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="40dp"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/if_it_is_the_first_time_you_have_exam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnHowToExam"
+        style="@style/button_style_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="50dp"
+        android:text="@string/how_to_exam_in_umbrella_health" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnHomepage"
+        style="@style/button_style_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:text="@string/home" />
+
+</LinearLayout>

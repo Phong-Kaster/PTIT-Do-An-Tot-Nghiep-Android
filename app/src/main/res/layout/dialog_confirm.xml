@@ -85,7 +85,8 @@
         app:layout_constraintBottom_toTopOf="@id/ll"
         app:layout_constraintTop_toTopOf="@id/ll"
         app:layout_constraintStart_toStartOf="@id/ll"
-        app:layout_constraintEnd_toEndOf="@id/ll"/>
+        app:layout_constraintEnd_toEndOf="@id/ll"
+        android:contentDescription="@string/icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

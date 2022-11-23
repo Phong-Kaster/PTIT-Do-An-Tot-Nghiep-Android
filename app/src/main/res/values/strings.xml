@@ -11,6 +11,7 @@
     <string name="phone_number">Số điện thoại</string>
     <string name="phone_number_2">Số điện thoại:</string>
     <string name="my_phone_number">366253623</string>
+    <string name="umbrella_health_phone_number">0366.253.623 – 079.410.4124 (7h đến 18h)</string>
     <string name="enter_your_verification_code">Nhập mã xác thực</string>
     <string name="confirm">Xác nhận</string>
     <string name="verification_code">Mã xác thực</string>
@@ -101,4 +102,15 @@
     <string name="note_5">Bằng việc xác nhận đặt khám, bạn đã hoàn toàn đồng ý với Điều khoản sử dụng dịch vụ của chúng tôi.</string>
     <string name="code_male">1</string>
     <string name="code_female">0</string>
+    <string name="default_appointment_time">09:00</string>
+    <string name="you_do_not_fill_mandatory_field_try_again">Bạn chưa cung cấp đầy đủ các thông tin bắt buộc. Xin vui lòng kiểm tra lại!</string>
+    <string name="icon">ICON</string>
+    <string name="booking_successfully">Đặt khám thành công!</string>
+    <string name="if_it_is_the_first_time_you_have_exam">Nếu chưa nắm rõ quy trình khám bệnh tại Umbrella Heath. Hãy ấn nút bên dưới để xem hướng dẫn nha!</string>
+    <string name="how_to_exam_in_umbrella_health">Hướng dẫn khám bệnh</string>
+    <string name="open_with_google_map">Mở bằng Google Map</string>
+    <string name="medical_examination_guide">Hướng dẫn đi khám</string>
+    <string name="medical_examination_procedures">Quy trình làm thủ tục khám</string>
+    <string name="attention_patient">Bệnh nhân lưu ý</string>
+    <string name="umbrella_health_support_call_center">Tổng đài hỗ trợ của Umbrella Health</string>
 </resources>

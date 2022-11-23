@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".Guidepage.GuidepageActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- LOGO -->
+        <LinearLayout
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground"
+                android:contentDescription="@string/image"
+                android:src="@drawable/ic_arrow_back" />
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:contentDescription="@string/image"
+                android:src="@drawable/umbrella_logo_4" />
+
+        </LinearLayout><!-- end LOGO -->
+
+        <WebView
+            android:id="@+id/wvwDescription"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOpenWithGoogleMap"
+            style="@style/button_style_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:text="@string/open_with_google_map" />
+
+        <!-- medical_examination_guide -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="10dp"
+            android:text="@string/medical_examination_guide"
+            android:textAllCaps="true"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- medical_examination_procedures -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_arrow_right"
+            android:paddingVertical="10dp"
+            android:text="@string/medical_examination_procedures"
+            android:textColor="@color/colorThemeBlueNavy"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- attention_patient -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_arrow_right"
+            android:paddingVertical="10dp"
+            android:text="@string/attention_patient"
+            android:textColor="@color/colorThemeBlueNavy"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/colorThemeBlueNavy"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:paddingVertical="10dp"
+            android:text="@string/umbrella_health_support_call_center"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="@string/umbrella_health_phone_number"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorYellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>
