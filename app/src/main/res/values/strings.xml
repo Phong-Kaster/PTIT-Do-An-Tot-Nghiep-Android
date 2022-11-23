@@ -99,4 +99,6 @@
     <string name="note_3">\t* Điền đầy đủ, đúng và vui lòng kiểm tra lại thông tin trước khi ấn Xác nhận</string>
     <string name="note_4">2. Anh/chị vui lòng tuân thủ quy định phòng chống dịch (đeo khẩu trang, khử khuẩn, khai báo dịch tễ) khi đến khám.</string>
     <string name="note_5">Bằng việc xác nhận đặt khám, bạn đã hoàn toàn đồng ý với Điều khoản sử dụng dịch vụ của chúng tôi.</string>
+    <string name="code_male">1</string>
+    <string name="code_female">0</string>
 </resources>

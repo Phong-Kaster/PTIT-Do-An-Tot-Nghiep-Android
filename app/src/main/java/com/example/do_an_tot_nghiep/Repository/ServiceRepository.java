@@ -119,9 +119,9 @@ public class ServiceRepository{
                     assert content != null;
                     readByID.setValue(content);
                     animation.setValue(false);
-                    System.out.println(TAG);
-                    System.out.println("result: " + content.getResult());
-                    System.out.println("msg: " + content.getMsg());
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("msg: " + content.getMsg());
                 }
                 if(response.errorBody() != null)
                 {

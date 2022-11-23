@@ -1,8 +1,5 @@
 package com.example.do_an_tot_nghiep;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +8,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
@@ -20,9 +19,6 @@ import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Loginpage.LoginActivity;
 import com.example.do_an_tot_nghiep.Model.User;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -109,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     if( result == 0)
                     {
                         System.out.println(TAG + "- result: " + result);
+                        System.out.println(TAG + "- msg: " + response.getMsg());
                         dialog.announce();
                         dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
                         dialog.btnOK.setOnClickListener(view->{
@@ -136,13 +133,10 @@ public class MainActivity extends AppCompatActivity {
         {
             /*delay 1s before starting HomeActivity*/
             Handler handler = new Handler(Looper.myLooper());
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+            handler.postDelayed(() -> {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             },1000);
         }
     }/*end OnCreate*/
@@ -155,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
      * false if we aren't
      */
     public boolean isInternetAvailable() {
-        boolean connected = false;
+        boolean connected;
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {

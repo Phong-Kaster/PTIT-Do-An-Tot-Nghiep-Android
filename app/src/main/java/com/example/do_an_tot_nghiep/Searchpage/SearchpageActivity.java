@@ -78,7 +78,7 @@ public class SearchpageActivity extends AppCompatActivity {
 
         globalVariable =  (GlobalVariable) this.getApplication();
         header = globalVariable.getHeaders();
-        filterKey = this.getString(R.string.doctor);
+        filterKey = this.getString(R.string.service);
 
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
         specialityRecyclerView = findViewById(R.id.specialityRecyclerView);
@@ -195,9 +195,9 @@ public class SearchpageActivity extends AppCompatActivity {
     private void sendRequestWithFilterKey()
     {
         List<Option> options = globalVariable.getFilterOptions();
-        //String option1 = options.get(0).getName();// doctor
+        String option1 = options.get(0).getName();// service
         String option2 = options.get(1).getName();// speciality
-        String option3 = options.get(2).getName();// service
+        String option3 = options.get(2).getName();// doctor
 
 
         if( filterKey.equals(option2))
@@ -210,16 +210,16 @@ public class SearchpageActivity extends AppCompatActivity {
         else if( filterKey.equals(option3))
         {
             viewModel.serviceReadAll(header, paramsService);
-            doctorRecyclerView.setVisibility(View.GONE);
-            specialityRecyclerView.setVisibility(View.GONE);
-            serviceRecyclerView.setVisibility(View.VISIBLE);
-        }
-        else// by default, find doctor
-        {
-            viewModel.doctorReadAll(header, paramsDoctor);
             doctorRecyclerView.setVisibility(View.VISIBLE);
             specialityRecyclerView.setVisibility(View.GONE);
             serviceRecyclerView.setVisibility(View.GONE);
+        }
+        else// by default, find service
+        {
+            viewModel.doctorReadAll(header, paramsDoctor);
+            doctorRecyclerView.setVisibility(View.GONE);
+            specialityRecyclerView.setVisibility(View.GONE);
+            serviceRecyclerView.setVisibility(View.VISIBLE);
         }
     }
 

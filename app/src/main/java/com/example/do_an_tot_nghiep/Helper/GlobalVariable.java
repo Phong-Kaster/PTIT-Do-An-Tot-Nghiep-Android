@@ -85,18 +85,18 @@ public class GlobalVariable extends Application {
 //        option0.setName(getString(R.string.all));
 
         Option option1 = new Option();
-        option1.setIcon(R.drawable.ic_doctor);
-        option1.setName(getString(R.string.doctor));
+        option1.setIcon(R.drawable.ic_service);
+        option1.setName(getString(R.string.service));
 
         Option option2 = new Option();
         option2.setIcon(R.drawable.ic_speciality);
         option2.setName(getString(R.string.speciality));
 
         Option option3 = new Option();
-        option3.setIcon(R.drawable.ic_service);
-        option3.setName(getString(R.string.service));
+        option3.setIcon(R.drawable.ic_doctor);
+        option3.setName(getString(R.string.doctor));
 
-//        list.add(option0);
+
         list.add(option1);
         list.add(option2);
         list.add(option3);
