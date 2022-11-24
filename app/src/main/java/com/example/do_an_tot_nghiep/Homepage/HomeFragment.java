@@ -1,31 +1,21 @@
 package com.example.do_an_tot_nghiep.Homepage;
 
-import static android.content.Context.ALARM_SERVICE;
-
 import android.annotation.SuppressLint;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.example.do_an_tot_nghiep.Configuration.QueueBroadcastReceiver;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Speciality;
@@ -33,6 +23,7 @@ import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.RecyclerView.DoctorRecyclerView;
 import com.example.do_an_tot_nghiep.RecyclerView.SpecialityRecyclerView;
 import com.example.do_an_tot_nghiep.Searchpage.SearchpageActivity;
+import com.example.do_an_tot_nghiep.Servicepage.ServicepageActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -60,8 +51,17 @@ public class HomeFragment extends Fragment{
     private AppCompatImageButton btnExamSpeciality;
     private AppCompatImageButton btnExamHeart;
     private AppCompatImageButton btnExamPregnant;
+    private AppCompatImageButton btnExamTooth;
+    private AppCompatImageButton btnExamGeneral;
+    private AppCompatImageButton btnExamEye;
+    private AppCompatImageButton btnExamMedicalTest;
+    private AppCompatImageButton btnExamCOVID19;
 
     private EditText searchBar;
+    private TextView txtReadMoreSpeciality;
+    private TextView txtReadMoreDoctor;
+
+    private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,6 +85,7 @@ public class HomeFragment extends Fragment{
      */
     private void setupComponent(View view)
     {
+        context = requireContext();
         globalVariable = (GlobalVariable) requireActivity().getApplication();
         recyclerViewSpeciality = view.findViewById(R.id.recyclerViewSpeciality);
         recyclerViewDoctor = view.findViewById(R.id.recyclerViewDoctor);
@@ -93,8 +94,15 @@ public class HomeFragment extends Fragment{
         btnExamSpeciality = view.findViewById(R.id.btnExamSpeciality);
         btnExamHeart = view.findViewById(R.id.btnExamHeart);
         btnExamPregnant = view.findViewById(R.id.btnExamPregnant);
+        btnExamTooth = view.findViewById(R.id.btnExamTooth);
+        btnExamGeneral = view.findViewById(R.id.btnExamGeneral);
+        btnExamEye = view.findViewById(R.id.btnExamEye);
+        btnExamMedicalTest = view.findViewById(R.id.btnExamMedicalTest);
+        btnExamCOVID19 = view.findViewById(R.id.btnExamCOVID19);
 
         searchBar = view.findViewById(R.id.searchBar);
+        txtReadMoreSpeciality = view.findViewById(R.id.txtReadMoreSpeciality);
+        txtReadMoreDoctor = view.findViewById(R.id.txtReadMoreDoctor);
     }
 
     /**
@@ -190,17 +198,80 @@ public class HomeFragment extends Fragment{
 
         /*BUTTON EXAM SPECIALITY*/
         btnExamSpeciality.setOnClickListener(view->{
-
+            Intent intent = new Intent(context, SearchpageActivity.class);
+            String filterKey  = context.getString(R.string.service);
+            intent.putExtra("filterKey", filterKey );
+            startActivity(intent);
         });/*end BUTTON EXAM SPECIALITY*/
 
-        /*BUTTON EXAM HEART - set alarm*/
+        /*BUTTON EXAM HEART*/
         btnExamHeart.setOnClickListener(view->{
-
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            intent.putExtra("serviceId", "1" );
+            startActivity(intent);
         });
 
-        /*BUTTON EXAM PREGNANT - cancel alarm*/
+        /*BUTTON EXAM PREGNANT*/
         btnExamPregnant.setOnClickListener(view->{
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            intent.putExtra("serviceId", "2" );
+            startActivity(intent);
+        });
 
+        /*BUTTON EXAM TOOTH*/
+        btnExamTooth.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            intent.putExtra("serviceId", "10" );
+            startActivity(intent);
+        });
+
+        /*BUTTON EXAM EYE*/
+        btnExamEye.setOnClickListener(view->{
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            intent.putExtra("serviceId", "11" );
+            startActivity(intent);
+        });
+
+        /*BUTTON EXAM GENERAL*/
+        btnExamGeneral.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            intent.putExtra("serviceId", "5" );
+            startActivity(intent);
+        });
+
+        /*BUTTON MEDIAL EXAMINATION*/
+        btnExamMedicalTest.setOnClickListener(view->{
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            String filterKey  = context.getString(R.string.service);
+            intent.putExtra("filterKey", filterKey);
+            intent.putExtra("keyword", "Xét nghiệm" );
+            startActivity(intent);
+        });
+
+        /*BUTTON EXAM COVID-19*/
+        btnExamCOVID19.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ServicepageActivity.class);
+            intent.putExtra("serviceId", "22" );
+            startActivity(intent);
+        });
+
+
+        /*TXT READ MORE SPECIALITY*/
+        txtReadMoreSpeciality.setOnClickListener(view->{
+            Intent intent = new Intent(context, SearchpageActivity.class);
+            String filterKey  = context.getString(R.string.speciality);
+
+            intent.putExtra("filterKey", filterKey );
+            startActivity(intent);
+        });
+
+        /*TXT READ MORE DOCTOR*/
+        txtReadMoreDoctor.setOnClickListener(view->{
+            Intent intent = new Intent(context, SearchpageActivity.class);
+            String filterKey  = context.getString(R.string.doctor);
+
+            intent.putExtra("filterKey", filterKey );
+            startActivity(intent);
         });
     }
 }

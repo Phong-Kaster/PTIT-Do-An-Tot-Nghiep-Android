@@ -46,7 +46,7 @@
     <string name="covid19_examination">Xét nghiệm COVID 19</string>
     <string name="medical_test_examination">Xét nghiệm y học</string>
     <string name="tooth_examination">Khám nha khoa</string>
-    <string name="eye_examination">Khám da liễu</string>
+    <string name="eye_examination">Khám nhãn khoa</string>
     <string name="speciality_examination">Khám chuyên khoa</string>
     <string name="popular_specialities">Chuyên khoa phổ biến</string>
     <string name="read_more">Xem thêm</string>
@@ -113,4 +113,21 @@
     <string name="medical_examination_procedures">Quy trình làm thủ tục khám</string>
     <string name="attention_patient">Bệnh nhân lưu ý</string>
     <string name="umbrella_health_support_call_center">Tổng đài hỗ trợ của Umbrella Health</string>
+    <string name="note_medical">Dưới đây là <b>hướng dẫn đi và hướng dẫn làm thủ tục</b> cho khách hàng đặt khám qua Umbrella Health</string>
+    <string name="note_medical_1">1. Bạn đến Bệnh viện Lê Văn Thịnh, <b>130 Đường Lê Văn Thịnh, Phường Bình Trưng Tây, Quận 2, Thành phố Hồ Chí Minh</b>(cơ sở phòng khám). Lưu ý nơi gửi xe
+        \n * Xe máy: bạn có thể gửi tại bãi gửi xe của bệnh viện
+        \n * Ô tô: bạn có thể nhờ bảo về để được hướng dẫn chỗ gửi xe cách bệnh viện 150m
+        \n 2. Bạn vào quầy đăng kí và <b>báo đã đặt khám qua Umbrella Health</b> để được ưu tiên hỗ trợ
+    </string>
+    <string name="note_attention_1">
+        <b>Lưu ý về COVID-19</b>
+        \n * Khi đến khám, bệnh nhân cần đô nhiệt độ ngay khi vào cửa
+        \n * Trường hợp cần làm test thì bệnh nhân nội trú và người nhà sẽ chăm sóc bệnh nhân
+    </string>
+    <string name="note_attention_2">
+        <b>Lưu ý bệnh nhân cần mang theo các loại giấy tờ tùy thân khi đi khám</b>
+        \n * Thẻ bảo hiểm y tết
+        \n * Thẻ bảo hiểm nhân thọ/ phi nhân thọ
+        \n * Chứng minh nhân dân đối với người lớn. Giấy khi sinh đối với trẻ em
+    </string>
 </resources>

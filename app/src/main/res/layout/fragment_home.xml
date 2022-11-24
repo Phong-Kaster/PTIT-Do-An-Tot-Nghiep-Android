@@ -256,6 +256,8 @@
                 android:background="@color/colorSeparator" />
 
             <!-- SPECIALITY - RECYCLER VIEW & BUTTON READ MORE -->
+
+
             <LinearLayout
                 android:paddingHorizontal="20dp"
                 android:orientation="horizontal"
@@ -272,14 +274,14 @@
 
                 <TextView
                     android:id="@+id/txtReadMoreSpeciality"
-                    android:layout_gravity="end"
-                    android:gravity="end"
-                    android:layout_marginEnd="20dp"
-                    android:textSize="11sp"
-                    android:textColor="@color/colorBlue"
-                    android:text="@string/read_more"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="end"
+                    android:text="@string/read_more"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="11sp" />
 
             </LinearLayout><!-- end SPECIALITY - RECYCLER VIEW & BUTTON READ MORE -->
 

@@ -27,6 +27,7 @@ import com.example.do_an_tot_nghiep.RecyclerView.SpecialityRecyclerView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Phong-Kaster
@@ -61,9 +62,36 @@ public class SearchpageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_searchpage);
 
         setupComponent();
+        setupFilterSpinner();
+
+        /*this block of code below - it handles event click on "READ MORE" button from HomepageActivity*/
+        if(getIntent().getStringExtra("filterKey") != null)
+        {
+            filterKey = getIntent().getStringExtra("filterKey");
+
+            String service = this.getString(R.string.service);
+            String speciality = this.getString(R.string.speciality);
+            String doctor = this.getString(R.string.doctor);
+
+            int position = 0;
+            if(Objects.equals(filterKey, service))
+            {
+                // do nothing
+            }
+            else if(Objects.equals(filterKey, speciality))
+            {
+                position = 1;
+            }
+            else
+            {
+                position = 2;
+            }
+            sprFilter.setSelection(position);
+        }
+
         setupViewModel();
         setupEvent();
-        setupFilterSpinner();
+
     }
 
     /**
@@ -78,7 +106,10 @@ public class SearchpageActivity extends AppCompatActivity {
 
         globalVariable =  (GlobalVariable) this.getApplication();
         header = globalVariable.getHeaders();
+
         filterKey = this.getString(R.string.service);
+
+
 
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
         specialityRecyclerView = findViewById(R.id.specialityRecyclerView);

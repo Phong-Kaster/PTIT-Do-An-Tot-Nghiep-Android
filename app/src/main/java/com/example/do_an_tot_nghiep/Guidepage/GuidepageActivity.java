@@ -5,6 +5,8 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -44,10 +46,12 @@ public class GuidepageActivity extends AppCompatActivity {
     @SuppressLint("SetJavaScriptEnabled")
     private void setupEvent()
     {
+        /*BUTTON BACK*/
         btnBack.setOnClickListener(view->{
             finish();
         });
 
+        /*GOOGLE MAP*/
         String location =
             "<html>\n" +
             "   <body>\n" +
@@ -79,5 +83,14 @@ public class GuidepageActivity extends AppCompatActivity {
             }
         });
         wvwLocation.loadDataWithBaseURL(null, location, "text/HTML", "UTF-8", null);
+        /*end GOOGLE MAP*/
+
+
+        /*BUTTON OPEN WITH GOOGLE MAP*/
+        btnOpenWithGoogleMap.setOnClickListener(view->{
+            Uri uri = Uri.parse("https://www.google.com/maps?ll=10.782762,106.769197&z=16&t=m&hl=en&gl=US&mapclient=embed&cid=17079451197372658769");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        });
     }
 }
