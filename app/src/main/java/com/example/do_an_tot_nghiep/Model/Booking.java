@@ -23,7 +23,7 @@ public class Booking {
 
     @SerializedName("gender")
     @Expose
-    private String gender;
+    private int gender;
 
     @SerializedName("birthday")
     @Expose
@@ -41,7 +41,7 @@ public class Booking {
     @Expose
     private String appointmentTime;
 
-    @SerializedName("appointmentDate")
+    @SerializedName("appointment_date")
     @Expose
     private String appointmentDate;
 
@@ -77,7 +77,7 @@ public class Booking {
         return name;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 

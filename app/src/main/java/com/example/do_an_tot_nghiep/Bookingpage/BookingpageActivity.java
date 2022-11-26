@@ -1,31 +1,14 @@
 package com.example.do_an_tot_nghiep.Bookingpage;
 
+import android.os.Bundle;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.do_an_tot_nghiep.Configuration.Constant;
-import com.example.do_an_tot_nghiep.Helper.Dialog;
-import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
-import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
-import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
-import com.example.do_an_tot_nghiep.MainActivity;
-import com.example.do_an_tot_nghiep.Model.Service;
-import com.example.do_an_tot_nghiep.Model.User;
 import com.example.do_an_tot_nghiep.R;
-import com.squareup.picasso.Picasso;
-
-import java.util.Map;
 
 /**
  * @author Phong-Kaster
@@ -37,7 +20,7 @@ public class BookingpageActivity extends AppCompatActivity {
     private final String TAG = "Booking-page Activity";
 
     private ImageButton btnBack;
-    private FragmentManager manager = getSupportFragmentManager();
+    private final FragmentManager manager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +70,7 @@ public class BookingpageActivity extends AppCompatActivity {
      */
     private void setupEvent()
     {
-        btnBack.setOnClickListener(view-> {
-            finish();
-        });
+        btnBack.setOnClickListener(view-> finish());
     }
 
     /**

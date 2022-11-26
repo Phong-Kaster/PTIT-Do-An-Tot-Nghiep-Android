@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
 import com.example.do_an_tot_nghiep.Configuration.HTTPService;
-import com.example.do_an_tot_nghiep.Container.NotificationReadAll;
+import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
 
 import org.json.JSONObject;
 
@@ -16,26 +16,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class NotificationRepository {
+public class AppointmentRepository {
 
-    private final String TAG = "NotificationRepository";
-
-    /*ANIMATION*/
-    private final MutableLiveData<Boolean> animation = new MutableLiveData<>();
-    public MutableLiveData<Boolean> getAnimation()
-    {
+    private final String TAG = "Appointment Repository";
+    private MutableLiveData<Boolean> animation = new MutableLiveData<>();
+    public MutableLiveData<Boolean> getAnimation() {
         return animation;
     }
 
-    /*********************************READ ALL*********************************/
-    /*GETTER*/
-    private final MutableLiveData<NotificationReadAll> readAllResponse = new MutableLiveData<>();
-    public MutableLiveData<NotificationReadAll> getReadAllResponse()
-    {
-        return readAllResponse;
-    }
-    /*FUNCTION*/
-    public MutableLiveData<NotificationReadAll> readAll(Map<String, String> header)
+    /************************** READ ADD *******************************/
+    private MutableLiveData<AppointmentReadAll> readAllResponse = new MutableLiveData<>();
+
+    public MutableLiveData<AppointmentReadAll> readAll(Map<String, String> header, Map<String, String> parameters)
     {
         /*Step 1*/
         animation.setValue(true);
@@ -47,21 +39,21 @@ public class NotificationRepository {
 
 
         /*Step 3*/
-        Call<NotificationReadAll> container = api.notificationReadAll(header);
+        Call<AppointmentReadAll> container = api.appointmentReadAll(header, parameters);
 
         /*Step 4*/
-        container.enqueue(new Callback<NotificationReadAll>() {
+        container.enqueue(new Callback<AppointmentReadAll>() {
             @Override
-            public void onResponse(@NonNull Call<NotificationReadAll> call, @NonNull Response<NotificationReadAll> response) {
+            public void onResponse(@NonNull Call<AppointmentReadAll> call, @NonNull Response<AppointmentReadAll> response) {
                 if(response.isSuccessful())
                 {
-                    NotificationReadAll content = response.body();
+                    AppointmentReadAll content = response.body();
                     assert content != null;
                     readAllResponse.setValue(content);
-//                    System.out.println(TAG);
-//                    System.out.println("result: " + content.getResult());
-//                    System.out.println("msg: " + content.getMsg());
                     animation.setValue(false);
+                    System.out.println(TAG);
+                    System.out.println("result: " + content.getResult());
+                    System.out.println("msg: " + content.getMsg());
                 }
                 if(response.errorBody() != null)
                 {
@@ -79,8 +71,8 @@ public class NotificationRepository {
             }
 
             @Override
-            public void onFailure(@NonNull Call<NotificationReadAll> call, @NonNull Throwable t) {
-                System.out.println("Notification Repository - Read All - error: " + t.getMessage());
+            public void onFailure(@NonNull Call<AppointmentReadAll> call, @NonNull Throwable t) {
+                System.out.println("Appointment Repository - Read All - error: " + t.getMessage());
                 //readAllResponse.setValue(null);
                 animation.setValue(false);
             }
@@ -88,5 +80,4 @@ public class NotificationRepository {
 
         return readAllResponse;
     }
-
 }

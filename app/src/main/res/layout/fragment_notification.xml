@@ -6,21 +6,49 @@
     android:orientation="vertical"
     tools:context=".Notificationpage.NotificationFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:id="@+id/btnSet"
-        android:text="Set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:id="@+id/btnCancel"
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/notifications"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/txtMarkAllAsRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingHorizontal="10dp"
+            android:text="@string/mark_all_as_read"
+            android:textColor="@color/colorThemeBlue"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:paddingHorizontal="20dp" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

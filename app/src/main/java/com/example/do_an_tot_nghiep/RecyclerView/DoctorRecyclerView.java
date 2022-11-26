@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Doctorpage.DoctorpageActivity;
-import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.R;
 import com.squareup.picasso.Picasso;

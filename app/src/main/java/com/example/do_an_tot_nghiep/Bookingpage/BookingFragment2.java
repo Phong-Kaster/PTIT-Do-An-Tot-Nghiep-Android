@@ -17,6 +17,8 @@ import com.example.do_an_tot_nghiep.R;
  * @author Phong Kaster
  * @since 23-11-2022
  * Booking Fragment 2
+ * this fragment shows message and 2 buttons HOW TO EXAM & GO BACK TO HOMEPAGE
+ * when users create booking successfully
  */
 public class BookingFragment2 extends Fragment {
 

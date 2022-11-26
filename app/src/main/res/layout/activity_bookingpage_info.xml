@@ -1,9 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context=".Bookingpage.BookingpageInfoActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- LOGO -->
+    <LinearLayout
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/image" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/image"
+            android:src="@drawable/umbrella_logo_4" />
+
+    </LinearLayout><!-- end LOGO -->
+
+    <!-- SERVICE INFO -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_margin="10dp"
+            android:id="@+id/imgServiceAvatar"
+            android:src="@drawable/default_speciality"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+
+        <LinearLayout
+            android:paddingVertical="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textAllCaps="true"
+                android:text="@string/booking"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="15sp"
+                android:textStyle="bold" /><!--end TITLE -->
+
+            <TextView
+                android:paddingVertical="10dp"
+                android:id="@+id/txtServiceName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/default_service_name"
+                android:textColor="@color/colorBlue"
+                android:textSize="15sp"
+                android:textStyle="bold" /><!--end TITLE -->
+
+            <TextView
+                android:textSize="12sp"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/free_booking_fee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout><!-- end SERVICE INFO -->
+
+    <!-- BODY -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- BOOKING STATUS -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bookingStatus"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtBookingStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end BOOKING STATUS -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- BOOKING NAME -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bookingName2"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtBookingName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_personal_name"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end BOOKING NAME -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- BOOKING PHONE -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bookingPhone2"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtBookingPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_phone_number"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end BOOKING PHONE -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- PATIENT NAME -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/patientName2"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtPatientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_personal_name"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end PATIENT NAME -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- PATIENT GENDER -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtPatientGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end PATIENT GENDER -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- PATIENT BIRTHDAY -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/patientBirthday"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtPatientBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_birthday"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end PATIENT BIRTHDAY-->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- PATIENT ADDRESS -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/patientAddress"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtPatientAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_address"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end PATIENT ADDRESS -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- PATIENT REASON -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/patientReason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtPatientReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_reason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end PATIENT REASON -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- APPOINTMENT DATE -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/appointmentTime2"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtDatetime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_datetime"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- BUTTON BACK -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginVertical="10dp"
+                android:id="@+id/btnGoBack"
+                android:text="@string/back"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextWhite"
+                android:textAllCaps="false"
+                android:background="@drawable/button_style_booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- BUTTON CANCEL -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginVertical="10dp"
+                android:id="@+id/btnCancel"
+                android:text="@string/cancel"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextWhite"
+                android:textAllCaps="false"
+                android:background="@drawable/button_style_danger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="12sp"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/note_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView><!-- end BODY -->
+
+</LinearLayout>

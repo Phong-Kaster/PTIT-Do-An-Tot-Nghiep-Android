@@ -1,26 +1,34 @@
 package com.example.do_an_tot_nghiep.Homepage;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-
-import com.example.do_an_tot_nghiep.Guidepage.GuidepageActivity;
+import com.example.do_an_tot_nghiep.Appointmentpage.AppointmentpageFragment;
+import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
+import com.example.do_an_tot_nghiep.Configuration.HTTPService;
+import com.example.do_an_tot_nghiep.Container.NotificationReadAll;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
-import com.example.do_an_tot_nghiep.Notificationpage.NotificationActivity;
 import com.example.do_an_tot_nghiep.Notificationpage.NotificationFragment;
 import com.example.do_an_tot_nghiep.R;
+import com.example.do_an_tot_nghiep.Settingspage.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
-import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * @author Phong-Kaster
@@ -30,8 +38,8 @@ import java.util.Objects;
 public class HomepageActivity extends AppCompatActivity {
 
     private final String TAG = "Homepage Activity";
-    private GlobalVariable globalVariable;
     private Dialog dialog;
+    private GlobalVariable globalVariable;
 
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment;
@@ -58,6 +66,17 @@ public class HomepageActivity extends AppCompatActivity {
         /*Run necessary functions*/
         setupVariable();
         setupEvent();
+        setNumberOnNotificationIcon();
+    }
+
+    /**
+     * @since 17-11-2022
+     * whenever this activity opens, update the number of unread notification
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setNumberOnNotificationIcon();
     }
 
     /**
@@ -81,29 +100,37 @@ public class HomepageActivity extends AppCompatActivity {
     private void setupEvent(){
         /*set up event when users click on item in bottom navigation view*/
         bottomNavigationView.setOnItemSelectedListener(item -> {
+            /*When ever users click on any icon, we updates the number of unread notifications*/
+
+
             int shortcut = item.getItemId();
             switch (shortcut){
                 case R.id.shortcutHome:
+                    //setNumberOnNotificationIcon();
                     fragment = new HomeFragment();
                     fragmentTag = "homeFragment";
                     break;
                 case R.id.shortcutNotification:
-                    Intent intent1= new Intent(this, GuidepageActivity.class);
-                    startActivity(intent1);
-//                    fragment = new NotificationFragment();
-//                    fragmentTag = "notificationFragment";
+                    setNumberOnNotificationIcon();
+                    fragment = new NotificationFragment();
+                    fragmentTag = "notificationFragment";
                     break;
                 case R.id.shortcutAppointment:
-                    Intent intent = new Intent(this, NotificationActivity.class);
-                    startActivity(intent);
+                    fragment = new AppointmentpageFragment();
+                    fragmentTag = "appointmentFragment";
                     break;
                 case R.id.shortcutPersonality:
+                    fragment = new SettingsFragment();
+                    fragmentTag = "settingsFragment";
                     break;
             }
 
             enableFragment(fragment, fragmentTag);
             return true;
         });
+
+
+
     }
 
 
@@ -125,18 +152,12 @@ public class HomepageActivity extends AppCompatActivity {
         Map<String, String > headers = ((GlobalVariable)getApplication()).getHeaders();
         String accessToken = headers.get("Authorization");
         String contentType = headers.get("Content-Type");
-//
-//        User AuthUser = ((GlobalVariable)getApplication()).getAuthUser();
-//        SiteSettings appInfo = ((GlobalVariable)getApplication()).getAppInfo();
 
 
         /*Step 3*/
         Bundle bundle = new Bundle();
-
         bundle.putString("accessToken", accessToken);
         bundle.putString("contentType", contentType);
-//        bundle.putParcelable("AuthUser", AuthUser);
-//        bundle.putParcelable("appInfo", appInfo);
         fragment.setArguments(bundle);
 
 
@@ -161,4 +182,62 @@ public class HomepageActivity extends AppCompatActivity {
             });
             dialog.btnCancel.setOnClickListener(view-> dialog.close());
     }
+
+    /**
+     * @since 24-11-2022
+     * this function sets number on the right-top on notification icon
+     * which lays on Bottom Navigation View
+     */
+    public void setNumberOnNotificationIcon()
+    {
+        /*Step 1 - setup Retrofit*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+        /*Step 2 - prepare header*/
+        Map<String, String> header = globalVariable.getHeaders();
+
+        /*Step 3*/
+        Call<NotificationReadAll> container = api.notificationReadAll(header);
+
+        /*Step 4*/
+        container.enqueue(new Callback<NotificationReadAll>() {
+            @Override
+            public void onResponse(@NonNull Call<NotificationReadAll> call, @NonNull Response<NotificationReadAll> response) {
+                /*if successful, update the number of unread notification*/
+                if(response.isSuccessful())
+                {
+                    NotificationReadAll content = response.body();
+                    assert content != null;
+                    /*update the number of unread notification*/
+                    int quantityUnread = content.getQuantityUnread();
+                    bottomNavigationView
+                            .getOrCreateBadge(R.id.shortcutNotification)
+                            .setNumber(quantityUnread);
+                }
+                /*if fail, show exception*/
+                if(response.errorBody() != null)
+                {
+                    System.out.println(response);
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println(TAG);
+                        System.out.println("Exception: " + e.getMessage() );
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<NotificationReadAll> call, @NonNull Throwable t) {
+                System.out.println(TAG);
+                System.out.println("setNumberOnNotificationIcon - error: " + t.getMessage());
+            }
+        });
+
+    }
+
 }

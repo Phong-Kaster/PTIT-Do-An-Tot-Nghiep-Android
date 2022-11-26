@@ -21,6 +21,7 @@ import com.example.do_an_tot_nghiep.Model.User;
 
 import java.util.Map;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MAIN ACTIVITY";
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         /*Step 0 - declare sharedPreferences & globalVariable*/
         globalVariable = (GlobalVariable)this.getApplication();

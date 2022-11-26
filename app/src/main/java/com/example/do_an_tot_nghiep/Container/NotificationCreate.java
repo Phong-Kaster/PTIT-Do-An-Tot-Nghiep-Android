@@ -3,8 +3,7 @@ package com.example.do_an_tot_nghiep.Container;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class NotificationMarkAsRead {
-
+public class NotificationCreate {
     @SerializedName("result")
     @Expose
     private int result;

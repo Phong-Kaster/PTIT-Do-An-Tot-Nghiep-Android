@@ -30,6 +30,7 @@ import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
 import com.example.do_an_tot_nghiep.Helper.Tooltip;
+import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Model.Service;
 import com.example.do_an_tot_nghiep.Model.User;
 import com.example.do_an_tot_nghiep.R;
@@ -55,7 +56,6 @@ public class BookingFragment1 extends Fragment {
     private LoadingScreen loadingScreen;
 
     private Dialog dialog;
-    private BookingpageViewModel viewModel;
 
     private ImageView imgServiceAvatar;
     private TextView txtServiceName;
@@ -143,7 +143,7 @@ public class BookingFragment1 extends Fragment {
     private void setupViewModel()
     {
         /*Step 1 - declare*/
-        viewModel = new ViewModelProvider(this).get(BookingpageViewModel.class);
+        BookingpageViewModel viewModel = new ViewModelProvider(this).get(BookingpageViewModel.class);
         viewModel.instantiate();
 
         /*Step 2 - prepare HTTP header*/
@@ -336,6 +336,7 @@ public class BookingFragment1 extends Fragment {
             body.put("appointmentDate", appointmentDate);
 
             /*ở đây sẽ gửi trực tiếp POST request bằng retrofit để tránh việc tạo ra nhiều observer mỗi lần ấn nút gửi yêu cầu*/
+            loadingScreen.start();
             sendBookingCreate(header, body);
         });/*end BUTTON CONFIRM*/
     }
@@ -393,6 +394,7 @@ public class BookingFragment1 extends Fragment {
         container.enqueue(new Callback<BookingCreate>() {
             @Override
             public void onResponse(@NonNull Call<BookingCreate> call, @NonNull Response<BookingCreate> response) {
+                loadingScreen.stop();
                 if(response.isSuccessful())
                 {
                     BookingCreate content = response.body();
@@ -414,6 +416,7 @@ public class BookingFragment1 extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<BookingCreate> call, @NonNull Throwable t) {
+                loadingScreen.stop();
                 System.out.println("Booking Fragment - Create - error: " + t.getMessage());
             }
         });
@@ -443,6 +446,8 @@ public class BookingFragment1 extends Fragment {
                         .replace(R.id.frameLayout, nextFragment, fragmentTag)
                         .addToBackStack(fragmentTag)
                         .commit();
+
+                HomepageActivity.getInstance().setNumberOnNotificationIcon();
             }
             else// create failed -> show error message
             {

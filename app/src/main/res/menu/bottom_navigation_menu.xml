@@ -8,16 +8,16 @@
         android:icon="@drawable/shortcut_state_home"/>
 
     <item
-        android:id="@+id/shortcutNotification"
-        android:title="@string/notification"
-        app:labelVisibilityMode="unlabeled"
-        android:icon="@drawable/shortcut_state_notification"/>
-
-    <item
         android:id="@+id/shortcutAppointment"
         android:title="@string/appointment"
         app:labelVisibilityMode="unlabeled"
         android:icon="@drawable/shortcut_state_appointment"/>
+
+    <item
+        android:id="@+id/shortcutNotification"
+        android:title="@string/notification"
+        app:labelVisibilityMode="unlabeled"
+        android:icon="@drawable/shortcut_state_notification"/>
 
     <item
         android:id="@+id/shortcutPersonality"

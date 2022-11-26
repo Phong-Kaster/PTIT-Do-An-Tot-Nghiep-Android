@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Appointmentpage.AppointmentpageFragment">
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/appointment"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/lytNoAppointment"
+        android:paddingTop="100dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:contentDescription="@string/image"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center_horizontal"
+            android:src="@drawable/ic_calendar" />
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/you_do_not_any_appointment"
+            android:textColor="@color/colorTextSupport"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="40dp"
+        android:nestedScrollingEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

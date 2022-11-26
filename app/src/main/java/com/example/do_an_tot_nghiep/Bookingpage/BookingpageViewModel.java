@@ -3,7 +3,9 @@ package com.example.do_an_tot_nghiep.Bookingpage;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.do_an_tot_nghiep.Container.BookingReadByID;
 import com.example.do_an_tot_nghiep.Container.ServiceReadByID;
+import com.example.do_an_tot_nghiep.Repository.BookingRepository;
 import com.example.do_an_tot_nghiep.Repository.ServiceRepository;
 
 import java.util.Map;
@@ -16,10 +18,11 @@ import java.util.Map;
 public class BookingpageViewModel extends ViewModel {
 
     private MutableLiveData<ServiceReadByID> serviceReadByIdResponse;
-
+    private MutableLiveData<BookingReadByID> bookingReadByIdResponse;
 
     private MutableLiveData<Boolean> animation;
     private ServiceRepository serviceRepository;
+    private BookingRepository bookingRepository;
 
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
@@ -35,6 +38,10 @@ public class BookingpageViewModel extends ViewModel {
         if( serviceRepository == null)
         {
             serviceRepository = new ServiceRepository();
+        }
+        if( bookingRepository == null)
+        {
+            bookingRepository = new BookingRepository();
         }
     }
 
@@ -72,4 +79,18 @@ public class BookingpageViewModel extends ViewModel {
 //
 //        animation = bookingRepository.getAnimation();
 //    }
+
+    /************************BOOKING READ BY ID***************************/
+    public MutableLiveData<BookingReadByID> getBookingReadByIdResponse() {
+        if( bookingReadByIdResponse == null )
+        {
+            bookingReadByIdResponse = new MutableLiveData<>();
+        }
+        return bookingReadByIdResponse;
+    }
+    public void bookingReadByID(Map<String, String> header, String bookingId)
+    {
+        bookingReadByIdResponse = bookingRepository.readByID(header, bookingId);
+        animation = bookingRepository.getAnimation();
+    }
 }

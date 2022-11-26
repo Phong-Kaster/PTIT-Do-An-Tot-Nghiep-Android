@@ -1,9 +1,5 @@
 package com.example.do_an_tot_nghiep.Servicepage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -11,15 +7,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.do_an_tot_nghiep.Bookingpage.BookingpageActivity;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
-import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
-import com.example.do_an_tot_nghiep.MainActivity;
 import com.example.do_an_tot_nghiep.Model.Service;
-import com.example.do_an_tot_nghiep.Model.User;
 import com.example.do_an_tot_nghiep.R;
 import com.squareup.picasso.Picasso;
 
@@ -35,7 +32,6 @@ public class ServicepageActivity extends AppCompatActivity {
 
     private final String TAG = "Service-page Activity";
     private String serviceId;
-    private ServicepageViewModel viewModel;
 
     private GlobalVariable globalVariable;
     private Dialog dialog;
@@ -84,7 +80,7 @@ public class ServicepageActivity extends AppCompatActivity {
      */
     private void setupViewModel()
     {
-        viewModel = new ViewModelProvider(this).get(ServicepageViewModel.class);
+        ServicepageViewModel viewModel = new ViewModelProvider(this).get(ServicepageViewModel.class);
         viewModel.instantiate();
 
         /*prepare HEADER*/

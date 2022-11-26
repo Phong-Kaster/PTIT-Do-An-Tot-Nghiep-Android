@@ -3,8 +3,7 @@ package com.example.do_an_tot_nghiep.Container;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class NotificationMarkAsRead {
-
+public class BookingCancel {
     @SerializedName("result")
     @Expose
     private int result;
@@ -12,6 +11,7 @@ public class NotificationMarkAsRead {
     @SerializedName("msg")
     @Expose
     private String msg;
+
 
     public int getResult() {
         return result;

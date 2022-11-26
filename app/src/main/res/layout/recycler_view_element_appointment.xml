@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/elementLayout"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginVertical="10dp"
+        android:paddingStart="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/elementDoctorImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/colorBackground"/>
+
+        <LinearLayout
+            android:paddingStart="20sp"
+            android:paddingEnd="0dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/elementDoctorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_doctor_name"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/elementLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="@string/default_room"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:id="@+id/elementPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="@string/default_position"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/elementReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="@string/default_reason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="11sp" />
+
+            <!-- BUTTON Get Authorization Code-->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/elementBtnRemindMe"
+                style="@style/button_style_warning"
+                android:layout_gravity="start"
+                android:layout_marginVertical="10dp"
+                android:drawableStart="@drawable/ic_notification_round"
+                android:paddingHorizontal="40dp"
+                android:paddingVertical="0dp"
+                android:text="@string/remind_me"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:visibility="visible" /><!-- BUTTON Get Authorization Code -->
+
+            <TextView
+                android:id="@+id/elementStatusCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:text="@string/cancel"
+                android:textColor="@color/colorRed"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_appointment_cancel" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/elementStatusDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:textSize="12sp"
+                android:text="@string/done"
+                android:textColor="@color/colorGreen"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_appointment_done" />
+
+            <!--        <TextView-->
+            <!--            android:visibility="gone"-->
+            <!--            android:paddingVertical="30dp"-->
+            <!--            android:id="@+id/elementStatusProcessing"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:gravity="center"-->
+            <!--            android:paddingHorizontal="30dp"-->
+            <!--            android:textSize="20sp"-->
+            <!--            android:text="@string/processing"-->
+            <!--            android:textColor="@color/colorGreen"-->
+            <!--            android:textStyle="bold"-->
+            <!--            app:drawableStartCompat="@drawable/ic_appointment_processing" />-->
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_marginVertical="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorTextSupport" />
+
+</LinearLayout>

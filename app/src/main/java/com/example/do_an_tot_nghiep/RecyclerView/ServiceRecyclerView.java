@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,14 +18,12 @@ import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.Servicepage.ServicepageActivity;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class ServiceRecyclerView extends RecyclerView.Adapter<ServiceRecyclerView.ViewHolder> {
 
-    private Context context;
-    private List<Service> list;
+    private final Context context;
+    private final List<Service> list;
 
     public ServiceRecyclerView(Context context, List<Service> list)
     {

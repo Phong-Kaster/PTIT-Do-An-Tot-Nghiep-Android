@@ -2,7 +2,9 @@ package com.example.do_an_tot_nghiep.Helper;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 
@@ -10,6 +12,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
+import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.R;
 
 /**
@@ -75,13 +78,21 @@ public class Notification extends android.app.Notification {
      */
     public void setup(String title, String text, String bigText)
     {
+        /*Mo app khi nhan vao notification*/
+        Intent intent = new Intent(context, HomepageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+
         this.builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_umbrella_round)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(bigText))
-                .setPriority(NotificationCompat.PRIORITY_MAX);
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setContentIntent(pendingIntent)// Set the intent that will fire when the user taps the notification
+                .setAutoCancel(true);//Notice this code calls setAutoCancel(), which automatically removes the notification when the user taps it.
     }
 
     public void show()

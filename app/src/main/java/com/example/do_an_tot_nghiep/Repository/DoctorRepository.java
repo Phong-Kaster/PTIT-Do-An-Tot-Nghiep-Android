@@ -27,7 +27,7 @@ public class DoctorRepository {
     private final String TAG = "DoctorRepository";
 
     /*ANIMATION*/
-    private MutableLiveData<Boolean> animation = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> animation = new MutableLiveData<>();
     public MutableLiveData<Boolean> getAnimation()
     {
         return animation;
@@ -126,9 +126,9 @@ public class DoctorRepository {
                     assert content != null;
                     readByIdResponse.setValue(content);
                     animation.setValue(false);
-                    System.out.println(TAG);
-                    System.out.println("result: " + content.getResult());
-                    System.out.println("msg: " + content.getMsg());
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("msg: " + content.getMsg());
                 }
                 if(response.errorBody() != null)
                 {

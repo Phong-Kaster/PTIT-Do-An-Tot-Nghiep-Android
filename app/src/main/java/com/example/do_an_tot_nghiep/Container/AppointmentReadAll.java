@@ -1,13 +1,13 @@
 package com.example.do_an_tot_nghiep.Container;
 
-import com.example.do_an_tot_nghiep.Model.Notification;
+import com.example.do_an_tot_nghiep.Model.Appointment;
+import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class NotificationReadAll {
-
+public class AppointmentReadAll {
     @SerializedName("result")
     @Expose
     private int result;
@@ -16,36 +16,27 @@ public class NotificationReadAll {
     @Expose
     private String msg;
 
-
     @SerializedName("quantity")
     @Expose
     private int quantity;
 
-    @SerializedName("quantityUnread")
-    @Expose
-    private int quantityUnread;
-
     @SerializedName("data")
     @Expose
-    private List<Notification> data;
+    private List<Appointment> data;
 
     public int getResult() {
         return result;
-    }
-
-    public String getMsg() {
-        return msg;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public int getQuantityUnread() {
-        return quantityUnread;
+    public String getMsg() {
+        return msg;
     }
 
-    public List<Notification> getData() {
+    public List<Appointment> getData() {
         return data;
     }
 }

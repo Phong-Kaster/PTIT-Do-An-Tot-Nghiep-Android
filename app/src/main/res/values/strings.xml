@@ -83,8 +83,11 @@
     <string name="default_service_name">Xét nghiệm định lượng kháng thể SARS-CoV-2</string>
     <string name="free_booking_fee">Miễn phí đặt lịch</string>
     <string name="bookingName">Họ tên người đặt lịch (Bắt buộc)</string>
+    <string name="bookingName2">Họ tên người đặt lịch</string>
     <string name="bookingPhone">Số điện thoại người đặt lịch (Bắt buộc)</string>
+    <string name="bookingPhone2">Số điện thoại người đặt lịch</string>
     <string name="patientName">Tên bệnh nhân (Bắt buộc)</string>
+    <string name="patientName2">Tên bệnh nhân</string>
     <string name="male">Nam</string>
     <string name="female">Nữ</string>
     <string name="gender">Giới tính</string>
@@ -93,6 +96,7 @@
     <string name="patientReason">Lý do khám</string>
     <string name="appointmentDate">Ngày khám (Bắt buộc)</string>
     <string name="appointmentTime">Thời gian khám (Bắt buộc)</string>
+    <string name="appointmentTime2">Thời gian khám</string>
     <string name="please_fulfill_mandatory_information">Quý khách vui lòng điền đầy đủ thông tin để tiết kiệm thời gian làm thủ tục khám</string>
     <string name="note">Lưu ý</string>
     <string name="note_1">1. Thông tin anh chị cung cấp sẽ được sử dụng làm hồ sơ khám bệnh, khi điền thông tin anh/chị vui lòng:</string>
@@ -130,4 +134,23 @@
         \n * Thẻ bảo hiểm nhân thọ/ phi nhân thọ
         \n * Chứng minh nhân dân đối với người lớn. Giấy khi sinh đối với trẻ em
     </string>
+    <string name="default_datetime">2022-11-24 10:02:43</string>
+    <string name="notifications">Thông báo</string>
+    <string name="mark_all_as_read">Đánh đấu tất cả đã đọc</string>
+    <string name="successful_action">Thao tác được thực hiện thành công!</string>
+    <string name="at">lúc</string>
+    <string name="back">Trở về</string>
+    <string name="my_birthday">01-05-2022</string>
+    <string name="my_address">14 Lý Tự Trọng, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh</string>
+    <string name="default_reason">Khám sức khỏe định kì</string>
+    <string name="bookingStatus">Trạng thái lịch khám</string>
+    <string name="processing">Đang xử lý</string>
+    <string name="you_do_not_any_appointment">Bạn không có lịch hẹn khám nào sắp tới !</string>
+    <string name="default_room">Khu A, tầng 1, phòng 102</string>
+    <string name="default_position">Số thứ khám của bạn: 1</string>
+    <string name="remind_me">Đặt thông báo</string>
+    <string name="done">Xong</string>
+    <string name="your_position">Số thứ tự khám của bạn:</string>
+    <string name="your_reason">Lý do khám:</string>
+    <string name="you_will_get_notification_as_soon_as_your_turn">Bạn sẽ nhận thông báo khi tới lượt khám của mình</string>
 </resources>
