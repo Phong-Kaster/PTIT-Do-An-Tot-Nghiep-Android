@@ -95,8 +95,9 @@
     <string name="patientAddress">Địa chỉ</string>
     <string name="patientReason">Lý do khám</string>
     <string name="appointmentDate">Ngày khám (Bắt buộc)</string>
+    <string name="appointmentDate2">Ngày khám</string>
     <string name="appointmentTime">Thời gian khám (Bắt buộc)</string>
-    <string name="appointmentTime2">Thời gian khám</string>
+    <string name="appointmentTime2">Thời gian khám mong muốn</string>
     <string name="please_fulfill_mandatory_information">Quý khách vui lòng điền đầy đủ thông tin để tiết kiệm thời gian làm thủ tục khám</string>
     <string name="note">Lưu ý</string>
     <string name="note_1">1. Thông tin anh chị cung cấp sẽ được sử dụng làm hồ sơ khám bệnh, khi điền thông tin anh/chị vui lòng:</string>
@@ -153,4 +154,14 @@
     <string name="your_position">Số thứ tự khám của bạn:</string>
     <string name="your_reason">Lý do khám:</string>
     <string name="you_will_get_notification_as_soon_as_your_turn">Bạn sẽ nhận thông báo khi tới lượt khám của mình</string>
+    <string name="default_location">Khu A, tầng 1, phòng 112</string>
+    <string name="numericalOrder">Số thứ tự lượt khám</string>
+    <string name="appointment_information">Thông tin lượt khám</string>
+    <string name="patient_numerical_order">Mã số bệnh nhân</string>
+    <string name="default_date">27-11-2022</string>
+    <string name="default_time">09:00</string>
+    <string name="appointmentStatus">Trạng thái lượt khám</string>
+    <string name="watch_medical_record">Xem bệnh án</string>
+    <string name="watch_medical_treatment">Xem phác đồ điều trị</string>
+    <string name="you_can_read_again_in_settings"><![CDATA[Bạn có thể truy cập Cá nhân->Lịch sử khám bệnh để xem lại thông tin sau này]]></string>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.do_an_tot_nghiep.Appointmentpage.AppointmentpageInfoActivity;
 import com.example.do_an_tot_nghiep.Bookingpage.BookingpageInfoActivity;
 import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Model.Notification;
@@ -24,7 +25,7 @@ public class NotificationRecyclerView extends RecyclerView.Adapter<NotificationR
 
     private final Context context;
     private final List<Notification> list;
-    private NotificationRecyclerView.Callback callback;
+    private final NotificationRecyclerView.Callback callback;
 
 
     public NotificationRecyclerView(Context context, List<Notification> list, NotificationRecyclerView.Callback callback)
@@ -82,7 +83,7 @@ public class NotificationRecyclerView extends RecyclerView.Adapter<NotificationR
             }
 
             /*base on record type to open corresponding activity*/
-            Intent intent = null;
+            Intent intent;
             if(Objects.equals(recordType, "booking"))
             {
                 intent = new Intent(context, BookingpageInfoActivity.class);
@@ -90,9 +91,8 @@ public class NotificationRecyclerView extends RecyclerView.Adapter<NotificationR
             }
             else
             {
-                // Appointment-page Info Activity .class
+                intent = new Intent(context, AppointmentpageInfoActivity.class);
             }
-            assert intent != null;
             intent.putExtra("id", String.valueOf(recordId));
             context.startActivity(intent);
         });

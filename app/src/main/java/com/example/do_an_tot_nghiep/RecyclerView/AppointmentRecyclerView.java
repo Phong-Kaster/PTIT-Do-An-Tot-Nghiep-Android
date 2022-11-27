@@ -15,6 +15,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.do_an_tot_nghiep.Appointmentpage.AppointmentpageInfoActivity;
 import com.example.do_an_tot_nghiep.Appointmentpage.AppointmentpageService;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Model.Appointment;
@@ -105,7 +106,9 @@ public class AppointmentRecyclerView extends RecyclerView.Adapter<AppointmentRec
         holder.location.setText(location);
         holder.doctorName.setText(doctorName);
         holder.layout.setOnClickListener(view->{
-            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, AppointmentpageInfoActivity.class);
+            intent.putExtra("id", String.valueOf(recordId));
+            context.startActivity(intent);
         });
 
     }

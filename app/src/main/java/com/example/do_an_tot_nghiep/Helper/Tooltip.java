@@ -44,6 +44,10 @@ public class Tooltip {
     @SuppressLint("SimpleDateFormat")
     public static String beautifierDatetime(Context context, String input)
     {
+        if( input.length() != 16)
+        {
+            return "Tooltip - beautifierDatetime - error: value is not valid " + input.length();
+        }
         String output = "";
 
         String dateInput = input.substring(0,10);

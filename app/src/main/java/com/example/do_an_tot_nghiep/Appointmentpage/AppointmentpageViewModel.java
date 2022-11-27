@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
+import com.example.do_an_tot_nghiep.Container.AppointmentReadByID;
 import com.example.do_an_tot_nghiep.Repository.AppointmentRepository;
 
 import java.util.Map;
@@ -39,5 +40,14 @@ public class AppointmentpageViewModel extends ViewModel {
     {
         animation = repository.getAnimation();
         readAllResponse = repository.readAll(header, parameters);
+    }
+
+    /************************  READ BY ID ***************************/
+    private MutableLiveData<AppointmentReadByID> readByIDResponse = new MutableLiveData<>();
+    public MutableLiveData<AppointmentReadByID> getReadByIDResponse(){return readByIDResponse;}
+    public void readByID(Map<String, String> header, String appointmentID)
+    {
+        animation = repository.getAnimation();
+        readByIDResponse = repository.readByID(header, appointmentID);
     }
 }

@@ -37,8 +37,6 @@ public class AppointmentpageFragment extends Fragment {
     private final String TAG = "Appointment-page Fragment";
 
     private RecyclerView appointmentRecyclerView;
-    private AppointmentRecyclerView appointmentAdapter;
-    private AppointmentpageViewModel viewModel;
 
     private Context context;
     private Activity activity;
@@ -82,7 +80,7 @@ public class AppointmentpageFragment extends Fragment {
     private void setupViewModel()
     {
         /*DECLARE*/
-        viewModel = new ViewModelProvider(this).get(AppointmentpageViewModel.class);
+        AppointmentpageViewModel viewModel = new ViewModelProvider(this).get(AppointmentpageViewModel.class);
         viewModel.instantiate();
 
 
@@ -153,7 +151,7 @@ public class AppointmentpageFragment extends Fragment {
             lytNoAppointment.setVisibility(View.GONE);
             appointmentRecyclerView.setVisibility(View.VISIBLE);
 
-            appointmentAdapter = new AppointmentRecyclerView(context, list);
+            AppointmentRecyclerView appointmentAdapter = new AppointmentRecyclerView(context, list);
             appointmentRecyclerView.setAdapter(appointmentAdapter);
 
             LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);

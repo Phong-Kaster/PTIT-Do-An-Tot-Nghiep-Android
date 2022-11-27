@@ -22,10 +22,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Bookingpage.BookingpageInfoActivity"
+            android:name=".Appointmentpage.AppointmentpageInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".Bookingpage.BookingpageInfoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Guidepage.GuidepageActivity"
             android:exported="false"
@@ -89,9 +94,9 @@
         </activity>
 
         <receiver android:name=".Configuration.QueueBroadcastReceiver" />
-        <service android:name=".Notificationpage.NotificationService" />
 
-        <service android:name=".Appointmentpage.AppointmentpageService"/>
+        <service android:name=".Notificationpage.NotificationService" />
+        <service android:name=".Appointmentpage.AppointmentpageService" />
     </application>
 
 </manifest>

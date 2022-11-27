@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
 import com.example.do_an_tot_nghiep.Configuration.HTTPService;
 import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
+import com.example.do_an_tot_nghiep.Container.AppointmentReadByID;
 
 import org.json.JSONObject;
 
@@ -19,13 +20,13 @@ import retrofit2.Retrofit;
 public class AppointmentRepository {
 
     private final String TAG = "Appointment Repository";
-    private MutableLiveData<Boolean> animation = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> animation = new MutableLiveData<>();
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
     }
 
-    /************************** READ ADD *******************************/
-    private MutableLiveData<AppointmentReadAll> readAllResponse = new MutableLiveData<>();
+    /************************** READ ALL *******************************/
+    private final MutableLiveData<AppointmentReadAll> readAllResponse = new MutableLiveData<>();
 
     public MutableLiveData<AppointmentReadAll> readAll(Map<String, String> header, Map<String, String> parameters)
     {
@@ -51,9 +52,9 @@ public class AppointmentRepository {
                     assert content != null;
                     readAllResponse.setValue(content);
                     animation.setValue(false);
-                    System.out.println(TAG);
-                    System.out.println("result: " + content.getResult());
-                    System.out.println("msg: " + content.getMsg());
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("msg: " + content.getMsg());
                 }
                 if(response.errorBody() != null)
                 {
@@ -79,5 +80,61 @@ public class AppointmentRepository {
         });
 
         return readAllResponse;
+    }
+
+    /************************** READ BY ID *******************************/
+    private final MutableLiveData<AppointmentReadByID> readByIDResponse = new MutableLiveData<>();
+    public MutableLiveData<AppointmentReadByID> readByID(Map<String, String> header, String appointmentID)
+    {
+        /*Step 1*/
+        animation.setValue(true);
+
+
+        /*Step 2*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        Call<AppointmentReadByID> container = api.appointmentReadByID(header, appointmentID);
+
+        /*Step 4*/
+        container.enqueue(new Callback<AppointmentReadByID>() {
+            @Override
+            public void onResponse(@NonNull Call<AppointmentReadByID> call, @NonNull Response<AppointmentReadByID> response) {
+                if(response.isSuccessful())
+                {
+                    AppointmentReadByID content = response.body();
+                    assert content != null;
+                    readByIDResponse.setValue(content);
+                    animation.setValue(false);
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("msg: " + content.getMsg());
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+                    readByIDResponse.setValue(null);
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<AppointmentReadByID> call, @NonNull Throwable t) {
+                System.out.println("Appointment Repository - Read By ID - error: " + t.getMessage());
+                //readAllResponse.setValue(null);
+                animation.setValue(false);
+            }
+        });
+
+        return readByIDResponse;
     }
 }
