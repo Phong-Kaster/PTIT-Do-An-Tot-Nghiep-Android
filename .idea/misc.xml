@@ -76,6 +76,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_login.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_main.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_notification.xml" value="0.13766566908935443" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_recordpage.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_searchpage.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_servicepage.xml" value="0.18461539003270633" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_speciality.xml" value="0.13766566908935443" />
@@ -97,6 +98,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/fragment_settings.xml" value="0.18461539003270633" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/loading_screen.xml" value="0.125" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/recycler_view_element_appointment.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/recycler_view_element_appointment_queue.xml" value="0.18461539003270633" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/recycler_view_element_doctor.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/recycler_view_element_notification.xml" value="0.36923078006541266" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/recycler_view_element_service.xml" value="0.2436923148431724" />

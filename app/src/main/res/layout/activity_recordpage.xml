@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".Recordpage.RecordpageActivity">
+
+    <!-- LOGO -->
+    <LinearLayout
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/image" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/image"
+            android:src="@drawable/umbrella_logo_4" />
+
+    </LinearLayout><!-- end LOGO -->
+
+    <TextView
+        android:gravity="center"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/medical_record_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- DOCTOR INFO -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_margin="10dp"
+            android:id="@+id/imgDoctorAvatar"
+            android:src="@drawable/default_speciality"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+
+        <LinearLayout
+            android:paddingVertical="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtDoctorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textAllCaps="false"
+                android:text="@string/default_doctor_name"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="15sp"
+                android:textStyle="bold" /><!--end TITLE -->
+
+            <TextView
+                android:paddingVertical="10dp"
+                android:id="@+id/txtSpecialityName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/default_speciality"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" /><!--end TITLE -->
+
+            <TextView
+                android:id="@+id/txtDatetime"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextBlack"
+                android:text="@string/default_datetime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout><!-- DOCTOR INFO -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- SCROLL VIEW BODY -->
+        <LinearLayout
+            android:paddingHorizontal="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="WebViewLayout">
+
+            <!-- APPOINTMENT REASON -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/appointment_reason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtAppointmentReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_reason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end APPOINTMENT REASON -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- STATUS BEFORE -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/statusBefore"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtStatusBefore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_status_before"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end STATUS BEFORE -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- STATUS AFTER -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/statusAfter"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtStatusAfter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_status_before"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end STATUS AFTER -->
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- REASON -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_reason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" /><!-- end REASON -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <!-- DESCRIPTION -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <WebView
+                android:id="@+id/wvwDescription"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="5dp" />
+
+        </LinearLayout><!-- end SCROLL VIEW BODY -->
+    </ScrollView>
+
+</LinearLayout>

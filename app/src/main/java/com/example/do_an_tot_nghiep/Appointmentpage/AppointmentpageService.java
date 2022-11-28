@@ -231,11 +231,11 @@ public class AppointmentpageService extends IntentService {
             System.out.println("can not run by isNotify");
             return false;
         }
-//        if(  hour < 7 || hour > 18)
-//        {
-//            System.out.println("can not run by working hour");
-//            return false;
-//        }
+        if(  hour < 7 || hour > 18)
+        {
+            System.out.println("can not run by working hour");
+            return false;
+        }
         return true;
     }
 
@@ -246,8 +246,6 @@ public class AppointmentpageService extends IntentService {
      */
     public void showMessageInDevice(String text, String bigText)
     {
-
-
         /*tao noi dung cho Notification*/
         com.example.do_an_tot_nghiep.Helper.Notification notification = new com.example.do_an_tot_nghiep.Helper.Notification(this);
         String title = this.getString(R.string.app_name);

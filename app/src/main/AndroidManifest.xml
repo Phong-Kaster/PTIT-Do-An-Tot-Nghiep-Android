@@ -22,10 +22,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Recordpage.RecordpageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".Appointmentpage.AppointmentpageInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Bookingpage.BookingpageInfoActivity"
             android:exported="false"
@@ -58,11 +63,6 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Doctorpage.DoctorpageActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".Notificationpage.NotificationActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

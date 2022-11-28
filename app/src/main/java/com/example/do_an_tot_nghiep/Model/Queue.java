@@ -21,6 +21,11 @@ public class Queue {
     @Expose
     private int patientId;
 
+    @SerializedName("patient_name")
+    @Expose
+    private String patientName;
+
+
     @SerializedName("doctor_id")
     @Expose
     private int doctorId;
@@ -35,6 +40,10 @@ public class Queue {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getPatientName() {
+        return patientName;
     }
 
     public int getNumericalOrder() {

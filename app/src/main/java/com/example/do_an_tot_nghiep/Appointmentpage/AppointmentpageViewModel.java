@@ -3,8 +3,10 @@ package com.example.do_an_tot_nghiep.Appointmentpage;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.do_an_tot_nghiep.Container.AppointmentQueue;
 import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
 import com.example.do_an_tot_nghiep.Container.AppointmentReadByID;
+import com.example.do_an_tot_nghiep.Repository.AppointmentQueueRepository;
 import com.example.do_an_tot_nghiep.Repository.AppointmentRepository;
 
 import java.util.Map;
@@ -23,15 +25,20 @@ public class AppointmentpageViewModel extends ViewModel {
     }
 
     private AppointmentRepository repository;
+    private AppointmentQueueRepository queueRepository;
     public void instantiate()
     {
         if( repository == null)
         {
             repository = new AppointmentRepository();
         }
+        if( queueRepository == null)
+        {
+            queueRepository = new AppointmentQueueRepository();
+        }
     }
 
-    /************************  READ ALL ***************************/
+    /************************ APPOINTMENTS - READ ALL ***************************/
     private MutableLiveData<AppointmentReadAll> readAllResponse = new MutableLiveData<>();
     public MutableLiveData<AppointmentReadAll> getReadAllResponse() {
         return readAllResponse;
@@ -42,12 +49,20 @@ public class AppointmentpageViewModel extends ViewModel {
         readAllResponse = repository.readAll(header, parameters);
     }
 
-    /************************  READ BY ID ***************************/
+    /************************ APPOINTMENTS - READ BY ID ***************************/
     private MutableLiveData<AppointmentReadByID> readByIDResponse = new MutableLiveData<>();
     public MutableLiveData<AppointmentReadByID> getReadByIDResponse(){return readByIDResponse;}
     public void readByID(Map<String, String> header, String appointmentID)
     {
         animation = repository.getAnimation();
         readByIDResponse = repository.readByID(header, appointmentID);
+    }
+
+    /************************ QUEUE - READ BY ID ***************************/
+    private MutableLiveData<AppointmentQueue> appointmentQueueResponse = new MutableLiveData<>();
+    public MutableLiveData<AppointmentQueue> getAppointmentQueueResponse(){ return appointmentQueueResponse;}
+    public void getQueue(Map<String, String> header, Map<String, String> parameter)
+    {
+        appointmentQueueResponse = queueRepository.getAppointmentQueue(header, parameter);
     }
 }

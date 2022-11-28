@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
         /*Step 2 - is AccessToken null?*/
         String accessToken = sharedPreferences.getString("accessToken", null);
-        System.out.println(TAG);
-        System.out.println(accessToken);
+//        System.out.println(TAG);
+//        System.out.println(accessToken);
         if(accessToken != null)
         {
             /*global variable chi hoat dong trong phien lam viec nen phai gan lai accessToken cho no*/
@@ -103,17 +103,21 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                    /*result == 0 => thong bao va thoat ung dung*/
+                    /*result == 0 => thong bao va cho dang nhap lai*/
                     if( result == 0)
                     {
                         System.out.println(TAG + "- result: " + result);
                         System.out.println(TAG + "- msg: " + response.getMsg());
-                        dialog.announce();
-                        dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
-                        dialog.btnOK.setOnClickListener(view->{
-                            dialog.close();
-                            finish();
-                        });
+//                        dialog.announce();
+//                        dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
+//                        dialog.btnOK.setOnClickListener(view->{
+//                            dialog.close();
+//                            finish();
+//                        });
+//                        sharedPreferences.edit().putString("accessToken","").apply();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
 
                 }

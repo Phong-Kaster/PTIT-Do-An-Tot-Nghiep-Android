@@ -14,6 +14,7 @@ import com.example.do_an_tot_nghiep.Container.NotificationMarkAllAsRead;
 import com.example.do_an_tot_nghiep.Container.NotificationMarkAsRead;
 import com.example.do_an_tot_nghiep.Container.NotificationReadAll;
 import com.example.do_an_tot_nghiep.Container.PatientProfile;
+import com.example.do_an_tot_nghiep.Container.RecordReadByID;
 import com.example.do_an_tot_nghiep.Container.ServiceReadAll;
 import com.example.do_an_tot_nghiep.Container.ServiceReadByID;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
@@ -136,4 +137,9 @@ public interface HTTPRequest {
     /************** QUEUE **********/
     @GET("api/appointment-queue")
     Call<AppointmentQueue> appointmentQueue(@HeaderMap Map <String, String> header, @QueryMap Map<String, String> parameters);
+
+
+    /************** RECORD **********/
+    @GET("api/patient/appointments/records/{id}")
+    Call<RecordReadByID> recordReadById(@HeaderMap Map <String, String> header, @Path("id") String recordId);
 }

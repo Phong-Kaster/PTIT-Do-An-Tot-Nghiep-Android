@@ -44,7 +44,7 @@ public class Tooltip {
     @SuppressLint("SimpleDateFormat")
     public static String beautifierDatetime(Context context, String input)
     {
-        if( input.length() != 16)
+        if( input.length() != 19)
         {
             return "Tooltip - beautifierDatetime - error: value is not valid " + input.length();
         }

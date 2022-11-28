@@ -35,7 +35,7 @@
     <string name="home">Trang chủ</string>
     <string name="notification">Thông báo</string>
     <string name="personality">Cá nhân</string>
-    <string name="appointment">Lịch hẹn</string>
+    <string name="appointment">Lịch khám bệnh</string>
     <string name="are_you_sure_about_that">Bạn có chắc chắn?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -164,4 +164,13 @@
     <string name="watch_medical_record">Xem bệnh án</string>
     <string name="watch_medical_treatment">Xem phác đồ điều trị</string>
     <string name="you_can_read_again_in_settings"><![CDATA[Bạn có thể truy cập Cá nhân->Lịch sử khám bệnh để xem lại thông tin sau này]]></string>
+    <string name="appointment_queue">Danh sách thứ tự khám</string>
+    <string name="now">Hiện tại</string>
+    <string name="you">Bạn</string>
+    <string name="medical_record_information">Thông tin bệnh án</string>
+    <string name="statusBefore">Tình trạng trước điều trị</string>
+    <string name="default_status_before">Tình trạng bình thường</string>
+    <string name="reason">Chuẩn đoán</string>
+    <string name="appointment_reason">Nguyên nhân khám bệnh</string>
+    <string name="statusAfter">Tình trạng sau điều trị</string>
 </resources>

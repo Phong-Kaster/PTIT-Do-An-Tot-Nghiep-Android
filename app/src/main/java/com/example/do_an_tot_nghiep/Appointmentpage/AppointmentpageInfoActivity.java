@@ -1,23 +1,32 @@
 package com.example.do_an_tot_nghiep.Appointmentpage;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Model.Appointment;
+import com.example.do_an_tot_nghiep.Model.Queue;
 import com.example.do_an_tot_nghiep.R;
+import com.example.do_an_tot_nghiep.Recordpage.RecordpageActivity;
+import com.example.do_an_tot_nghiep.RecyclerView.AppointmentQueueRecyclerView;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -37,7 +46,11 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
     private Dialog dialog;
     private LoadingScreen loadingScreen;
 
-    private String appointmentId;
+    /*Data from recycler view*/
+    private String appointmentId;// is the id of appointment that the patient are waiting for his/her turn
+    private String myPosition;// is the patient position in queue
+    private String doctorId;
+    private boolean appointmentStatus = true;// is appointment status == false, we hide recycler view appointment queue
 
 
     private CircleImageView imgDoctorAvatar;
@@ -65,7 +78,10 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
     private AppCompatButton btnWatchMedicalTreatment;
 
     private ImageButton btnBack;
+    private RecyclerView appointmentQueueRecyclerView;
+    private TextView appointmentQueueTitle;
 
+    private AppointmentpageViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +91,13 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         setupComponent();
         setupViewModel();
         setupEvent();
+        setupUpdateAutomatically();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getAppointmentQueue();
     }
 
     /**
@@ -88,7 +111,12 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         loadingScreen = new LoadingScreen(this);
 
         header = globalVariable.getHeaders();
+
+        /*data from appointment recycler view*/
         appointmentId = getIntent().getStringExtra("id");
+        myPosition = getIntent().getStringExtra("position");
+        doctorId = getIntent().getStringExtra("doctorId");
+
 
         txtPosition = findViewById(R.id.txtPosition);
         imgDoctorAvatar = findViewById(R.id.imgDoctorAvatar);
@@ -115,20 +143,25 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         btnWatchMedicalTreatment = findViewById(R.id.btnWatchMedicalTreatment);
 
         btnBack = findViewById(R.id.btnBack);
+        appointmentQueueRecyclerView = findViewById(R.id.appointmentQueueRecyclerView);
+        appointmentQueueTitle = findViewById(R.id.appointmentQueueTitle);
     }
 
 
     /**
      * @since 27-11-2022
      * setup view model
+     *
+     * if the user appointment is not PROCESSING, we hide recycler view appointment queue
+     * and never request current appointment queue.
      */
     private void setupViewModel()
     {
-        AppointmentpageViewModel viewModel = new ViewModelProvider(this).get(AppointmentpageViewModel.class);
+        viewModel = new ViewModelProvider(this).get(AppointmentpageViewModel.class);
         viewModel.instantiate();
 
 
-        /*SEND REQUEST*/
+        /*SEND REQUEST READ BY ID*/
         viewModel.readByID(header, appointmentId);
         viewModel.getReadByIDResponse().observe(this, response->{
             try
@@ -167,7 +200,50 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
                     finish();
                 });
             }
-        });/*end SEND REQUEST*/
+        });/*end SEND REQUEST - READ BY ID*/
+
+
+        /*SEND REQUEST - get appointment queue only when appointment status == TRUE*/
+        if(appointmentStatus)
+        {
+            getAppointmentQueue();
+            viewModel.getAppointmentQueueResponse().observe(this, response -> {
+                try {
+                    int result = response.getResult();
+                    /*result == 1 => luu thong tin nguoi dung va vao homepage*/
+                    if (result == 1) {
+                        List<Queue> list = response.getData();
+                        setupAppointmentQueueRecyclerView(list);
+                    }
+                    /*result == 0 => thong bao va thoat ung dung*/
+                    if (result == 0) {
+                        System.out.println(TAG);
+                        System.out.println("READ ALL");
+                        System.out.println("shut down by result == 0");
+                        dialog.announce();
+                        dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
+                        dialog.btnOK.setOnClickListener(view -> {
+                            dialog.close();
+                            finish();
+                        });
+                    }
+
+                } catch (Exception ex) {
+                    System.out.println(TAG);
+                    System.out.println("READ ALL");
+                    System.out.println("shut down by exception");
+                    System.out.println(ex);
+                    /*Neu truy van lau qua ma khong nhan duoc phan hoi thi cung dong ung dung*/
+                    dialog.announce();
+                    dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
+                    dialog.btnOK.setOnClickListener(view -> {
+                        dialog.close();
+                        finish();
+                    });
+                }
+            });
+        }
+        /*end SEND REQUEST - READ ALL*/
 
         /*ANIMATION*/
         viewModel.getAnimation().observe(this, aBoolean -> {
@@ -203,7 +279,7 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         String patientReason = appointment.getPatientReason();
         String appointmentDate = appointment.getDate();
 
-        String appointmentTime = appointment.getAppointmentTime().length() > 0 ?  appointment.getAppointmentTime() : "" ;
+        String appointmentTime = appointment.getAppointmentTime().length() > 0 ?  appointment.getAppointmentTime() : "Không có" ;
         String status = appointment.getStatus();
 
 //        System.out.println(TAG);
@@ -239,18 +315,27 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
             txtStatusProcessing.setVisibility(View.VISIBLE);
             txtStatusDone.setVisibility(View.GONE);
             txtStatusCancel.setVisibility(View.GONE);
+            appointmentStatus = true;// we show recycler view appointment queue and send GET request to server
+            appointmentQueueRecyclerView.setVisibility(View.VISIBLE);
+            appointmentQueueTitle.setVisibility(View.VISIBLE);
         }
         if(Objects.equals(status, "done"))
         {
             txtStatusProcessing.setVisibility(View.GONE);
             txtStatusDone.setVisibility(View.VISIBLE);
             txtStatusCancel.setVisibility(View.GONE);
+            appointmentStatus = false;// we hide recycler view appointment queue and never send GET request to server
+            appointmentQueueRecyclerView.setVisibility(View.GONE);
+            appointmentQueueTitle.setVisibility(View.GONE);
         }
         if(Objects.equals(status, "cancelled"))
         {
             txtStatusProcessing.setVisibility(View.GONE);
             txtStatusDone.setVisibility(View.GONE);
             txtStatusCancel.setVisibility(View.VISIBLE);
+            appointmentStatus = false;// we hide recycler view appointment queue and never send GET request to server
+            appointmentQueueRecyclerView.setVisibility(View.GONE);
+            appointmentQueueTitle.setVisibility(View.GONE);
         }
 
         /*OTHER INFORMATION*/
@@ -288,9 +373,70 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         btnBack.setOnClickListener(view->finish());
 
         /*BUTTON WATCH MEDICAL TREATMENT*/
-        btnWatchMedicalTreatment.setOnClickListener(view-> Toast.makeText(this, "BUTTON WATCH MEDICAL TREATMENT", Toast.LENGTH_SHORT).show());
+        btnWatchMedicalTreatment.setOnClickListener(view-> {
+
+        });
 
         /*BUTTON WATCH MEDICAL RECORD*/
-        btnWatchMedicalRecord.setOnClickListener(view -> Toast.makeText(this, "BUTTON WATCH MEDICAL RECORD", Toast.LENGTH_SHORT).show());
+        btnWatchMedicalRecord.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RecordpageActivity.class);
+            intent.putExtra("appointmentId", appointmentId);
+            this.startActivity(intent);
+        });
+    }
+
+    /**
+     * @since 28-11-2022
+     * setup appointment queue recycler view
+     *
+     * myPosition is the position of the patient who are waiting for his/her turn
+     *
+     */
+    private void setupAppointmentQueueRecyclerView(List<Queue> list)
+    {
+        AppointmentQueueRecyclerView appointmentAdapter = new AppointmentQueueRecyclerView(this, list, Integer.parseInt(myPosition));
+        appointmentQueueRecyclerView.setAdapter(appointmentAdapter);
+
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        appointmentQueueRecyclerView.setLayoutManager(manager);
+    }
+
+    /**
+     * @since 28-11-2022
+     * this function will run update view model - GET APPOINTMENT QUEUE - every 45 seconds if the device is active
+     */
+    final Handler handler = new Handler();
+    final int delay = 1000  * 45 ; // delay 45 seconds
+    private void setupUpdateAutomatically()
+    {
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                getAppointmentQueue();
+                handler.postDelayed(this, delay);
+            }
+        }, delay);
+    }
+
+    /**
+     * @since 28-11-2022
+     * this function send GET request to get current appointment queue
+     *
+     * we just send GET quest when the "appointmentStatus" flag == TRUE
+     */
+    private void getAppointmentQueue()
+    {
+        if(!appointmentStatus)
+        {
+            return;
+        }
+
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("doctor_id", doctorId);
+        parameters.put("date", Tooltip.getToday());
+        parameters.put("order[column]", "position" );
+        parameters.put("order[dir]", "asc");
+        parameters.put("length", "3");
+        parameters.put("status", "processing");
+        viewModel.getQueue(header, parameters);
     }
 }

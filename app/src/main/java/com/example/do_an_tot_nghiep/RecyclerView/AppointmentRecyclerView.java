@@ -108,6 +108,8 @@ public class AppointmentRecyclerView extends RecyclerView.Adapter<AppointmentRec
         holder.layout.setOnClickListener(view->{
             Intent intent = new Intent(context, AppointmentpageInfoActivity.class);
             intent.putExtra("id", String.valueOf(recordId));
+            intent.putExtra("position", String.valueOf(patientPosition));
+            intent.putExtra("doctorId", String.valueOf(doctorId));
             context.startActivity(intent);
         });
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="10dp"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/elementNumericalOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/code_male"
+        android:textSize="15sp"
+        android:textColor="@color/colorTextBlack"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/elementPatientName"
+        android:paddingStart="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/elementNumericalOrder"
+        android:text="@string/default_personal_name"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/elementStatus"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:layout_toEndOf="@id/elementPatientName"
+        android:gravity="end"
+        android:textSize="15sp"
+        android:text="@string/now"
+        android:textStyle="bold"
+        android:textColor="@color/colorGreen" />
+
+</RelativeLayout>

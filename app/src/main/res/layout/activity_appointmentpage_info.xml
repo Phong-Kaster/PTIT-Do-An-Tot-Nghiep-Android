@@ -105,6 +105,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- RECYCLER VIEW -->
+            <TextView
+                android:id="@+id/appointmentQueueTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/appointment_queue"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="12sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/appointmentQueueRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp" />
+
+
             <!-- POSITION -->
             <TextView
                 android:layout_width="match_parent"
@@ -313,7 +329,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start|center_vertical"
                 android:textSize="17sp"
-                android:text="@string/done"
+                android:text="@string/processing"
                 android:textColor="@color/colorGreen"
                 android:textStyle="bold"
                 android:drawableStart="@drawable/ic_appointment_processing" />
