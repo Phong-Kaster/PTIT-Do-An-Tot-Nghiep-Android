@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/elementName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:paddingVertical="10dp"
+            android:textStyle="bold"
+            android:text="@string/default_treatment_name"
+            android:textColor="@color/colorTextBlack" />
+
+        <TextView
+            android:id="@+id/elementType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="@string/default_treatment_type"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/elementTimes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="@string/default_treatment_times"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/elementPurpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="@string/default_treatment_purpose"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/elementInstruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="@string/default_treatment_instruction"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_marginVertical="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorTextSupport" />
+
+</LinearLayout>

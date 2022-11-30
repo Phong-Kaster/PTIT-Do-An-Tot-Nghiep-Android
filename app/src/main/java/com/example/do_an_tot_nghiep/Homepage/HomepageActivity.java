@@ -1,6 +1,7 @@
 package com.example.do_an_tot_nghiep.Homepage;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Notificationpage.NotificationFragment;
 import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.Settingspage.SettingsFragment;
+import com.example.do_an_tot_nghiep.Treatmentpage.TreatmentpageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONObject;

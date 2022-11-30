@@ -19,6 +19,8 @@ import com.example.do_an_tot_nghiep.Container.ServiceReadAll;
 import com.example.do_an_tot_nghiep.Container.ServiceReadByID;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadByID;
+import com.example.do_an_tot_nghiep.Container.TreatmentReadAll;
+import com.example.do_an_tot_nghiep.Container.TreatmentReadByID;
 
 import java.util.Map;
 
@@ -142,4 +144,13 @@ public interface HTTPRequest {
     /************** RECORD **********/
     @GET("api/patient/appointments/records/{id}")
     Call<RecordReadByID> recordReadById(@HeaderMap Map <String, String> header, @Path("id") String recordId);
+
+
+    /************** TREATMENT **********/
+    @GET("api/patient/treatments/{id}")
+    Call<TreatmentReadAll> treatmentReadAll(@HeaderMap Map <String, String> header,  @Path("id") String appointmentId);
+
+    @GET("api/patient/treatment/{id}")
+    Call<TreatmentReadByID> treatmentReadByID(@HeaderMap Map <String, String> header, @Path("id") String treatmentId);
+
 }

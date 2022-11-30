@@ -173,4 +173,24 @@
     <string name="reason">Chuẩn đoán</string>
     <string name="appointment_reason">Nguyên nhân khám bệnh</string>
     <string name="statusAfter">Tình trạng sau điều trị</string>
+    <string name="default_datetime2">Ngày: 30-11-2022</string>
+    <string name="default_treatment_name">Tên: Thực phẩm bổ sung DutchLady</string>
+    <string name="default_treatment_type">Hình thức: Uống</string>
+    <string name="default_treatment_times">Số lần: 7</string>
+    <string name="default_treatment_purpose">Mục đích: bổ sung Vitamin</string>
+    <string name="default_treatment_instruction">Hướng dẫn: Uống trước khi ăn và trước đi ngủ 2 viên/lần</string>
+    <string name="default_treatment_number">Số thứ tự 1</string>
+    <string name="numerical_order">Số thứ tự</string>
+    <string name="name">Tên</string>
+    <string name="times">Số lần</string>
+    <string name="purpose">Mục đích</string>
+    <string name="instruction">Hướng dẫn</string>
+    <string name="type">Hình thức</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="appearance">Giao diện</string>
+    <string name="appointment_history">Lịch sử khám bệnh</string>
+    <string name="personal_information">Thông tin cá nhân</string>
+    <string name="exit">Đăng xuất</string>
+    <string name="about_us">Về chúng tôi</string>
+    <string name="email_us">Phản hồi với chúng tôi</string>
 </resources>

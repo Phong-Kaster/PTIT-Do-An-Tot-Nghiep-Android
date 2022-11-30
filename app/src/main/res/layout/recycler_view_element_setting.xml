@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="10dp"
+    android:id="@+id/elementLayout"
+    android:weightSum="1">
+
+    <ImageButton
+        android:id="@+id/elementIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="0.01"
+        android:background="@drawable/background_setting_icon"
+        android:src="@drawable/ic_appointment_cancel" />
+
+    <TextView
+        android:id="@+id/elementName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/language"
+        android:gravity="center_vertical"
+        android:layout_marginStart="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextBlack"
+        android:layout_weight="0.98"/>
+
+    <ImageButton
+        android:id="@+id/personalitySettingRightIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/background_setting_arrow"
+        android:src="@drawable/ic_arrow_right"
+        android:layout_weight="0.01"/>
+</LinearLayout>
+

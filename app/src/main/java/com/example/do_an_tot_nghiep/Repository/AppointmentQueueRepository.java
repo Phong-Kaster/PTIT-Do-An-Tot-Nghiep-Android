@@ -55,11 +55,11 @@ public class AppointmentQueueRepository {
                     assert content != null;
                     appointmentQueue.setValue(content);
                     animation.setValue(false);
-                    System.out.println("=================================");
-                    System.out.println(TAG);
-                    System.out.println("result: " + content.getResult());
-                    System.out.println("msg: " + content.getMsg());
-                    System.out.println("quantity: " + content.getQuantity());
+//                    System.out.println("=================================");
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("msg: " + content.getMsg());
+//                    System.out.println("quantity: " + content.getQuantity());
                 }
                 if(response.errorBody() != null)
                 {

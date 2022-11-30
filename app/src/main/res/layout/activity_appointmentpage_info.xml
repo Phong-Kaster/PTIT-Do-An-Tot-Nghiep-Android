@@ -114,11 +114,20 @@
                 android:textColor="@color/colorTextBlack"
                 android:textSize="12sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/appointmentQueueRecyclerView"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp" />
+                android:layout_height="150dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/appointmentQueueRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
 
             <!-- POSITION -->

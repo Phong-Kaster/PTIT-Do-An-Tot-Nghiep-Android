@@ -7,13 +7,18 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
+import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
+import com.example.do_an_tot_nghiep.Configuration.HTTPService;
+import com.example.do_an_tot_nghiep.Container.AppointmentReadByID;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
@@ -23,7 +28,10 @@ import com.example.do_an_tot_nghiep.Model.Queue;
 import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.Recordpage.RecordpageActivity;
 import com.example.do_an_tot_nghiep.RecyclerView.AppointmentQueueRecyclerView;
+import com.example.do_an_tot_nghiep.Treatmentpage.TreatmentpageActivity;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +39,10 @@ import java.util.Map;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * @author Phong-Kaster
@@ -82,6 +94,7 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
     private TextView appointmentQueueTitle;
 
     private AppointmentpageViewModel viewModel;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +111,7 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getAppointmentQueue();
+
     }
 
     /**
@@ -145,6 +159,8 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         appointmentQueueRecyclerView = findViewById(R.id.appointmentQueueRecyclerView);
         appointmentQueueTitle = findViewById(R.id.appointmentQueueTitle);
+
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
     }
 
 
@@ -162,45 +178,8 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
 
 
         /*SEND REQUEST READ BY ID*/
-        viewModel.readByID(header, appointmentId);
-        viewModel.getReadByIDResponse().observe(this, response->{
-            try
-            {
-                int result = response.getResult();
-                /*result == 1 => luu thong tin nguoi dung va vao homepage*/
-                if( result == 1)
-                {
-                    Appointment appointment = response.getData();
-                    printAppointmentInfo(appointment);
-                }
-                /*result == 0 => thong bao va thoat ung dung*/
-                if( result == 0)
-                {
-                    System.out.println(TAG);
-                    System.out.println("shut down by result == 0");
-                    dialog.announce();
-                    dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
-                    dialog.btnOK.setOnClickListener(view->{
-                        dialog.close();
-                        finish();
-                    });
-                }
-
-            }
-            catch(Exception ex)
-            {
-                System.out.println(TAG);
-                System.out.println("shut down by exception");
-                System.out.println(ex);
-                /*Neu truy van lau qua ma khong nhan duoc phan hoi thi cung dong ung dung*/
-                dialog.announce();
-                dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
-                dialog.btnOK.setOnClickListener(view->{
-                    dialog.close();
-                    finish();
-                });
-            }
-        });/*end SEND REQUEST - READ BY ID*/
+        loadingScreen.start();
+        requestAppointmentInfo(header, appointmentId);
 
 
         /*SEND REQUEST - get appointment queue only when appointment status == TRUE*/
@@ -257,6 +236,58 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
             }
         });/*end ANIMATION*/
     }
+
+
+    /**
+     * @since 27-11-2022
+     * send request to get appointment info
+     */
+    private void requestAppointmentInfo(Map<String, String> header, String appointmentId)
+    {
+        /*Step 2*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        Call<AppointmentReadByID> container = api.appointmentReadByID(header, appointmentId);
+
+        /*Step 4*/
+        container.enqueue(new Callback<AppointmentReadByID>() {
+            @Override
+            public void onResponse(@NonNull Call<AppointmentReadByID> call, @NonNull Response<AppointmentReadByID> response) {
+                loadingScreen.stop();
+                if(response.isSuccessful())
+                {
+                    AppointmentReadByID content = response.body();
+                    assert content != null;
+                    Appointment appointment = content.getData();
+                    printAppointmentInfo(appointment);
+                    System.out.println(TAG);
+                    System.out.println("result: " + content.getResult());
+                    System.out.println("msg: " + content.getMsg());
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<AppointmentReadByID> call, @NonNull Throwable t) {
+                System.out.println(TAG);
+                System.out.println("Read By ID - error: " + t.getMessage());
+            }
+        });
+    }
+
 
     /**
      * @since 27-11-2022
@@ -316,6 +347,7 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
             txtStatusDone.setVisibility(View.GONE);
             txtStatusCancel.setVisibility(View.GONE);
             appointmentStatus = true;// we show recycler view appointment queue and send GET request to server
+            swipeRefreshLayout.setVisibility(View.VISIBLE);
             appointmentQueueRecyclerView.setVisibility(View.VISIBLE);
             appointmentQueueTitle.setVisibility(View.VISIBLE);
         }
@@ -325,6 +357,7 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
             txtStatusDone.setVisibility(View.VISIBLE);
             txtStatusCancel.setVisibility(View.GONE);
             appointmentStatus = false;// we hide recycler view appointment queue and never send GET request to server
+            swipeRefreshLayout.setVisibility(View.GONE);
             appointmentQueueRecyclerView.setVisibility(View.GONE);
             appointmentQueueTitle.setVisibility(View.GONE);
         }
@@ -374,7 +407,9 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
 
         /*BUTTON WATCH MEDICAL TREATMENT*/
         btnWatchMedicalTreatment.setOnClickListener(view-> {
-
+            Intent intent = new Intent(this, TreatmentpageActivity.class);
+            intent.putExtra("appointmentId", appointmentId);
+            this.startActivity(intent);
         });
 
         /*BUTTON WATCH MEDICAL RECORD*/
@@ -382,6 +417,15 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
             Intent intent = new Intent(this, RecordpageActivity.class);
             intent.putExtra("appointmentId", appointmentId);
             this.startActivity(intent);
+        });
+
+        /*SWIPE REFRESH LAYOUT*/
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                getAppointmentQueue();
+            }
         });
     }
 
@@ -438,5 +482,8 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         parameters.put("length", "3");
         parameters.put("status", "processing");
         viewModel.getQueue(header, parameters);
+
+        /*get latest information from appointment*/
+        requestAppointmentInfo(header, appointmentId);
     }
 }

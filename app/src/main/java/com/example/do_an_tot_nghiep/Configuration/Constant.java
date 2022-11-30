@@ -52,4 +52,13 @@ public class Constant {
     {
         return Constant.accessToken;
     }
+
+    /**
+     * @since 30-11-2022
+     * umbrella video
+     */
+    public static String VIDEO_PATH()
+    {
+        return "https://www.youtube.com/watch?v=W4JA4dbscis&ab_channel=UmbrellaCorporation4";
+    }
 }

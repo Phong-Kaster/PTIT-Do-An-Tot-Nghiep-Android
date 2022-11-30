@@ -54,7 +54,7 @@ public class AppointmentpageViewModel extends ViewModel {
     public MutableLiveData<AppointmentReadByID> getReadByIDResponse(){return readByIDResponse;}
     public void readByID(Map<String, String> header, String appointmentID)
     {
-        animation = repository.getAnimation();
+        //animation = repository.getAnimation();
         readByIDResponse = repository.readByID(header, appointmentID);
     }
 
@@ -63,6 +63,7 @@ public class AppointmentpageViewModel extends ViewModel {
     public MutableLiveData<AppointmentQueue> getAppointmentQueueResponse(){ return appointmentQueueResponse;}
     public void getQueue(Map<String, String> header, Map<String, String> parameter)
     {
+//        animation = repository.getAnimation();
         appointmentQueueResponse = queueRepository.getAppointmentQueue(header, parameter);
     }
 }
