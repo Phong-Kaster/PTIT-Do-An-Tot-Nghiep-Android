@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageButton;
 
 import com.example.do_an_tot_nghiep.R;
 
@@ -22,15 +23,15 @@ public class WebpageActivity extends AppCompatActivity {
         String url = getIntent().getStringExtra("url");
 
         WebView webView = findViewById(R.id.webView);
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage( this.getString(R.string.loading));
-        progressDialog.setCancelable(false);
-
         webView.requestFocus();
         webView.getSettings().setLightTouchEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setGeolocationEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(url);
+
+
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(view->finish());
     }
 }

@@ -3,6 +3,7 @@ package com.example.do_an_tot_nghiep.Settingspage;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;

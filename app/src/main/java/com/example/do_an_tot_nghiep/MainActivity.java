@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.do_an_tot_nghiep.Helper.Dialog;
@@ -51,12 +52,6 @@ public class MainActivity extends AppCompatActivity {
         Notification notification = new Notification(this);
         notification.createChannel();
 
-        //show a notification
-//        notification.setup(getString(R.string.app_name),
-//                getString(R.string.app_short_description),
-//                getString(R.string.app_description) );
-//        notification.show();
-
 
         /*Step 1 - does the application connect to Internet? - NO, close the application*/
         boolean isConnected = isInternetAvailable();
@@ -72,10 +67,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        /*Step 2 - is AccessToken null?*/
+        /*Step 2 - is dark mode turned on?*/
+        int value = sharedPreferences.getInt("darkMode", 1);
+        AppCompatDelegate.setDefaultNightMode(value);
+
+
+        /*Step 3 - is AccessToken null?*/
         String accessToken = sharedPreferences.getString("accessToken", null);
-//        System.out.println(TAG);
-//        System.out.println(accessToken);
         if(accessToken != null)
         {
             /*global variable chi hoat dong trong phien lam viec nen phai gan lai accessToken cho no*/

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Model.Setting;
 import com.example.do_an_tot_nghiep.R;
+import com.example.do_an_tot_nghiep.Settingspage.AppearanceActivity;
 import com.example.do_an_tot_nghiep.Webpage.WebpageActivity;
 
 import java.util.List;
@@ -48,17 +49,19 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
         holder.icon.setImageResource( element.getIcon() );
         holder.name.setText( element.getName() );
         holder.layout.setOnClickListener(view -> {
+            Intent intent = null;
             switch (element.getId()){
                 case "appearance":
+                    intent = new Intent(context, AppearanceActivity.class);
                     break;
                 case "appointmentHistory":
                     break;
                 case "aboutUs":
-                    Intent intent = new Intent(context, WebpageActivity.class);
+                    intent = new Intent(context, WebpageActivity.class);
                     intent.putExtra("url", Constant.VIDEO_PATH());
-                    context.startActivity(intent);
                     break;
             }
+            context.startActivity(intent);
         });
 
     }
