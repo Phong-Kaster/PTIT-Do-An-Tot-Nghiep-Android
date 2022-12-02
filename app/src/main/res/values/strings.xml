@@ -209,4 +209,5 @@
     <string name="create_at">Created at</string>
     <string name="update_at">Updated at</string>
     <string name="save">Save</string>
+    <string name="click_on_your_avatar_to_select_new_photo">Click on your avatar to select new photo</string>
 </resources>

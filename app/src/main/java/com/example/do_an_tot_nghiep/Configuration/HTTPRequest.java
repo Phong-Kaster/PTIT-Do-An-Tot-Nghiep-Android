@@ -14,6 +14,7 @@ import com.example.do_an_tot_nghiep.Container.NotificationMarkAllAsRead;
 import com.example.do_an_tot_nghiep.Container.NotificationMarkAsRead;
 import com.example.do_an_tot_nghiep.Container.NotificationReadAll;
 import com.example.do_an_tot_nghiep.Container.PatientProfile;
+import com.example.do_an_tot_nghiep.Container.PatientProfileChangeAvatar;
 import com.example.do_an_tot_nghiep.Container.PatientProfileChangePersonalInformation;
 import com.example.do_an_tot_nghiep.Container.RecordReadByID;
 import com.example.do_an_tot_nghiep.Container.ServiceReadAll;
@@ -25,6 +26,8 @@ import com.example.do_an_tot_nghiep.Container.TreatmentReadByID;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
@@ -32,8 +35,10 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
@@ -68,6 +73,13 @@ public interface HTTPRequest {
                                                                             @Field("birthday") String birthday,
                                                                             @Field("address") String address);
 
+
+    @Multipart
+    @POST("api/patient/profile")
+    Call<PatientProfileChangeAvatar> changeAvatar(@Header("Authorization") String accessToken,
+                                                  @Header("Type") String type,
+                                                  @Part MultipartBody.Part file,
+                                                  @Part("action") RequestBody action);
 
     /**********************SPECIALITY**********************/
     @GET("api/specialities")

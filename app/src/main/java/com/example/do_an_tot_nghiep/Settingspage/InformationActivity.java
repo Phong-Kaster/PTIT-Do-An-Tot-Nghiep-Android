@@ -1,18 +1,29 @@
 package com.example.do_an_tot_nghiep.Settingspage;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-
-import android.os.Bundle;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+import androidx.core.app.ActivityCompat;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
 import com.example.do_an_tot_nghiep.Configuration.HTTPService;
-import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
+import com.example.do_an_tot_nghiep.Container.PatientProfileChangeAvatar;
 import com.example.do_an_tot_nghiep.Container.PatientProfileChangePersonalInformation;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
@@ -24,10 +35,13 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
-import java.sql.SQLOutput;
+import java.io.File;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,6 +70,8 @@ public class InformationActivity extends AppCompatActivity {
     private LoadingScreen loadingScreen;
 
     private Map<String, String> header;
+    private Uri uriAvatar;
+    private AppCompatButton btnUploadAvatar;
 
 
     @Override
@@ -90,6 +106,8 @@ public class InformationActivity extends AppCompatActivity {
         txtUpdateAt = findViewById(R.id.txtUpdateAt);
 
         btnSave = findViewById(R.id.btnSave);
+        btnUploadAvatar = findViewById(R.id.btnAvatarUpload);
+
         dialog = new Dialog(this);
         loadingScreen = new LoadingScreen(this);
         globalVariable = (GlobalVariable) this.getApplication();
@@ -166,6 +184,30 @@ public class InformationActivity extends AppCompatActivity {
 
 
         });/*end BUTTON SAVE*/
+
+
+        /*IMG AVATAR*/
+        imgAvatar.setOnClickListener(view->{
+            verifyStoragePermissions(this);
+
+            Intent intent = new Intent();
+            intent.setType("image/*");//allows any image file type. Change * to specific extension to limit it
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            openGalleryToPickPhoto.launch(intent);
+        });
+
+        /*BUTTON UPLOAD AVATAR*/
+        btnUploadAvatar.setOnClickListener(view->{
+            if( uriAvatar == null)
+            {
+                dialog.announce();
+                dialog.btnOK.setOnClickListener(d->dialog.close());
+                dialog.show(R.string.attention, getString(R.string.click_on_your_avatar_to_select_new_photo), R.drawable.ic_info);
+                return;
+            }
+            uploadPhotoToServer(uriAvatar);
+        });
     }
 
     private void changePersonalInformation(String name, String gender, String birthday, String address)
@@ -188,10 +230,6 @@ public class InformationActivity extends AppCompatActivity {
                 {
                     PatientProfileChangePersonalInformation content = response.body();
                     assert content != null;
-//                    System.out.println(TAG);
-//                    System.out.println("result: " + content.getResult());
-//                    System.out.println("msg: " + content.getMsg());
-
                     /*update user information*/
                     User user = content.getData();
                     globalVariable.setAuthUser(user);
@@ -220,6 +258,137 @@ public class InformationActivity extends AppCompatActivity {
                 loadingScreen.stop();
                 System.out.println(TAG);
                 System.out.println("Change Personal Information - error: " + t.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Checks if the app has permission to write to device storage
+     *
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity
+     */
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static final String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
+    /**
+     * @author Phong-Kaster
+     * open Gallery To Pick Photo
+     */
+    private final ActivityResultLauncher<Intent> openGalleryToPickPhoto = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if( result.getResultCode() == RESULT_OK)
+                    {
+                        Intent data = result.getData();
+                        assert data != null;
+                        Uri uri = data.getData();
+
+                        imgAvatar.setImageURI(uri);
+                        uriAvatar = uri;
+                    }
+                    else
+                    {
+//                        dialog.announce();
+//                        dialog.show(R.string.attention, getString(R.string.oops_there_is_an_issue), R.drawable.ic_close);
+//                        dialog.btnOK.setOnClickListener(view->{
+//                            dialog.close();
+//                        });
+                    }
+                }
+            });
+
+
+    private void uploadPhotoToServer(Uri uri)
+    {
+        /*Step 1 - set up file path*/
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri,
+                projection, null, null, null);
+
+        int columnIndex = cursor.getColumnIndex(projection[0]);
+        cursor.moveToFirst();
+        String filePath = cursor.getString(columnIndex);
+        cursor.close();
+
+
+        /*Step 2 - configure new request*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        //String action = "avatar";// the key to distingue POST request: personal, avatar, password
+        RequestBody action = RequestBody.create(MediaType.parse("multipart/form-data"), "avatar");
+
+
+        File file = new File(Uri.parse(filePath).toString());
+        RequestBody requestBodyFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        // MultipartBody.Part is used to send also the actual file name
+        MultipartBody.Part actualFile = MultipartBody.Part.createFormData("file", file.getName(), requestBodyFile);
+
+
+        String accessToken = globalVariable.getAccessToken();
+        String type = "Patient";
+        Call<PatientProfileChangeAvatar> container = api.changeAvatar(accessToken, type, actualFile, action);
+
+        /*Step 4*/
+        container.enqueue(new Callback<PatientProfileChangeAvatar>() {
+            @Override
+            public void onResponse(@NonNull Call<PatientProfileChangeAvatar> call, @NonNull Response<PatientProfileChangeAvatar> response) {
+
+                if(response.isSuccessful())
+                {
+                    PatientProfileChangeAvatar content = response.body();
+                    assert content != null;
+
+                    /*Show successful message*/
+                    dialog.announce();
+                    dialog.btnOK.setOnClickListener(view->dialog.close());
+                    dialog.show(R.string.success, getString(R.string.successful_action), R.drawable.ic_check);
+
+
+                    /*Update AuthUser in Application storage*/
+                    User user = content.getData();
+                    globalVariable.setAuthUser(user);
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<PatientProfileChangeAvatar> call, @NonNull Throwable t) {
+                System.out.println(TAG);
+                System.out.println("ERROR");
+                t.printStackTrace();
             }
         });
     }
