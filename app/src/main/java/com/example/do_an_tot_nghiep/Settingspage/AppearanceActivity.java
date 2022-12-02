@@ -108,6 +108,9 @@ public class AppearanceActivity extends AppCompatActivity {
         String applicationLanguage = sharedPreferences.getString("language", getString(R.string.vietnamese));
         String vietnamese = getString(R.string.vietnamese);
         String english = getString(R.string.english);
+
+        System.out.println("application language: " + applicationLanguage);
+
         if(Objects.equals(applicationLanguage, vietnamese))
         {
             sprLanguage.setSelection(0);

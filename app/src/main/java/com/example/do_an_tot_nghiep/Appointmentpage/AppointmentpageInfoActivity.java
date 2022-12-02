@@ -110,8 +110,10 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getAppointmentQueue();
-
+        if( appointmentStatus )
+        {
+            getAppointmentQueue();
+        }
     }
 
     /**
@@ -130,7 +132,6 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         appointmentId = getIntent().getStringExtra("id");
         myPosition = getIntent().getStringExtra("position");
         doctorId = getIntent().getStringExtra("doctorId");
-
 
         txtPosition = findViewById(R.id.txtPosition);
         imgDoctorAvatar = findViewById(R.id.imgDoctorAvatar);
@@ -263,9 +264,9 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
                     assert content != null;
                     Appointment appointment = content.getData();
                     printAppointmentInfo(appointment);
-                    System.out.println(TAG);
-                    System.out.println("result: " + content.getResult());
-                    System.out.println("msg: " + content.getMsg());
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("msg: " + content.getMsg());
                 }
                 if(response.errorBody() != null)
                 {
@@ -310,7 +311,7 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         String patientReason = appointment.getPatientReason();
         String appointmentDate = appointment.getDate();
 
-        String appointmentTime = appointment.getAppointmentTime().length() > 0 ?  appointment.getAppointmentTime() : "Không có" ;
+        String appointmentTime = appointment.getAppointmentTime().length() > 0 ?  appointment.getAppointmentTime() : getString(R.string.none) ;
         String status = appointment.getStatus();
 
 //        System.out.println(TAG);
@@ -367,6 +368,7 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
             txtStatusDone.setVisibility(View.GONE);
             txtStatusCancel.setVisibility(View.VISIBLE);
             appointmentStatus = false;// we hide recycler view appointment queue and never send GET request to server
+            swipeRefreshLayout.setVisibility(View.GONE);
             appointmentQueueRecyclerView.setVisibility(View.GONE);
             appointmentQueueTitle.setVisibility(View.GONE);
         }

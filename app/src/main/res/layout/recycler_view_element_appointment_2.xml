@@ -82,19 +82,17 @@
                 android:textStyle="bold"
                 app:drawableStartCompat="@drawable/ic_appointment_done" />
 
-            <!--        <TextView-->
-            <!--            android:visibility="gone"-->
-            <!--            android:paddingVertical="30dp"-->
-            <!--            android:id="@+id/elementStatusProcessing"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:gravity="center"-->
-            <!--            android:paddingHorizontal="30dp"-->
-            <!--            android:textSize="20sp"-->
-            <!--            android:text="@string/processing"-->
-            <!--            android:textColor="@color/colorGreen"-->
-            <!--            android:textStyle="bold"-->
-            <!--            app:drawableStartCompat="@drawable/ic_appointment_processing" />-->
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/elementStatusProcessing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:textSize="12sp"
+                    android:text="@string/processing"
+                    android:textColor="@color/colorGreen"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_appointment_processing" />
         </LinearLayout>
 
     </LinearLayout>

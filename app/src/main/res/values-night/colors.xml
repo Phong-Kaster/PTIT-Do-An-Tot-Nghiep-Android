@@ -8,10 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- THEME & BACKGROUND -->
+    <color name="colorThemeBlue">#2196F3</color>
     <color name="colorTheme">#2196F3</color>
     <color name="colorBackground">#2D313D</color>
 
 
+    <!-- TEXT -->
     <color name="colorTextWhite">#8D8F97</color>
     <color name="colorTextBlack">@color/white</color>
     <color name="colorTextSupport">#8D8F97</color>

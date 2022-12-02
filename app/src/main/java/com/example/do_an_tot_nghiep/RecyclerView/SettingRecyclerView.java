@@ -13,17 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
+import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Model.Setting;
 import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.Settingspage.AppearanceActivity;
+import com.example.do_an_tot_nghiep.Settingspage.AppointmentHistoryActivity;
+import com.example.do_an_tot_nghiep.Settingspage.InformationActivity;
 import com.example.do_an_tot_nghiep.Webpage.WebpageActivity;
 
 import java.util.List;
 
 public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerView.ViewHolder> {
 
-    private Context context;
-    private List<Setting> list;
+    private final Context context;
+    private final List<Setting> list;
 
     public SettingRecyclerView(Context context, List<Setting> list)
     {
@@ -49,19 +52,30 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
         holder.icon.setImageResource( element.getIcon() );
         holder.name.setText( element.getName() );
         holder.layout.setOnClickListener(view -> {
-            Intent intent = null;
+            Intent intent;
             switch (element.getId()){
                 case "appearance":
                     intent = new Intent(context, AppearanceActivity.class);
+                    context.startActivity(intent);
                     break;
                 case "appointmentHistory":
+                    intent = new Intent(context, AppointmentHistoryActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "exit":
+                    HomepageActivity.getInstance().exit();
                     break;
                 case "aboutUs":
                     intent = new Intent(context, WebpageActivity.class);
                     intent.putExtra("url", Constant.VIDEO_PATH());
+                    context.startActivity(intent);
+                    break;
+                case "information":
+                    intent = new Intent(context, InformationActivity.class);
+                    context.startActivity(intent);
                     break;
             }
-            context.startActivity(intent);
+
         });
 
     }

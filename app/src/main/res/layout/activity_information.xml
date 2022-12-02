@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".Settingspage.InformationActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginVertical="20dp"
+            android:id="@+id/imgAvatar"
+            android:src="@drawable/default_avatar"
+            android:layout_gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAvatarUpload"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style_info"
+            android:textColor="@drawable/button_style_text_color_state"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="@string/upload" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- ID -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/health_insurance_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtHealthInsuranceNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_umbrella_round"
+            android:drawablePadding="10dp"
+            android:hint="@string/your_health_insurance_number"
+            android:inputType="text"
+            android:focusable="false"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:importantForAutofill="no" />
+        <!-- end ID -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- EMAIL -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_email_us"
+            android:drawablePadding="10dp"
+            android:hint="@string/email_example"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:importantForAutofill="no" />
+        <!-- end EMAIL -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- NAME -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_name"
+            android:drawablePadding="10dp"
+            android:hint="@string/your_name"
+            android:inputType="textPersonName"
+            android:layout_marginHorizontal="25dp"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:importantForAutofill="no" />
+        <!-- end NAME -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- PHONE NUMBER -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:focusable="false"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:hint="@string/your_phone_number"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp" />
+
+        <!-- end PHONE NUMBER -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- PATIENT GENDER -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:text="@string/gender"
+            android:paddingHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:paddingHorizontal="20dp"
+            android:id="@+id/rgGender"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rdMale"
+                android:checked="true"
+                android:hint="@string/code_male"
+                android:text="@string/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioButton
+                android:id="@+id/rdFemale"
+                android:hint="@string/code_female"
+                android:text="@string/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RadioGroup><!-- end PATIENT GENDER -->
+
+
+
+        <!-- BIRTHDAY -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/patientBirthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtBirthday"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_patient_birthday"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:inputType="text"
+            android:hint="@string/your_birthday"
+            android:importantForAutofill="no"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp" />
+        <!-- end BIRTHDAY -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- ADDRESS -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/patientAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_patient_address"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:hint="@string/your_address"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:importantForAutofill="no" />
+        <!-- end ADDRESS -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- CREATE AT -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/create_at"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtCreateAt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_clock"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:hint="@string/your_address"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:focusable="false"
+            android:importantForAutofill="no" />
+        <!-- end CREATE AT -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- UPDATE AT -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/update_at"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtUpdateAt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/input_style_booking"
+            android:drawableStart="@drawable/ic_clock"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:hint="@string/your_address"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:focusable="false"
+            android:importantForAutofill="no" />
+        <!-- end UPDATE AT -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            style="@style/button_style_theme"
+            android:layout_gravity="center"
+            android:text="@string/save" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

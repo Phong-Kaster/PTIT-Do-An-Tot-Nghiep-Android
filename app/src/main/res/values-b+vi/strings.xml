@@ -196,4 +196,18 @@
     <string name="dark_mode">Chế độ ban đêm</string>
     <string name="vietnamese">Tiếng Việt</string>
     <string name="english">English</string>
+    <string name="none">Không có</string>
+    <string name="upload">Cập nhật ảnh đại diện</string>
+    <string name="email">Email</string>
+    <string name="email_example">example@gmail.com</string>
+    <string name="your_name">Họ tên</string>
+
+    <string name="your_phone_number">Số điện thoại của bạn</string>
+    <string name="your_birthday">Ngày sinh của bạn</string>
+    <string name="your_address">Địa chỉ của bạn</string>
+    <string name="health_insurance_number">Mã số bảo hiểm y tế</string>
+    <string name="your_health_insurance_number">Mã số bảo hiểm y tế của bạn</string>
+    <string name="create_at">Khởi tạo lúc</string>
+    <string name="update_at">Cập nhật lần cuối</string>
+    <string name="save">Lưu</string>
 </resources>

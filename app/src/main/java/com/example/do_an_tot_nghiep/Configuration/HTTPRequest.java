@@ -14,6 +14,7 @@ import com.example.do_an_tot_nghiep.Container.NotificationMarkAllAsRead;
 import com.example.do_an_tot_nghiep.Container.NotificationMarkAsRead;
 import com.example.do_an_tot_nghiep.Container.NotificationReadAll;
 import com.example.do_an_tot_nghiep.Container.PatientProfile;
+import com.example.do_an_tot_nghiep.Container.PatientProfileChangePersonalInformation;
 import com.example.do_an_tot_nghiep.Container.RecordReadByID;
 import com.example.do_an_tot_nghiep.Container.ServiceReadAll;
 import com.example.do_an_tot_nghiep.Container.ServiceReadByID;
@@ -57,6 +58,15 @@ public interface HTTPRequest {
     @GET("api/patient/profile")
     Call<PatientProfile> readPersonalInformation(@HeaderMap Map<String, String> headers);
 
+
+    @FormUrlEncoded
+    @POST("api/patient/profile")
+    Call<PatientProfileChangePersonalInformation> changePersonalInformation(@HeaderMap Map<String, String> header ,
+                                                                            @Field("action") String action,
+                                                                            @Field("name") String name,
+                                                                            @Field("gender") String gender,
+                                                                            @Field("birthday") String birthday,
+                                                                            @Field("address") String address);
 
 
     /**********************SPECIALITY**********************/

@@ -161,6 +161,9 @@ public class VerificationActivity extends AppCompatActivity {
             /*Case 2 - login failed*/
             else
             {
+                System.out.println(TAG);
+                System.out.println("result: " + result);
+                System.out.println("msg: " + message);
                 dialog.show(getString(R.string.attention),
                         message,
                         R.drawable.ic_close);
@@ -186,6 +189,9 @@ public class VerificationActivity extends AppCompatActivity {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, verificationCode);
 
 
+            System.out.println(TAG);
+            System.out.println("Credential: " + credential);
+
             /*Step 2 - verify and go ahead*/
             signInWithPhoneAuthCredential(credential);
         });
@@ -209,6 +215,11 @@ public class VerificationActivity extends AppCompatActivity {
                         assert user != null;
                         String phone = "0" + phoneNumber;// append the zero letter in the first position of phone number
                         String password = user.getUid();
+
+                        System.out.println(TAG);
+                        System.out.println("signInWithPhoneAuthCredential");
+                        System.out.println("Phone: " + phone);
+                        System.out.println("Password: " + password);
 
                         viewModel.loginWithPhone(phone, password);
 

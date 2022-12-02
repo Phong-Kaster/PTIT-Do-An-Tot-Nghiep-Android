@@ -282,6 +282,7 @@ public class AppointmentpageService extends IntentService {
         String bigText = globalVariable.getAuthUser().getName() +" ơi! " +
                 "Hãy chuẩn bị, sắp đến lượt khám của bạn với " + doctorName + " rồi";
 
+
         for(Queue element: list)
         {
             int positionInQueue = element.getPosition();

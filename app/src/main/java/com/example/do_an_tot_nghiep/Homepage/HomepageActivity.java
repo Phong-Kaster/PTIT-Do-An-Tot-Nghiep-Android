@@ -2,6 +2,7 @@ package com.example.do_an_tot_nghiep.Homepage;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,10 +17,10 @@ import com.example.do_an_tot_nghiep.Configuration.HTTPService;
 import com.example.do_an_tot_nghiep.Container.NotificationReadAll;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Loginpage.LoginActivity;
 import com.example.do_an_tot_nghiep.Notificationpage.NotificationFragment;
 import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.Settingspage.SettingsFragment;
-import com.example.do_an_tot_nghiep.Treatmentpage.TreatmentpageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONObject;
@@ -59,6 +60,9 @@ public class HomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         weakActivity = new WeakReference<>(HomepageActivity.this);
+
+
+
 
         /*Enable HomeFragment by default*/
         fragment = new HomeFragment();
@@ -239,7 +243,29 @@ public class HomepageActivity extends AppCompatActivity {
                 System.out.println("setNumberOnNotificationIcon - error: " + t.getMessage());
             }
         });
-
     }
 
+
+    /**
+     * @since 01-12-2022
+     * exit the application
+     * this function is called in settingRecyclerView - line 64
+     */
+    public void exit()
+    {
+        SharedPreferences sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+
+        sharedPreferences.edit().putString("accessToken", null).apply();
+        sharedPreferences.edit().putInt("darkMode", 1).apply();// 1 is off, 2 is on
+        sharedPreferences.edit().putString("language", getString(R.string.vietnamese)).apply();
+
+
+        System.out.println(TAG);
+        System.out.println("access token: " + sharedPreferences.getString("accessToken", null) );
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        finish();
+        startActivity(intent);
+    }
 }

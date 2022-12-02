@@ -33,7 +33,19 @@ public class Tooltip {
         int month = calendar.get(Calendar.MONTH) + 1;
         int year = calendar.get(Calendar.YEAR);
 
-        return year + "-" + month + "-" + date;
+        String dateValue = String.valueOf(date);
+        if( date < 10)
+        {
+            dateValue = "0" + dateValue;
+        }
+        String monthValue = String.valueOf(month);
+        if( month < 10)
+        {
+            monthValue = "0" + monthValue;
+        }
+        String yearValue = String.valueOf(year);
+
+        return yearValue + "-" + monthValue + "-" + dateValue;
     }
 
     /**

@@ -143,6 +143,9 @@ public class LoginActivity extends AppCompatActivity {
                                             //     user action.
                                             //Log.d(TAG, "onVerificationCompleted:" + credential);
 
+                                            System.out.println(TAG);
+                                            System.out.println("onVerificationCompleted");
+                                            System.out.println("signInWithPhoneAuthCredential has been called !");
                                             signInWithPhoneAuthCredential(credential);
                                         }
 
@@ -154,7 +157,10 @@ public class LoginActivity extends AppCompatActivity {
                                             // for instance if the the phone number format is not valid.
 
                                             Toast.makeText(LoginActivity.this, getString(R.string.verification_failed), Toast.LENGTH_SHORT).show();
-                                            Log.d(TAG, "error: " + e.getMessage() );
+                                            System.out.println(TAG);
+                                            System.out.println("Error: "+e.getMessage());
+                                            System.out.println(e);
+
                                         }
 
                                         @Override
@@ -164,12 +170,25 @@ public class LoginActivity extends AppCompatActivity {
                                             // now need to ask the user to enter the code and then construct a credential
                                             // by combining the code with a verification ID.
 
+                                            System.out.println(TAG);
+                                            System.out.println("onCodeSent");
+                                            System.out.println("phone number: " + phoneNumber);
+                                            System.out.println("verification Id: " + verificationId);
+
                                             Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                                             intent.putExtra("verificationId", verificationId);
                                             intent.putExtra("phoneNumber", phoneNumber);
                                             startActivity(intent);
                                         }
 
+
+                                        @Override
+                                        public void onCodeAutoRetrievalTimeOut(@NonNull String s) {
+                                            super.onCodeAutoRetrievalTimeOut(s);
+                                            System.out.println(TAG);
+                                            System.out.println("onCodeAutoRetrievalTimeOut");
+                                            System.out.println(s);
+                                        }
                                     }
                             )          // OnVerificationStateChangedCallbacks
                             .build();/*end Step 2*/
@@ -312,6 +331,7 @@ public class LoginActivity extends AppCompatActivity {
                         String phone = "0" + phoneNumber;// append the zero letter in the first position of phone number
                         String password = user.getUid();
                         System.out.println(TAG);
+                        System.out.println("phone: " + phone);
                         System.out.println("password: " + password);
 
                         viewModel.loginWithPhone(phone, password);
