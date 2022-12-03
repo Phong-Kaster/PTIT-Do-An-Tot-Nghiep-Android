@@ -69,6 +69,7 @@
     <string name="default_description"><![CDATA[\<p>- Hướng dẫn đặt t&ecirc;n file b&aacute;o c&aacute;o định kỳ:</p>\n\n<p>&nbsp; &nbsp; ** Lớp (m&atilde; chữ)_M&atilde; sinh vi&ecirc;n(3 số cuối)_Họ v&agrave; t&ecirc;n _BCDK1</p>\n\n<p>VD: AT_069_LuongMinhTien_BCĐK1</p>\]]></string>
     <string name="speciality_information">Speciality informatio</string>
     <string name="description">Description:</string>
+    <string name="description2">Description</string>
     <string name="doctor">Doctor</string>
     <string name="all">All</string>
     <string name="service">Service</string>
@@ -210,4 +211,12 @@
     <string name="update_at">Updated at</string>
     <string name="save">Save</string>
     <string name="click_on_your_avatar_to_select_new_photo">Click on your avatar to select new photo</string>
+    <string name="guide">Guide</string>
+    <string name="next">Next</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="you_are_missing_mandatory_field">You are missing mandatory field !</string>
+    <string name="send">Send</string>
+    <string name="thank_you_for_using_our_service">Thanh you for using our application. To continue, click on Send button, we will contact you as soon as possible</string>
+    <string name="select_application_to_send">Select application to send email</string>
 </resources>

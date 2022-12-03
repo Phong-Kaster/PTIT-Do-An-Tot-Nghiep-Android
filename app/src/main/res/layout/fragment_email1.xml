@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".Emailpage.EmailFragment1">
+
+
+    <LinearLayout
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/lytInput"
+        android:layout_above="@id/btnNext"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- TITLE -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/input_style_booking"
+            android:drawablePadding="10dp"
+            android:hint="@string/title"
+            android:inputType="text"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:importantForAutofill="no" />
+        <!-- end TITLE -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- DESCRIPTION -->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/description2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/input_style_booking"
+            android:drawablePadding="10dp"
+            android:hint="@string/description2"
+            android:inputType="text"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp"
+            android:importantForAutofill="no" />
+        <!-- end TITLE -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <!-- CONTENT -->
+        <TextView
+            android:id="@+id/content"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="@string/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:layout_below="@id/content"
+            android:id="@+id/txtContent"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/input_style_booking"
+            android:drawablePadding="10dp"
+            android:hint="@string/content"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:gravity="start"
+            android:lines="8"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="10dp"
+            android:textSize="11sp" />
+        <!-- end CONTENT -->
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNext"
+        style="@style/button_style_theme"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:text="@string/next" />
+
+</RelativeLayout>

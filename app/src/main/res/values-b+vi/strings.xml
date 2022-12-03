@@ -69,6 +69,7 @@
     <string name="default_description"><![CDATA[\<p>- Hướng dẫn đặt t&ecirc;n file b&aacute;o c&aacute;o định kỳ:</p>\n\n<p>&nbsp; &nbsp; ** Lớp (m&atilde; chữ)_M&atilde; sinh vi&ecirc;n(3 số cuối)_Họ v&agrave; t&ecirc;n _BCDK1</p>\n\n<p>VD: AT_069_LuongMinhTien_BCĐK1</p>\]]></string>
     <string name="speciality_information">Thông tin chuyên khoa</string>
     <string name="description">Mô tả:</string>
+    <string name="description2">Mô tả</string>
     <string name="doctor">Bác sĩ</string>
     <string name="all">Tất cả</string>
     <string name="service">Dịch vụ</string>
@@ -210,4 +211,12 @@
     <string name="create_at">Khởi tạo lúc</string>
     <string name="update_at">Cập nhật lần cuối</string>
     <string name="save">Lưu</string>
+    <string name="click_on_your_avatar_to_select_new_photo">Nhấn vào ảnh đại diện để lựa chọn hình mới</string>
+    <string name="guide">Hướng dẫn đi khám</string>
+    <string name="next">Tiếp tục</string>
+    <string name="title">Tiêu đề</string>
+    <string name="content">Nội dung</string>
+    <string name="you_are_missing_mandatory_field">Không bỏ trống trường bắt buộc !</string>
+    <string name="send">Gửi</string>
+    <string name="thank_you_for_using_our_service">Cảm ơn bạn đã sử dụng ứng dụng của chúng tôi. Để tiếp tục, hãy ấn nút Gửi, chúng tôi sẽ liên lạc với bạn sớm nhất có thể</string>
 </resources>

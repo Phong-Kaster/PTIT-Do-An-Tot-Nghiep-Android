@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.do_an_tot_nghiep.Configuration.Constant;
+import com.example.do_an_tot_nghiep.Emailpage.EmailpageActivity;
+import com.example.do_an_tot_nghiep.Guidepage.GuidepageActivity;
 import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Model.Setting;
 import com.example.do_an_tot_nghiep.R;
@@ -72,6 +74,14 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
                     break;
                 case "information":
                     intent = new Intent(context, InformationActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "emailUs":
+                    intent = new Intent(context, EmailpageActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "guide":
+                    intent = new Intent(context, GuidepageActivity.class);
                     context.startActivity(intent);
                     break;
             }
