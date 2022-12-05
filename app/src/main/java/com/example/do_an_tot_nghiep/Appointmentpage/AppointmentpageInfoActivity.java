@@ -422,12 +422,9 @@ public class AppointmentpageInfoActivity extends AppCompatActivity {
         });
 
         /*SWIPE REFRESH LAYOUT*/
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
-                getAppointmentQueue();
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            swipeRefreshLayout.setRefreshing(false);
+            getAppointmentQueue();
         });
     }
 

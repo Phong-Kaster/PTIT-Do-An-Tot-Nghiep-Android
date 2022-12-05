@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.do_an_tot_nghiep.Alarmpage.AlarmpageFragment;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
@@ -44,6 +45,10 @@ public class TreatmentFragment1 extends Fragment {
     private RecyclerView treatmentRecyclerView;
     private String appointmentId;
 
+
+    private AppCompatButton btnSetTime;
+    private String message;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +56,7 @@ public class TreatmentFragment1 extends Fragment {
 
         setupComponent(view);
         setupViewModel();
-
+        setupEvent();
         return view;
     }
 
@@ -71,6 +76,8 @@ public class TreatmentFragment1 extends Fragment {
 
         treatmentRecyclerView = view.findViewById(R.id.treatmentRecyclerView);
         header = globalVariable.getHeaders();
+
+        btnSetTime = view.findViewById(R.id.btnSetAlarm);
     }
 
     private void setupViewModel()
@@ -88,6 +95,7 @@ public class TreatmentFragment1 extends Fragment {
                 if( result == 1)
                 {
                     List<Treatment> treatments = response.getData();
+                    message = treatments.get(0).getInstruction();
                     setupRecyclerView(treatments);
                 }
                 /*result == 0 => thong bao va thoat ung dung*/
@@ -136,5 +144,26 @@ public class TreatmentFragment1 extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         treatmentRecyclerView.setLayoutManager(manager);
 
+    }
+
+    /**
+     * set up event
+     * @since 30-11-2022
+     */
+    private void setupEvent()
+    {
+        btnSetTime.setOnClickListener(view -> {
+            String fragmentTag = "AlarmFragment";
+            Fragment nextFragment = new AlarmpageFragment();// this fragment creates alarm
+
+            Bundle bundle = new Bundle();
+            bundle.putString("message", message);
+            nextFragment.setArguments(bundle);
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameLayout, nextFragment, fragmentTag)
+                    .addToBackStack(fragmentTag)
+                    .commit();
+        });
     }
 }

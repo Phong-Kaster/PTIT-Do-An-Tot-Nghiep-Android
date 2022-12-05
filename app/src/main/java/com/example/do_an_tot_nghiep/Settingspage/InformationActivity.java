@@ -2,6 +2,7 @@ package com.example.do_an_tot_nghiep.Settingspage;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -36,6 +37,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -171,6 +173,43 @@ public class InformationActivity extends AppCompatActivity {
      */
     private void setupEvent()
     {
+        /*-************************PREPARE TIME & DATE PICKER FOR BUTTON**************************************/
+        /*GET TODAY*/
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        /*DATE PICKER FOR BIRTHDAY - if day or month less than 10, we will insert 0 in front of the value*/
+        DatePickerDialog.OnDateSetListener birthdayDialog = (view13, year1, month1, day1) -> {
+            calendar.set(Calendar.YEAR, year1);
+            calendar.set(Calendar.MONTH, month1);
+            calendar.set(Calendar.DAY_OF_MONTH, day1);
+
+            String dayFormatted = String.valueOf(day1);
+            String monthFormatted = String.valueOf(month1+1);// add 1 unit because 0 <= month <=11
+
+            if( day1 < 10)
+            {
+                dayFormatted = "0" + day1;
+            }
+            if( month1 < 10 )
+            {
+                monthFormatted = "0" + month1;
+            }
+
+            String output = year1 + "-" + monthFormatted + "-" + dayFormatted;
+            txtBirthday.setText(output);
+        };
+
+        /* *************************LISTEN CLICK EVENT FOR BUTTONS**************************************/
+        /*EDIT TEXT BIRTHDAY*/
+        txtBirthday.setOnClickListener(birthdayView -> {
+            new DatePickerDialog(this,birthdayDialog,year,month,day).show();
+        });
+
+
+
         /*BUTTON SAVE*/
         btnSave.setOnClickListener(view->{
             String name = txtName.getText().toString();
@@ -234,10 +273,21 @@ public class InformationActivity extends AppCompatActivity {
                     User user = content.getData();
                     globalVariable.setAuthUser(user);
 
-                    /*show dialog*/
+                    int result = content.getResult();
+                    String msg = content.getMsg();
                     dialog.announce();
                     dialog.btnOK.setOnClickListener(view->dialog.close());
-                    dialog.show(R.string.success, getString(R.string.successful_action), R.drawable.ic_check);
+                    if( result == 1 )
+                    {
+                        /*show dialog*/
+                        dialog.show(R.string.success, getString(R.string.successful_action), R.drawable.ic_check);
+                    }
+                    else
+                    {
+                        dialog.show(R.string.attention, msg, R.drawable.ic_close);
+                    }
+
+
                 }
                 if(response.errorBody() != null)
                 {

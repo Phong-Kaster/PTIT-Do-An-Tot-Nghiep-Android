@@ -50,6 +50,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_exam_medical_test.xml" value="0.167" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_exam_pregnant.xml" value="0.167" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_exam_tooth.xml" value="0.167" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_exit.xml" value="0.1375" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_guide.xml" value="0.1375" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_home_outline.xml" value="0.169" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_home_round.xml" value="0.169" />
@@ -65,6 +66,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_person_round.xml" value="0.134" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_personal_information.xml" value="0.1375" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_phone.xml" value="0.1805" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_reminder.xml" value="0.1375" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_search.xml" value="0.167" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_service.xml" value="0.1805" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/ic_speciality.xml" value="0.1805" />
@@ -76,6 +78,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/shortcut_state_home.xml" value="0.169" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/shortcut_state_notification.xml" value="0.169" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/drawable/shortcut_state_personality.xml" value="0.169" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_alarmpage.xml" value="0.16246154322878156" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_appearance.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_appointment_history.xml" value="0.13766566908935443" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/activity_appointmentpage_info.xml" value="0.2436923148431724" />
@@ -102,6 +105,7 @@
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/badge_layout.xml" value="0.494769245287653" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/dialog_annouce.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/dialog_confirm.xml" value="0.2436923148431724" />
+        <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/fragment_alarmpage.xml" value="0.16246154322878156" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/fragment_appointmentpage.xml" value="0.2436923148431724" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/fragment_booking1.xml" value="0.28270412642669007" />
         <entry key="..\:/GitHub/PTIT-Do-An-Tot-Nghiep-Android/app/src/main/res/layout/fragment_booking2.xml" value="0.2436923148431724" />

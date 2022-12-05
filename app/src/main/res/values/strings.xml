@@ -219,4 +219,16 @@
     <string name="send">Send</string>
     <string name="thank_you_for_using_our_service">Thanh you for using our application. To continue, click on Send button, we will contact you as soon as possible</string>
     <string name="select_application_to_send">Select application to send email</string>
+    <string name="reminder">Reminder</string>
+    <string name="set_time">Set time</string>
+    <string name="message">Message</string>
+    <string name="schedule">Schedule</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="vibrate">Vibrate</string>
 </resources>

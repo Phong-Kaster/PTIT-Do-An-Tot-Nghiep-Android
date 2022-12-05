@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.do_an_tot_nghiep.Alarmpage.AlarmpageActivity;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Emailpage.EmailpageActivity;
 import com.example.do_an_tot_nghiep.Guidepage.GuidepageActivity;
@@ -82,6 +83,10 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
                     break;
                 case "guide":
                     intent = new Intent(context, GuidepageActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "reminder":
+                    intent = new Intent(context, AlarmpageActivity.class);
                     context.startActivity(intent);
                     break;
             }

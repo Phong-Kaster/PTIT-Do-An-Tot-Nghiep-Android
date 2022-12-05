@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingVertical="20dp"
     tools:context=".Treatmentpage.TreatmentFragment1">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_gravity="center"
+        android:text="@string/set_time"
+        android:id="@+id/btnSetAlarm"
+        style="@style/button_style_theme"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/treatmentRecyclerView"
@@ -11,4 +19,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</FrameLayout>
+</LinearLayout>

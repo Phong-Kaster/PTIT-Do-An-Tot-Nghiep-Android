@@ -49,7 +49,7 @@
             <stroke
                 android:width="2dip"
                 android:color="#FFFFFF" />
-            <corners android:radius= "16dp" />
+            <corners android:radius= "5dp" />
         </shape>
     </item>
     <item
