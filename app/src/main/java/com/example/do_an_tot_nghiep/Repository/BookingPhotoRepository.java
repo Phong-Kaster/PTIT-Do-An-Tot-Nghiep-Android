@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
 import com.example.do_an_tot_nghiep.Configuration.HTTPService;
-import com.example.do_an_tot_nghiep.Container.BookingCreate;
 import com.example.do_an_tot_nghiep.Container.BookingPhotoReadAll;
 
 import org.json.JSONObject;
@@ -20,14 +19,14 @@ import retrofit2.Retrofit;
 public class BookingPhotoRepository {
 
     private final String TAG = "Booking Photo Repository";
-    private MutableLiveData<Boolean> animation = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> animation = new MutableLiveData<>();
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
     }
 
 
     /************************** CREATE*******************************/
-    private MutableLiveData<BookingPhotoReadAll> readAllResponse = new MutableLiveData<>();
+    private final MutableLiveData<BookingPhotoReadAll> readAllResponse = new MutableLiveData<>();
     public MutableLiveData<BookingPhotoReadAll> readAll (Map<String, String> header, String bookingId)
     {
         /*Step 1*/
@@ -52,10 +51,10 @@ public class BookingPhotoRepository {
                     assert content != null;
                     readAllResponse.postValue(content);
                     animation.setValue(false);
-                    System.out.println(TAG);
-                    System.out.println("result: " + content.getResult());
-                    System.out.println("msg: " + content.getMsg());
-                    System.out.println("quantity: " + content.getQuantity());
+//                    System.out.println(TAG);
+//                    System.out.println("result: " + content.getResult());
+//                    System.out.println("msg: " + content.getMsg());
+//                    System.out.println("quantity: " + content.getQuantity());
                 }
                 if(response.errorBody() != null)
                 {

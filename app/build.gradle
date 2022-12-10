@@ -30,7 +30,9 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
+
 
 dependencies {
 
@@ -73,4 +75,7 @@ dependencies {
 
     // icon badge - is used to set number on the top-right corner of icon
     implementation 'com.google.android.material:material:1.8.0-alpha02'
+
+    // recycler view decorator
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.4'
 }

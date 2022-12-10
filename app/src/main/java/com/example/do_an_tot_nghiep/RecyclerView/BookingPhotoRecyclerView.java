@@ -43,8 +43,6 @@ public class BookingPhotoRecyclerView extends RecyclerView.Adapter<BookingPhotoR
         Photo element = list.get(position);
         String url = Constant.UPLOAD_URI() + element.getUrl();
 
-        System.out.println(url);
-
         Picasso.get().load(url).into(holder.photo);
     }
 

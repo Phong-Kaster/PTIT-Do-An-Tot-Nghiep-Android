@@ -5,6 +5,7 @@ import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
 import com.example.do_an_tot_nghiep.Container.AppointmentReadByID;
 import com.example.do_an_tot_nghiep.Container.BookingCancel;
 import com.example.do_an_tot_nghiep.Container.BookingCreate;
+import com.example.do_an_tot_nghiep.Container.BookingPhotoDelete;
 import com.example.do_an_tot_nghiep.Container.BookingPhotoReadAll;
 import com.example.do_an_tot_nghiep.Container.BookingPhotoUpload;
 import com.example.do_an_tot_nghiep.Container.BookingReadAll;
@@ -131,11 +132,14 @@ public interface HTTPRequest {
     Call<BookingPhotoReadAll> bookingPhotoReadAll(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
     @Multipart
-    @POST("api/booking/photos/{id}")
+    @POST("api/booking/upload-photo")
     Call<BookingPhotoUpload> bookingPhotoUpload(@Header("Authorization") String accessToken,
                                                 @Header("Type") String type,
-                                                @Part("id") String id,
+                                                @Part("booking_id") RequestBody bookingId,
                                                 @Part MultipartBody.Part file);
+
+    @DELETE("api/booking/photo/{id}")
+    Call<BookingPhotoDelete> bookingPhotoDelete(@HeaderMap Map<String, String> header, @Path("id") int id);
 
     /**********************NOTIFICATION**********************/
     @GET("api/patient/notifications")
