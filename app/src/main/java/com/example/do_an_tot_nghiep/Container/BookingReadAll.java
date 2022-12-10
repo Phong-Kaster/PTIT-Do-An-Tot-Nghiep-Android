@@ -4,7 +4,9 @@ import com.example.do_an_tot_nghiep.Model.Booking;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookingCreate {
+import java.util.List;
+
+public class BookingReadAll {
 
     @SerializedName("result")
     @Expose
@@ -14,9 +16,13 @@ public class BookingCreate {
     @Expose
     private String msg;
 
+    @SerializedName("quantity")
+    @Expose
+    private int quantity;
+
     @SerializedName("data")
     @Expose
-    private Booking data;
+    private List<Booking> data;
 
     public int getResult() {
         return result;
@@ -26,7 +32,11 @@ public class BookingCreate {
         return msg;
     }
 
-    public Booking getData() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public List<Booking> getData() {
         return data;
     }
 }

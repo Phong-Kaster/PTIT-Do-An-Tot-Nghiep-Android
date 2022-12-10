@@ -1,6 +1,7 @@
 package com.example.do_an_tot_nghiep.Bookingpage;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -67,7 +68,7 @@ public class BookingpageInfoActivity extends AppCompatActivity {
     private ImageView imgServiceAvatar;
     private TextView txtServiceName;
 
-    private androidx.appcompat.widget.AppCompatButton btnGoBack;
+    private androidx.appcompat.widget.AppCompatButton btnPhoto;
     private androidx.appcompat.widget.AppCompatButton btnCancel;
     private ImageButton btnBack;
 
@@ -109,7 +110,7 @@ public class BookingpageInfoActivity extends AppCompatActivity {
         txtPatientReason = findViewById(R.id.txtPatientReason);
         txtBookingStatus = findViewById(R.id.txtBookingStatus);
 
-        btnGoBack = findViewById(R.id.btnGoBack);
+        btnPhoto = findViewById(R.id.btnPhoto);
         btnCancel = findViewById(R.id.btnCancel);
         btnBack = findViewById(R.id.btnBack);
 
@@ -185,7 +186,11 @@ public class BookingpageInfoActivity extends AppCompatActivity {
     private void setupEvent()
     {
         btnBack.setOnClickListener(view->finish());
-        btnGoBack.setOnClickListener(view->finish());
+        btnPhoto.setOnClickListener(view->{
+            Intent intent = new Intent(this, BookingpagePhotoActivity.class);
+            intent.putExtra("bookingId", bookingId);
+            startActivity(intent);
+        });
         btnCancel.setOnClickListener(view->{
 
             Dialog dialog = new Dialog(this);

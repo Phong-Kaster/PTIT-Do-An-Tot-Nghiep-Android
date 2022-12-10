@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
 import com.example.do_an_tot_nghiep.Configuration.HTTPService;
 import com.example.do_an_tot_nghiep.Container.BookingCreate;
+import com.example.do_an_tot_nghiep.Container.BookingReadAll;
 import com.example.do_an_tot_nghiep.Container.BookingReadByID;
 
 import org.json.JSONObject;
@@ -149,5 +150,63 @@ public class BookingRepository {
         });
 
         return bookingReadByID;
+    }
+
+    /************************** READ BY ID *******************************/
+    private MutableLiveData<BookingReadAll> bookingReadAll = new MutableLiveData<>();
+    public MutableLiveData<BookingReadAll> readAll(Map<String, String> header, Map<String, String> parameters)
+    {
+        /*Step 1*/
+        animation.setValue(true);
+
+
+        /*Step 2*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+
+        /*Step 3*/
+        Call<BookingReadAll> container = api.bookingReadAll(header, parameters);
+
+        /*Step 4*/
+        container.enqueue(new Callback<BookingReadAll>() {
+            @Override
+            public void onResponse(@NonNull Call<BookingReadAll> call, @NonNull Response<BookingReadAll> response) {
+                if(response.isSuccessful())
+                {
+                    BookingReadAll content = response.body();
+                    assert content != null;
+                    bookingReadAll.postValue(content);
+                    animation.setValue(false);
+                    System.out.println(TAG);
+                    System.out.println("result: " + content.getResult());
+                    System.out.println("msg: " + content.getMsg());
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println(TAG);
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println(TAG);
+                        System.out.println( e );
+                    }
+                    animation.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BookingReadAll> call, @NonNull Throwable t) {
+                System.out.println(TAG);
+                System.out.println("Booking Repository - Read All - error: " + t.getMessage());
+                System.out.println(t);
+                animation.postValue(false);
+            }
+        });
+
+        return bookingReadAll;
     }
 }

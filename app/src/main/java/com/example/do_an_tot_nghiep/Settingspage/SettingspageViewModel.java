@@ -4,8 +4,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
+import com.example.do_an_tot_nghiep.Container.BookingReadAll;
 import com.example.do_an_tot_nghiep.Repository.AppointmentQueueRepository;
 import com.example.do_an_tot_nghiep.Repository.AppointmentRepository;
+import com.example.do_an_tot_nghiep.Repository.BookingRepository;
 
 import java.util.Map;
 
@@ -20,12 +22,18 @@ public class SettingspageViewModel extends ViewModel {
         return animation;
     }
 
-    private AppointmentRepository repository;
+    private AppointmentRepository appointmentRepository;
+    private BookingRepository bookingRepository;
+
     public void instantiate()
     {
-        if( repository == null)
+        if( appointmentRepository == null)
         {
-            repository = new AppointmentRepository();
+            appointmentRepository = new AppointmentRepository();
+        }
+        if( bookingRepository == null);
+        {
+            bookingRepository = new BookingRepository();
         }
     }
 
@@ -36,7 +44,18 @@ public class SettingspageViewModel extends ViewModel {
     }
     public void readAll(Map<String, String> header, Map<String, String> parameters)
     {
-        animation = repository.getAnimation();
-        readAllResponse = repository.readAll(header, parameters);
+        animation = appointmentRepository.getAnimation();
+        readAllResponse = appointmentRepository.readAll(header, parameters);
+    }
+
+    /************************ BOOKING - READ ALL ***************************/
+    private MutableLiveData<BookingReadAll> bookingReadAll = new MutableLiveData<>();
+    public MutableLiveData<BookingReadAll> getBookingReadAll() {
+        return bookingReadAll;
+    }
+    public void bookingReadAll(Map<String, String> header, Map<String, String> parameters)
+    {
+        animation = bookingRepository.getAnimation();
+        bookingReadAll = bookingRepository.readAll(header, parameters);
     }
 }

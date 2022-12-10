@@ -47,6 +47,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+/**
+ * @since 09-12-2022
+ * flow: Fragment 1 -> Fragment 3 -> Fragment 2
+ */
 public class BookingFragment1 extends Fragment {
 
     private final String TAG = "BookingFragment1";
@@ -226,7 +230,7 @@ public class BookingFragment1 extends Fragment {
         /*GET TODAY*/
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH) + 1;
+        int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         /*DATE PICKER FOR BIRTHDAY - if day or month less than 10, we will insert 0 in front of the value*/
@@ -236,7 +240,7 @@ public class BookingFragment1 extends Fragment {
             calendar.set(Calendar.DAY_OF_MONTH, day1);
 
             String dayFormatted = String.valueOf(day1);
-            String monthFormatted = String.valueOf(month1);
+            String monthFormatted = String.valueOf(month1+1);// add 1 unit because 0 <= month <=11
 
             if( day1 < 10)
             {
@@ -257,7 +261,7 @@ public class BookingFragment1 extends Fragment {
             calendar.set(Calendar.DAY_OF_MONTH, day1);
 
             String dayFormatted = String.valueOf(day1);
-            String monthFormatted = String.valueOf(month1);
+            String monthFormatted = String.valueOf(month1+1);
             if( day1 < 10)
             {
                 dayFormatted = "0" + day1;
@@ -440,8 +444,19 @@ public class BookingFragment1 extends Fragment {
             if( result == 1)// create successfully -> go to next booking fragment
             {
                 Toast.makeText(context, context.getString(R.string.success), Toast.LENGTH_SHORT).show();
-                String fragmentTag = "bookingFragment2";
-                BookingFragment2 nextFragment = new BookingFragment2();
+                String fragmentTag = "bookingFragment3";
+
+                System.out.println(TAG);
+                System.out.println("booking id: " + response.getData().getId());
+
+                Bundle bundle = new Bundle();
+                bundle.putString("bookingId", String.valueOf(response.getData().getId()));
+
+
+                BookingFragment3 nextFragment = new BookingFragment3();
+                nextFragment.setArguments(bundle);
+
+
                 requireActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frameLayout, nextFragment, fragmentTag)
                         .addToBackStack(fragmentTag)
@@ -457,6 +472,8 @@ public class BookingFragment1 extends Fragment {
         }
         catch (Exception exception)
         {
+            System.out.println(TAG);
+            System.out.println(exception);
             dialog.show(R.string.attention, context.getString(R.string.oops_there_is_an_issue), R.drawable.ic_info);
         }
     }

@@ -3,8 +3,10 @@ package com.example.do_an_tot_nghiep.Bookingpage;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.do_an_tot_nghiep.Container.BookingPhotoReadAll;
 import com.example.do_an_tot_nghiep.Container.BookingReadByID;
 import com.example.do_an_tot_nghiep.Container.ServiceReadByID;
+import com.example.do_an_tot_nghiep.Repository.BookingPhotoRepository;
 import com.example.do_an_tot_nghiep.Repository.BookingRepository;
 import com.example.do_an_tot_nghiep.Repository.ServiceRepository;
 
@@ -23,6 +25,7 @@ public class BookingpageViewModel extends ViewModel {
     private MutableLiveData<Boolean> animation;
     private ServiceRepository serviceRepository;
     private BookingRepository bookingRepository;
+    private BookingPhotoRepository bookingPhotoRepository;
 
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
@@ -42,6 +45,10 @@ public class BookingpageViewModel extends ViewModel {
         if( bookingRepository == null)
         {
             bookingRepository = new BookingRepository();
+        }
+        if( bookingPhotoRepository == null)
+        {
+            bookingPhotoRepository = new BookingPhotoRepository();
         }
     }
 
@@ -92,5 +99,21 @@ public class BookingpageViewModel extends ViewModel {
     {
         bookingReadByIdResponse = bookingRepository.readByID(header, bookingId);
         animation = bookingRepository.getAnimation();
+    }
+
+
+    /************************BOOKING PHOTO - READ ALL***************************/
+    private MutableLiveData<BookingPhotoReadAll> bookingPhotoReadAllResponse;
+    public MutableLiveData<BookingPhotoReadAll> getBookingPhotoReadAllResponse(){
+        if( bookingPhotoReadAllResponse == null )
+        {
+            bookingPhotoReadAllResponse = new MutableLiveData<>();
+        }
+        return bookingPhotoReadAllResponse;
+    }
+    public void bookingPhotoReadAll(Map<String, String> header, String bookingId)
+    {
+        bookingPhotoReadAllResponse = bookingPhotoRepository.readAll(header, bookingId);
+        animation = bookingPhotoRepository.getAnimation();
     }
 }

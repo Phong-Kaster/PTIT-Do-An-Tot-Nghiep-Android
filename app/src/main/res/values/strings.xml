@@ -198,7 +198,7 @@
     <string name="vietnamese">Tiếng Việt</string>
     <string name="english">English</string>
     <string name="none">None</string>
-    <string name="upload">Upload avatar</string>
+    <string name="upload">Upload</string>
     <string name="email">Email</string>
     <string name="email_example">example@gmail.com</string>
     <string name="your_name">Your name</string>
@@ -231,4 +231,11 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="vibrate">Vibrate</string>
+    <string name="note_6">To make the examination process faster, we encourage patients to provide more medical records, treatment protocols, prescriptions, etc. that the patient has used before.</string>
+    <string name="default_booking_name">Booking name: Nguyễn Thành Phong</string>
+    <string name="default_booking_phone">Booking patient: 0366.253.623</string>
+    <string name="default_patient_name">Patient name: Nguyễn Thành Phong</string>
+    <string name="photo">Photo</string>
+    <string name="note_7">These photos below are photos that you have been uploaded. To remove unexpected photo, swipe from the right.</string>
+    <string name="booking_history">Booking history</string>
 </resources>

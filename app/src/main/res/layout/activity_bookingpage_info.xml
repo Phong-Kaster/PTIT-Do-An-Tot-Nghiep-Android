@@ -283,8 +283,8 @@
             <!-- BUTTON BACK -->
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_marginVertical="10dp"
-                android:id="@+id/btnGoBack"
-                android:text="@string/back"
+                android:id="@+id/btnPhoto"
+                android:text="@string/photo"
                 android:textSize="12sp"
                 android:textColor="@color/colorTextWhite"
                 android:textAllCaps="false"

@@ -5,6 +5,9 @@ import com.example.do_an_tot_nghiep.Container.AppointmentReadAll;
 import com.example.do_an_tot_nghiep.Container.AppointmentReadByID;
 import com.example.do_an_tot_nghiep.Container.BookingCancel;
 import com.example.do_an_tot_nghiep.Container.BookingCreate;
+import com.example.do_an_tot_nghiep.Container.BookingPhotoReadAll;
+import com.example.do_an_tot_nghiep.Container.BookingPhotoUpload;
+import com.example.do_an_tot_nghiep.Container.BookingReadAll;
 import com.example.do_an_tot_nghiep.Container.BookingReadByID;
 import com.example.do_an_tot_nghiep.Container.DoctorReadAll;
 import com.example.do_an_tot_nghiep.Container.DoctorReadByID;
@@ -120,6 +123,19 @@ public interface HTTPRequest {
                                       @Field("appointment_time") String appointmentTime,
                                       @Field("appointment_date") String appointmentDate);
 
+    @GET("api/patient/booking")
+    Call<BookingReadAll> bookingReadAll(@HeaderMap Map<String, String> header, @HeaderMap Map<String, String> parameters);
+
+    /**********************BOOKING PHOTO**********************/
+    @GET("api/booking/photos/{id}")
+    Call<BookingPhotoReadAll> bookingPhotoReadAll(@HeaderMap Map<String, String> headers, @Path("id") String id);
+
+    @Multipart
+    @POST("api/booking/photos/{id}")
+    Call<BookingPhotoUpload> bookingPhotoUpload(@Header("Authorization") String accessToken,
+                                                @Header("Type") String type,
+                                                @Part("id") String id,
+                                                @Part MultipartBody.Part file);
 
     /**********************NOTIFICATION**********************/
     @GET("api/patient/notifications")

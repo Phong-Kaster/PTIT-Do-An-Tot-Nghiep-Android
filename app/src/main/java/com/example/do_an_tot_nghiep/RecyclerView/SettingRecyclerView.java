@@ -21,6 +21,7 @@ import com.example.do_an_tot_nghiep.Model.Setting;
 import com.example.do_an_tot_nghiep.R;
 import com.example.do_an_tot_nghiep.Settingspage.AppearanceActivity;
 import com.example.do_an_tot_nghiep.Settingspage.AppointmentHistoryActivity;
+import com.example.do_an_tot_nghiep.Settingspage.BookingHistoryActivity;
 import com.example.do_an_tot_nghiep.Settingspage.InformationActivity;
 import com.example.do_an_tot_nghiep.Webpage.WebpageActivity;
 
@@ -63,6 +64,10 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
                     break;
                 case "appointmentHistory":
                     intent = new Intent(context, AppointmentHistoryActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "bookingHistory":
+                    intent = new Intent(context, BookingHistoryActivity.class);
                     context.startActivity(intent);
                     break;
                 case "exit":

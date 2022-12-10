@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/elementLayout"
+    android:paddingHorizontal="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/elementServiceImage"
+            android:src="@drawable/default_speciality"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
+
+
+        <LinearLayout
+            android:paddingHorizontal="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/elementDatetime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_datetime"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:paddingVertical="5dp"
+                android:id="@+id/elementServiceName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_service_name"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="13sp" />
+
+            <TextView
+                android:paddingVertical="5dp"
+                android:id="@+id/elementBookingName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_booking_name"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="13sp" />
+
+            <TextView
+                android:paddingVertical="5dp"
+                android:id="@+id/elementBookingPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_booking_phone"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="13sp" />
+
+            <TextView
+                android:paddingVertical="5dp"
+                android:id="@+id/elementPatientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_patient_name"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="13sp" />
+
+            <TextView
+                android:paddingVertical="5dp"
+                android:id="@+id/elementPatientReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/default_reason"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/elementStatusCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:text="@string/cancel"
+                android:textColor="@color/colorRed"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                android:drawableStart="@drawable/ic_appointment_cancel" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/elementStatusDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:textSize="12sp"
+                android:text="@string/done"
+                android:textColor="@color/colorGreen"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_appointment_done" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/elementStatusProcessing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:textSize="12sp"
+                android:text="@string/processing"
+                android:textColor="@color/colorGreen"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_appointment_processing" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginVertical="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorSeparator" />
+
+</LinearLayout>

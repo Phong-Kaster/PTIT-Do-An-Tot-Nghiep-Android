@@ -1,11 +1,9 @@
 package com.example.do_an_tot_nghiep.Container;
 
-import com.example.do_an_tot_nghiep.Model.Booking;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookingCreate {
-
+public class BookingPhotoUpload {
     @SerializedName("result")
     @Expose
     private int result;
@@ -14,9 +12,9 @@ public class BookingCreate {
     @Expose
     private String msg;
 
-    @SerializedName("data")
+    @SerializedName("url")
     @Expose
-    private Booking data;
+    private String url;
 
     public int getResult() {
         return result;
@@ -26,7 +24,7 @@ public class BookingCreate {
         return msg;
     }
 
-    public Booking getData() {
-        return data;
+    public String getUrl() {
+        return url;
     }
 }

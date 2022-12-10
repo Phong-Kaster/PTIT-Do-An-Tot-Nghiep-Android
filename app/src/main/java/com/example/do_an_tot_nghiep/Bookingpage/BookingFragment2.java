@@ -19,6 +19,8 @@ import com.example.do_an_tot_nghiep.R;
  * Booking Fragment 2
  * this fragment shows message and 2 buttons HOW TO EXAM & GO BACK TO HOMEPAGE
  * when users create booking successfully
+ *
+ * flow: Fragment 1 -> Fragment 3 -> Fragment 2
  */
 public class BookingFragment2 extends Fragment {
 

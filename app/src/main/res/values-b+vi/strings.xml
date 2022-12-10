@@ -198,7 +198,7 @@
     <string name="vietnamese">Tiếng Việt</string>
     <string name="english">English</string>
     <string name="none">Không có</string>
-    <string name="upload">Cập nhật ảnh đại diện</string>
+    <string name="upload">Upload</string>
     <string name="email">Email</string>
     <string name="email_example">example@gmail.com</string>
     <string name="your_name">Họ tên</string>
@@ -232,4 +232,10 @@
     <string name="saturday">Thứ 7</string>
     <string name="sunday">Chủ nhật</string>
     <string name="vibrate">Chế độ rung</string>
+    <string name="note_6">Để quy trình khám có thể diễn ra nhanh hơn, chúng tôi khuyến khích bệnh nhân cung cấp thêm bệnh án, phác đồ điều trị, toa thuốc,.. mà bệnh nhân đã từng sử dụng trước đây.</string>
+    <string name="default_booking_name">Họ tên người đặt: Nguyễn Thành Phong</string>
+    <string name="default_booking_phone">Số điện thoại người đặt: 0366.253.623</string>
+    <string name="default_patient_name">Họ tên bệnh nhân: Nguyễn Thành Phong</string>
+    <string name="photo">Photo</string>
+    <string name="note_7">Những tấm hình bên dưới là những ảnh bạn đã đăng lên. Để xóa những ảnh không mong muốn, hãy vuốt từ bên phải sang</string>
 </resources>
