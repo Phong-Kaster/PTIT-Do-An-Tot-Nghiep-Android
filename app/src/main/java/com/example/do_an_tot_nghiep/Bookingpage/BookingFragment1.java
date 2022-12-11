@@ -446,9 +446,6 @@ public class BookingFragment1 extends Fragment {
                 Toast.makeText(context, context.getString(R.string.success), Toast.LENGTH_SHORT).show();
                 String fragmentTag = "bookingFragment3";
 
-                System.out.println(TAG);
-                System.out.println("booking id: " + response.getData().getId());
-
                 Bundle bundle = new Bundle();
                 bundle.putString("bookingId", String.valueOf(response.getData().getId()));
 

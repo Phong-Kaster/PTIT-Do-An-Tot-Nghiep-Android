@@ -142,7 +142,7 @@
     <string name="successful_action">Thao tác được thực hiện thành công!</string>
     <string name="at">lúc</string>
     <string name="back">Trở về</string>
-    <string name="my_birthday">01-05-2022</string>
+    <string name="my_birthday">01–05–2022</string>
     <string name="my_address">14 Lý Tự Trọng, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh</string>
     <string name="default_reason">Khám sức khỏe định kì</string>
     <string name="bookingStatus">Trạng thái lịch khám</string>
@@ -159,7 +159,7 @@
     <string name="numericalOrder">Số thứ tự lượt khám</string>
     <string name="appointment_information">Thông tin lượt khám</string>
     <string name="patient_numerical_order">Mã số bệnh nhân</string>
-    <string name="default_date">27-11-2022</string>
+    <string name="default_date">27–11–2022</string>
     <string name="default_time">09:00</string>
     <string name="appointmentStatus">Trạng thái lượt khám</string>
     <string name="watch_medical_record">Xem bệnh án</string>
@@ -174,7 +174,7 @@
     <string name="reason">Chuẩn đoán</string>
     <string name="appointment_reason">Nguyên nhân khám bệnh</string>
     <string name="statusAfter">Tình trạng sau điều trị</string>
-    <string name="default_datetime2">Ngày: 30-11-2022</string>
+    <string name="default_datetime2">Ngày: 30–11–2022</string>
     <string name="default_treatment_name">Tên: Thực phẩm bổ sung DutchLady</string>
     <string name="default_treatment_type">Hình thức: Uống</string>
     <string name="default_treatment_times">Số lần: 7</string>
@@ -238,4 +238,5 @@
     <string name="default_patient_name">Họ tên bệnh nhân: Nguyễn Thành Phong</string>
     <string name="photo">Photo</string>
     <string name="note_7">Những tấm hình bên dưới là những ảnh bạn đã đăng lên. Để xóa những ảnh không mong muốn, hãy vuốt từ bên phải sang</string>
+    <string name="booking_history">Lịch sử đặt lịch hẹn</string>
 </resources>

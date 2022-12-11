@@ -374,7 +374,7 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
 
 
         /*Step 3*/
-        System.out.println("booking id: " + bookingId);
+//        System.out.println("booking id: " + bookingId);
         RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), bookingId);
 
         File file = new File(Uri.parse(filePath).toString());
@@ -397,8 +397,20 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
                     BookingPhotoUpload content = response.body();
                     assert content != null;
 
-                    viewModel.bookingPhotoReadAll(header, bookingId);
-                    bookingPhotoAdapter.notifyDataSetChanged();
+                    int result = content.getResult();
+                    String msg = content.getMsg();
+
+                    if( result == 1)
+                    {
+                        viewModel.bookingPhotoReadAll(header, bookingId);
+                        bookingPhotoAdapter.notifyDataSetChanged();
+                    }
+                    else
+                    {
+                        dialog.announce();
+                        dialog.btnOK.setOnClickListener(view->dialog.close());
+                        dialog.show(R.string.attention, msg, R.drawable.ic_info);
+                    }
                 }
                 if(response.errorBody() != null)
                 {
