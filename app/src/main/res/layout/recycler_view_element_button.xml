@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/elementLinearLayout"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingVertical="5dp">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/elementButton"
+        android:src="@drawable/ic_exam_medical_test"
+        style="@style/style_background_button_exam" />
+
+    <TextView
+        android:id="@+id/elementName"
+        android:paddingVertical="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="11sp"
+        android:textAlignment="center"
+        android:text="@string/medical_test_examination" />
+
+</LinearLayout>

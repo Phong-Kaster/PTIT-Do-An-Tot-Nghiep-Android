@@ -221,7 +221,7 @@
     <string name="thank_you_for_using_our_service">Cảm ơn bạn đã sử dụng ứng dụng của chúng tôi. Để tiếp tục, hãy ấn nút Gửi, chúng tôi sẽ liên lạc với bạn sớm nhất có thể</string>
     <string name="select_application_to_send">Lựa chọn ứng dụng để gửi email</string>
     <string name="reminder">Nhắc nhở</string>
-    <string name="set_time">Đặt thời gian</string>
+    <string name="set_time">Đặt nhắc nhở</string>
     <string name="message">Tin nhắn</string>
     <string name="schedule">Lập lịch</string>
     <string name="monday">Thứ 2</string>
@@ -239,4 +239,8 @@
     <string name="photo">Photo</string>
     <string name="note_7">Những tấm hình bên dưới là những ảnh bạn đã đăng lên. Để xóa những ảnh không mong muốn, hãy vuốt từ bên phải sang</string>
     <string name="booking_history">Lịch sử đặt lịch hẹn</string>
+    <string name="with">với</string>
+    <string name="verified">Đã xác thực</string>
+    <string name="handbook">Cẩm nang</string>
+    <string name="recommended_pages">Tạp chí sức khỏe</string>
 </resources>

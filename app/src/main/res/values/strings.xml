@@ -51,7 +51,7 @@
     <string name="popular_specialities">Popular specialities</string>
     <string name="read_more">Read more</string>
     <string name="musculoskeletal">Musculoskeletal</string>
-    <string name="popular_doctors">Popular_doctors</string>
+    <string name="popular_doctors">Popular doctors</string>
     <string name="default_doctor_name">Doctor Nguyễn Thành Phong</string>
     <string name="default_speciality">General</string>
     <string name="default_price">Price: 1.896.000 VND</string>
@@ -238,4 +238,9 @@
     <string name="photo">Photo</string>
     <string name="note_7">These photos below are photos that you have been uploaded. To remove unexpected photo, swipe from the right.</string>
     <string name="booking_history">Booking history</string>
+    <string name="with">with</string>
+    <string name="verified">Verified</string>
+    <string name="deutsch" translatable="false">Deutsch</string>
+    <string name="handbook">Handbook</string>
+    <string name="recommended_pages">Recommended pages</string>
 </resources>

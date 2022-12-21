@@ -5,12 +5,17 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.ImageButton;
 
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Model.Appointment;
 import com.example.do_an_tot_nghiep.Model.Queue;
 import com.example.do_an_tot_nghiep.R;
@@ -19,7 +24,9 @@ import com.example.do_an_tot_nghiep.RecyclerView.AppointmentQueueRecyclerView;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Phong-Kaster
@@ -35,6 +42,8 @@ public class AppointmentHistoryActivity extends AppCompatActivity {
     private Map<String, String> header;
     private Dialog dialog;
     private LoadingScreen loadingScreen;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,10 @@ public class AppointmentHistoryActivity extends AppCompatActivity {
      */
     private void setupComponent()
     {
+        GlobalVariable globalVariable1 = (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable1.getSharedReferenceKey(), MODE_PRIVATE);
+
         btnBack = findViewById(R.id.btnBack);
         appointmentRecyclerView = findViewById(R.id.appointmentRecyclerView);
 
@@ -59,6 +72,12 @@ public class AppointmentHistoryActivity extends AppCompatActivity {
         header = globalVariable.getHeaders();
         dialog = new Dialog(this);
         loadingScreen = new LoadingScreen(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     private void setupViewModel()

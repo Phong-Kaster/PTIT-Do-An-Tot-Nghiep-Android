@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.Notification;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
 import com.example.do_an_tot_nghiep.Loginpage.LoginActivity;
 import com.example.do_an_tot_nghiep.Model.User;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         dialog = new Dialog(this);
 
+
         //If we wanna use notification on Android 8 or higher, this function must be run
         Notification notification = new Notification(this);
         notification.createChannel();
@@ -76,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(value);
 
 
-        /*Step 3 - what is the language of application?*/
+        /*Step 3 - what is the language of application?
+        * Find onResume to watch*/
 
 
         /*Step 4 - is AccessToken null?*/
@@ -105,20 +108,6 @@ public class MainActivity extends AppCompatActivity {
                         /*cap nhat thong tin nguoi dung*/
                         User user = response.getData();
                         globalVariable.setAuthUser( user );
-
-                        /*tu bo nho ROM cua thiet bi lay ra ngon ngu da cai dat cho ung dung*/
-                        String language = sharedPreferences.getString("language", getString(R.string.vietnamese));
-                        String vietnamese = getString(R.string.vietnamese);
-                        Locale myLocale = new Locale("en");
-                        if(Objects.equals(language, vietnamese))
-                        {
-                            myLocale = new Locale("vi");
-                        }
-                        Resources resources = getResources();
-                        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
-                        Configuration configuration = resources.getConfiguration();
-                        configuration.setLocale(myLocale);
-                        resources.updateConfiguration(configuration, displayMetrics);
 
                         /*bat dau vao trang chu*/
                         Intent intent = new Intent(MainActivity.this, HomepageActivity.class);
@@ -163,6 +152,13 @@ public class MainActivity extends AppCompatActivity {
             },1000);
         }
     }/*end OnCreate*/
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
+    }
 
     /**
      * @author Phong-Kaster

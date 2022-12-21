@@ -17,6 +17,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.do_an_tot_nghiep.Adapter.FilterOptionAdapter;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.MainActivity;
 import com.example.do_an_tot_nghiep.Model.Option;
 import com.example.do_an_tot_nghiep.R;
@@ -72,6 +73,12 @@ public class AppearanceActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
+    }
+
     /**
      * @since 30-11-2022
      * setup spinner language
@@ -80,11 +87,13 @@ public class AppearanceActivity extends AppCompatActivity {
     {
         /*prepare options*/
         List<Option> list = new ArrayList<>();
-        Option option1 = new Option(R.drawable.ic_vietnamese, getString(R.string.vietnamese));
-        Option option2 = new Option(R.drawable.ic_english, getString(R.string.english));
+        Option option1 = new Option(R.drawable.ic_vietnamese_square, getString(R.string.vietnamese));
+        Option option2 = new Option(R.drawable.ic_english_square, getString(R.string.english));
+        Option option3 = new Option(R.drawable.ic_germany_square, getString(R.string.deutsch));
 
         list.add(option1);
         list.add(option2);
+        list.add(option3);
 
 
 
@@ -108,8 +117,10 @@ public class AppearanceActivity extends AppCompatActivity {
         String applicationLanguage = sharedPreferences.getString("language", getString(R.string.vietnamese));
         String vietnamese = getString(R.string.vietnamese);
         String english = getString(R.string.english);
+        String germany = getString(R.string.deutsch);
 
-        System.out.println("application language: " + applicationLanguage);
+//        System.out.println(TAG);
+//        System.out.println("application language: " + applicationLanguage);
 
         if(Objects.equals(applicationLanguage, vietnamese))
         {
@@ -118,6 +129,10 @@ public class AppearanceActivity extends AppCompatActivity {
         else if(Objects.equals(applicationLanguage, english))
         {
             sprLanguage.setSelection(1);
+        }
+        else if(Objects.equals(applicationLanguage, germany))
+        {
+            sprLanguage.setSelection(2);
         }
     }
 
@@ -162,6 +177,7 @@ public class AppearanceActivity extends AppCompatActivity {
 
         String vietnamese = getString(R.string.vietnamese);
         String english = getString(R.string.english);
+        String deutsch = getString(R.string.deutsch);
 
         Locale myLocale = new Locale("en");
 
@@ -169,12 +185,18 @@ public class AppearanceActivity extends AppCompatActivity {
         {
             myLocale = new Locale("vi");
         }
+        if( Objects.equals(language, deutsch))
+        {
+            myLocale = new Locale("de");
+        }
 
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
+        Resources resources = getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+
+        Configuration configuration = resources.getConfiguration();
+        configuration.setLocale(myLocale);
+
+        resources.updateConfiguration(configuration, dm);
         Intent refresh = new Intent(this, MainActivity.class);
         finish();
         startActivity(refresh);

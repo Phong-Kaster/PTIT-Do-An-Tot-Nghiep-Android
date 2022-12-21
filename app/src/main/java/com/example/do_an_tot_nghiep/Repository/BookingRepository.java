@@ -45,6 +45,7 @@ public class BookingRepository {
 
 
         /*Step 3*/
+        String doctorId = body.get("doctorId");
         String serviceId = body.get("serviceId");
         String bookingName = body.get("bookingName");
         String bookingPhone = body.get("bookingPhone");
@@ -56,7 +57,7 @@ public class BookingRepository {
         String appointmentTime = body.get("appointmentTime");
         String appointmentDate = body.get("appointmentDate");
 
-        Call<BookingCreate> container = api.bookingCreate(header, serviceId,
+        Call<BookingCreate> container = api.bookingCreate(header,doctorId, serviceId,
                 bookingName, bookingPhone, name, gender, address, reason, birthday, appointmentTime, appointmentDate);
 
         /*Step 4*/

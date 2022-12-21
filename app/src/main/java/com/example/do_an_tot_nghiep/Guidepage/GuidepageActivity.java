@@ -1,19 +1,20 @@
 package com.example.do_an_tot_nghiep.Guidepage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
+import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.R;
 
 /**
@@ -27,6 +28,7 @@ public class GuidepageActivity extends AppCompatActivity {
     private WebView wvwLocation;
     private AppCompatButton btnOpenWithGoogleMap;
 
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +43,23 @@ public class GuidepageActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         wvwLocation = findViewById(R.id.wvwDescription);
         btnOpenWithGoogleMap = findViewById(R.id.btnOpenWithGoogleMap);
+
+        GlobalVariable globalVariable = (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     private void setupEvent()
     {
         /*BUTTON BACK*/
-        btnBack.setOnClickListener(view->{
-            finish();
-        });
+        btnBack.setOnClickListener(view-> finish());
 
         /*GOOGLE MAP*/
         String location =
@@ -69,7 +79,6 @@ public class GuidepageActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
 
         wvwLocation.requestFocus();
-        wvwLocation.getSettings().setLightTouchEnabled(true);
         wvwLocation.getSettings().setJavaScriptEnabled(true);
         wvwLocation.getSettings().setGeolocationEnabled(true);
         wvwLocation.setWebChromeClient(new WebChromeClient() {

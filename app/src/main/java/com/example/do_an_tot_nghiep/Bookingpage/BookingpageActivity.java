@@ -43,10 +43,12 @@ public class BookingpageActivity extends AppCompatActivity {
 
         /*Step 2*/
         String serviceId = getIntent().getStringExtra("serviceId");
+        String doctorId = getIntent().getStringExtra("doctorId");
 
         /*Step 3*/
         Bundle bundle = new Bundle();
         bundle.putString("serviceId", serviceId);
+        bundle.putString("doctorId", doctorId);
         fragment.setArguments(bundle);
 
         /*Step 4*/

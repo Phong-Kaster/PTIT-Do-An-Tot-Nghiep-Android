@@ -1,7 +1,11 @@
 package com.example.do_an_tot_nghiep.Searchpage;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.do_an_tot_nghiep.Adapter.FilterOptionAdapter;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Option;
 import com.example.do_an_tot_nghiep.Model.Service;
@@ -26,6 +31,7 @@ import com.example.do_an_tot_nghiep.RecyclerView.SpecialityRecyclerView;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -55,6 +61,8 @@ public class SearchpageActivity extends AppCompatActivity {
     private RecyclerView doctorRecyclerView;
     private RecyclerView specialityRecyclerView;
     private RecyclerView serviceRecyclerView;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +102,7 @@ public class SearchpageActivity extends AppCompatActivity {
 
     }
 
+
     /**
      * @since 21-11-2022
      * setup component
@@ -105,6 +114,8 @@ public class SearchpageActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
 
         globalVariable =  (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
         header = globalVariable.getHeaders();
 
         filterKey = this.getString(R.string.service);
@@ -116,6 +127,12 @@ public class SearchpageActivity extends AppCompatActivity {
         serviceRecyclerView = findViewById(R.id.serviceRecyclerView);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
+    }
 
     /**
      * @since 21-11-2022
@@ -184,6 +201,7 @@ public class SearchpageActivity extends AppCompatActivity {
         viewModel.instantiate();
 
         /* *****************DOCTOR******************/
+        paramsDoctor.put("length", "100");// day la mot params co the truyen trong API nay
         viewModel.doctorReadAll(header, paramsDoctor);
         viewModel.getDoctorReadAllResponse().observe(this, response->{
             int result = response.getResult();
@@ -196,6 +214,7 @@ public class SearchpageActivity extends AppCompatActivity {
         });
 
         /* *****************SPECIALITY******************/
+        paramsSpeciality.put("length", "100");// day la mot params co the truyen trong API nay
         viewModel.specialityReadAll(header, paramsSpeciality);
         viewModel.getSpecialityReadAll().observe(this, response->{
             int result = response.getResult();
@@ -207,6 +226,7 @@ public class SearchpageActivity extends AppCompatActivity {
         });
 
         /* *****************SERVICE******************/
+        paramsService.put("length", "100");// day la mot params co the truyen trong API nay
         viewModel.serviceReadAll(header, paramsService);
         viewModel.getServiceReadAllResponse().observe(this, response->{
             int result = response.getResult();

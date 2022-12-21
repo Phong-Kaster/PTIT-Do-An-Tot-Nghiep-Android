@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -74,7 +75,7 @@ public class InformationActivity extends AppCompatActivity {
     private Map<String, String> header;
     private Uri uriAvatar;
     private AppCompatButton btnUploadAvatar;
-
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,14 @@ public class InformationActivity extends AppCompatActivity {
         globalVariable = (GlobalVariable) this.getApplication();
 
         header = globalVariable.getHeaders();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     /**

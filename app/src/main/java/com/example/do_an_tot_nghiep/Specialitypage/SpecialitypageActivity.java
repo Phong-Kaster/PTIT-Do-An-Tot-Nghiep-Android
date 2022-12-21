@@ -1,6 +1,10 @@
 package com.example.do_an_tot_nghiep.Specialitypage;
 
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -16,6 +20,7 @@ import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Speciality;
 import com.example.do_an_tot_nghiep.R;
@@ -24,7 +29,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Phong-Kaster
@@ -48,6 +55,7 @@ public class SpecialitypageActivity extends AppCompatActivity {
     private ImageView imgAvatar;
 
     private ImageButton btnBack;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,12 @@ public class SpecialitypageActivity extends AppCompatActivity {
         setupComponent();
         setupViewModel();
         setupEvent();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     /**
@@ -71,6 +85,8 @@ public class SpecialitypageActivity extends AppCompatActivity {
 
 
         globalVariable = (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
         specialityId = getIntent().getStringExtra("specialityId");
 
 

@@ -22,7 +22,7 @@ public class ServicepageViewModel extends ViewModel {
     private MutableLiveData<Boolean> animation;
     private MutableLiveData<ServiceReadByID> response;
     private ServiceRepository repository;
-
+    private DoctorRepository doctorRepository;
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
     }
@@ -41,6 +41,10 @@ public class ServicepageViewModel extends ViewModel {
         {
             repository = new ServiceRepository();
         }
+        if( doctorRepository == null)
+        {
+            doctorRepository = new DoctorRepository();
+        }
     }
 
     /**
@@ -52,5 +56,16 @@ public class ServicepageViewModel extends ViewModel {
     {
         response = repository.readByID(header, serviceId);
         animation = repository.getAnimation();
+    }
+
+    /************ DOCTOR - READ ALL ******************/
+    private MutableLiveData<DoctorReadAll> doctorReadAllResponse = new MutableLiveData<>();
+    public MutableLiveData<DoctorReadAll> getDoctorReadAllResponse() {
+        return doctorReadAllResponse;
+    }
+    public void doctorReadAll(Map<String, String> header, Map<String, String> parameters)
+    {
+        doctorReadAllResponse = doctorRepository.readAll(header, parameters);
+        animation = doctorRepository.getAnimation();
     }
 }

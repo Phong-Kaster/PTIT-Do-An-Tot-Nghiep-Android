@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
     android:layout_height="match_parent"
     tools:context=".Settingspage.BookingHistoryActivity">
 
@@ -32,6 +31,16 @@
             android:src="@drawable/umbrella_logo_4" />
 
     </LinearLayout><!-- end LOGO -->
+
+    <TextView
+        android:paddingVertical="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/booking_history"
+        android:textSize="15sp"
+        android:textColor="@color/colorTextBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookingRecyclerView"

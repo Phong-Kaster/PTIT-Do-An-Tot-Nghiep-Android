@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 import okhttp3.MediaType;
@@ -64,7 +66,7 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
 
     private final String TAG = "Booking-page Photo Activity";
     private String bookingId;
-
+    private String bookingStatus;
     private ImageButton btnBack;
 
     private Map<String, String> header;
@@ -79,6 +81,7 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
 
     private AppCompatButton btnUpload;
     private int photoId;
+
     private GlobalVariable globalVariable;
 
     private BookingpageViewModel viewModel;
@@ -103,6 +106,7 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
         if( getIntent().getStringExtra("bookingId") != null)
         {
             bookingId = getIntent().getStringExtra("bookingId");
+            bookingStatus = getIntent().getStringExtra("bookingStatus");
         }
         else
         {
@@ -122,6 +126,15 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
         layout = findViewById(R.id.bookingLinearLayout);
 
         btnUpload = findViewById(R.id.btnUpload);
+
+        if(Objects.equals(bookingStatus, "processing"))
+        {
+            btnUpload.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            btnUpload.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -213,8 +226,11 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
 
-        ItemTouchHelper helper = new ItemTouchHelper(callback);
-        helper.attachToRecyclerView(recyclerView);
+        if(Objects.equals(bookingStatus, "processing"))
+        {
+            ItemTouchHelper helper = new ItemTouchHelper(callback);
+            helper.attachToRecyclerView(recyclerView);
+        }
     }
 
     /**
@@ -333,7 +349,6 @@ public class BookingpagePhotoActivity extends AppCompatActivity {
     }
 
     /**
-     * @author Phong-Kaster
      * open Gallery To Pick Photo
      */
     private final ActivityResultLauncher<Intent> openGalleryToPickPhoto = registerForActivityResult(

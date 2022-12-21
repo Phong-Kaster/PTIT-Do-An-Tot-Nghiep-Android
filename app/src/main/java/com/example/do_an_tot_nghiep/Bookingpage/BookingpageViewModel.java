@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.do_an_tot_nghiep.Container.BookingPhotoReadAll;
 import com.example.do_an_tot_nghiep.Container.BookingReadByID;
+import com.example.do_an_tot_nghiep.Container.DoctorReadByID;
 import com.example.do_an_tot_nghiep.Container.ServiceReadByID;
 import com.example.do_an_tot_nghiep.Repository.BookingPhotoRepository;
 import com.example.do_an_tot_nghiep.Repository.BookingRepository;
+import com.example.do_an_tot_nghiep.Repository.DoctorRepository;
 import com.example.do_an_tot_nghiep.Repository.ServiceRepository;
 
 import java.util.Map;
@@ -26,6 +28,7 @@ public class BookingpageViewModel extends ViewModel {
     private ServiceRepository serviceRepository;
     private BookingRepository bookingRepository;
     private BookingPhotoRepository bookingPhotoRepository;
+    private DoctorRepository doctorRepository;
 
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
@@ -49,6 +52,10 @@ public class BookingpageViewModel extends ViewModel {
         if( bookingPhotoRepository == null)
         {
             bookingPhotoRepository = new BookingPhotoRepository();
+        }
+        if( doctorRepository == null)
+        {
+            doctorRepository = new DoctorRepository();
         }
     }
 
@@ -115,5 +122,16 @@ public class BookingpageViewModel extends ViewModel {
     {
         bookingPhotoReadAllResponse = bookingPhotoRepository.readAll(header, bookingId);
         animation = bookingPhotoRepository.getAnimation();
+    }
+
+    /************************DOCTOR - READ BY ID***************************/
+    private MutableLiveData<DoctorReadByID> doctorReadById = new MutableLiveData<>();
+    public MutableLiveData<DoctorReadByID> getDoctorReadByIdResponse() {
+        return doctorReadById;
+    }
+    public void doctorReadByID(Map<String, String> header, String doctorId)
+    {
+        animation = doctorRepository.getAnimation();
+        doctorReadById = doctorRepository.readById(header, doctorId);
     }
 }

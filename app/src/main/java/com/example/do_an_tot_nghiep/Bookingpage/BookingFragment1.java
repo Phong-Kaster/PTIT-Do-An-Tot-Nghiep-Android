@@ -31,6 +31,7 @@ import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
 import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Homepage.HomepageActivity;
+import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Service;
 import com.example.do_an_tot_nghiep.Model.User;
 import com.example.do_an_tot_nghiep.R;
@@ -41,6 +42,7 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,7 +57,8 @@ public class BookingFragment1 extends Fragment {
 
     private final String TAG = "BookingFragment1";
 
-    private String serviceId;
+    private String serviceId;// nếu serviceId == null thì nó sẽ bằng 1 bởi vì API cần serviceId do rằng buộc dữ liệu trong database
+    private String doctorId;// doctorId == null thì nó sẽ bằng 0, vì chúng ta không cần
     private GlobalVariable globalVariable;
     private LoadingScreen loadingScreen;
 
@@ -111,8 +114,12 @@ public class BookingFragment1 extends Fragment {
 
         Bundle bundle = getArguments();
         assert bundle != null;
-        serviceId = bundle.getString("serviceId");
+        serviceId = bundle.getString("serviceId") != null ? bundle.getString("serviceId") : "";
+        doctorId = bundle.getString("doctorId") != null ? bundle.getString("doctorId") : "0";
 
+        System.out.println(TAG);
+        System.out.println("serviceId: " + serviceId);
+        System.out.println("doctorId: " + doctorId);
 
         /*FORM*/
         imgServiceAvatar = view.findViewById(R.id.imgServiceAvatar);
@@ -152,7 +159,19 @@ public class BookingFragment1 extends Fragment {
 
         /*Step 2 - prepare HTTP header*/
         Map<String, String> header = globalVariable.getHeaders();
-        viewModel.serviceReadById(header, serviceId);
+
+        if(!Objects.equals(doctorId, "0"))
+        {
+            viewModel.doctorReadByID(header, doctorId);
+        }
+        else
+        {
+            viewModel.serviceReadById(header, serviceId);
+        }
+
+
+
+
 
         /*Step 3 - animation & listen for response*/
         viewModel.getAnimation().observe((LifecycleOwner) context, aBoolean -> {
@@ -193,7 +212,8 @@ public class BookingFragment1 extends Fragment {
             catch(Exception ex)
             {
                 /*Neu truy van lau qua ma khong nhan duoc phan hoi thi cung dong ung dung*/
-                System.out.println(TAG + "- exception: " + ex.getMessage());
+                System.out.println(TAG);
+                System.out.println("Exception: " + ex.getMessage());
                 dialog.announce();
                 dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
                 dialog.btnOK.setOnClickListener(view->{
@@ -202,6 +222,45 @@ public class BookingFragment1 extends Fragment {
                 });
             }
         });/*end Step 4*/
+
+        /*Step 5*/
+        viewModel.getDoctorReadByIdResponse().observe((LifecycleOwner) context, response->{
+            try
+            {
+                int result = response.getResult();
+                /*result == 1 => luu thong tin nguoi dung va vao homepage*/
+                if( result == 1)
+                {
+                    Doctor doctor = response.getData();
+                    printDoctorInformation(doctor);
+                }
+                /*result == 0 => thong bao va thoat ung dung*/
+                if( result == 0)
+                {
+                    System.out.println(TAG + "- result: " + result);
+                    dialog.announce();
+                    dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
+                    dialog.btnOK.setOnClickListener(view->{
+                        dialog.close();
+                        activity.finish();
+                    });
+                }
+
+            }
+            catch(Exception ex)
+            {
+                /*Neu truy van lau qua ma khong nhan duoc phan hoi thi cung dong ung dung*/
+                System.out.println(TAG);
+                System.out.println("Exception: " + ex.getMessage());
+                dialog.announce();
+                dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
+                dialog.btnOK.setOnClickListener(view->{
+                    dialog.close();
+                    activity.finish();
+                });
+            }
+        });/*end Step 4*/
+        /*end Step 5*/
     }
 
     /**
@@ -210,11 +269,30 @@ public class BookingFragment1 extends Fragment {
      */
     private void printServiceInformation(Service service)
     {
-        String name = service.getName();
+        String name = service.getName();// for instance: Đặt lịch khám với bác sĩ Phong
         String image = Constant.UPLOAD_URI() + service.getImage();
 
         txtServiceName.setText(name);
         if( service.getImage().length() > 0)
+        {
+            Picasso.get().load(image).into(imgServiceAvatar);
+        }
+    }
+
+    /**
+     * @since 19-12-2022
+     * print doctor information
+     */
+    private void printDoctorInformation(Doctor doctor)
+    {
+        String name = getString(R.string.create_booking)
+                + " " + getString(R.string.with)
+                + " " + getString(R.string.doctor)
+                + " " + doctor.getName();// for instance: Đặt lịch khám với bác sĩ Phong
+        String image = Constant.UPLOAD_URI() + doctor.getAvatar();
+
+        txtServiceName.setText(name);
+        if( doctor.getAvatar().length() > 0)
         {
             Picasso.get().load(image).into(imgServiceAvatar);
         }
@@ -329,6 +407,7 @@ public class BookingFragment1 extends Fragment {
             Map<String, String> header = globalVariable.getHeaders();
             Map<String, String> body = new HashMap<>();
             body.put("serviceId", serviceId);
+            body.put("doctorId", doctorId);
             body.put("bookingName", bookingName);
             body.put("bookingPhone", bookingPhone);
             body.put("name", patientName);
@@ -381,6 +460,7 @@ public class BookingFragment1 extends Fragment {
 
         /*Step 3*/
         String serviceId = body.get("serviceId");
+        String doctorId = body.get("doctorId");
         String bookingName = body.get("bookingName");
         String bookingPhone = body.get("bookingPhone");
         String name = body.get("name");
@@ -391,7 +471,7 @@ public class BookingFragment1 extends Fragment {
         String appointmentTime = body.get("appointmentTime");
         String appointmentDate = body.get("appointmentDate");
 
-        Call<BookingCreate> container = api.bookingCreate(header, serviceId,
+        Call<BookingCreate> container = api.bookingCreate(header, doctorId, serviceId,
                 bookingName, bookingPhone, name, gender, address, reason, birthday, appointmentTime, appointmentDate);
 
         /*Step 4*/

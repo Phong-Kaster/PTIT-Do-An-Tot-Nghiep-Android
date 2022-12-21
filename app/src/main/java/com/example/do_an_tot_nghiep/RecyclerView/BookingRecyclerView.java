@@ -78,7 +78,7 @@ public class BookingRecyclerView extends RecyclerView.Adapter<BookingRecyclerVie
         String status = element.getStatus();
         /*Show appointment status or button remind me*/
         switch (status){
-            case "done":
+            case "verified":
                 holder.statusDone.setVisibility(View.VISIBLE);
                 holder.statusCancel.setVisibility(View.GONE);
                 holder.statusProcessing.setVisibility(View.GONE);

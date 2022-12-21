@@ -22,13 +22,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/colorBackground"
-            android:src="@drawable/ic_arrow_back" />
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/image" />
 
         <ImageView
             android:layout_gravity="start"
             android:src="@drawable/umbrella_logo_4"
             android:layout_width="200dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:contentDescription="@string/image" />
 
     </LinearLayout><!-- end LOGO -->
 
@@ -146,6 +148,7 @@
 
     <!-- DESCRIPTION -->
     <LinearLayout
+        android:layout_above="@id/btnCreateBooking"
         android:id="@+id/lytDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -168,4 +171,15 @@
             tools:ignore="WebViewLayout" />
 
     </LinearLayout><!-- end DESCRIPTION -->
+
+    <!-- BUTTON CREATE BOOKING -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCreateBooking"
+        style="@style/button_style_theme"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
+        android:text="@string/create_booking" /><!-- BUTTON CREATE BOOKING -->
+
 </RelativeLayout>

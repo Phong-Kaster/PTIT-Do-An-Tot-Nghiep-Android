@@ -1,21 +1,20 @@
 package com.example.do_an_tot_nghiep.Settingspage;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.widget.ImageButton;
-
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
-import com.example.do_an_tot_nghiep.Model.Appointment;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Model.Booking;
-import com.example.do_an_tot_nghiep.Model.Photo;
 import com.example.do_an_tot_nghiep.R;
-import com.example.do_an_tot_nghiep.RecyclerView.Appointment2RecyclerView;
 import com.example.do_an_tot_nghiep.RecyclerView.BookingRecyclerView;
 
 import java.util.HashMap;
@@ -36,6 +35,8 @@ public class BookingHistoryActivity extends AppCompatActivity {
     private Map<String, String> header;
     private Dialog dialog;
     private LoadingScreen loadingScreen;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +59,18 @@ public class BookingHistoryActivity extends AppCompatActivity {
         bookingRecyclerView = findViewById(R.id.bookingRecyclerView);
 
         GlobalVariable globalVariable = (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+
         header = globalVariable.getHeaders();
         dialog = new Dialog(this);
         loadingScreen = new LoadingScreen(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     /**

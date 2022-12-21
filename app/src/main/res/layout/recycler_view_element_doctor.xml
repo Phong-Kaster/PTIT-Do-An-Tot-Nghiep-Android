@@ -42,13 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/elementPrice"
-            android:textColor="@color/colorTextSupport"
-            android:textSize="11sp"
-            android:text="@string/default_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+<!--        <TextView-->
+<!--            android:id="@+id/elementPrice"-->
+<!--            android:textColor="@color/colorTextSupport"-->
+<!--            android:textSize="11sp"-->
+<!--            android:text="@string/default_price"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
 
     </LinearLayout>
 

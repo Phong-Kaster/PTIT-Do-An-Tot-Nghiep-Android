@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
 import com.example.do_an_tot_nghiep.Bookingpage.BookingFragment1;
+import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.R;
 
 /**
@@ -18,6 +21,7 @@ import com.example.do_an_tot_nghiep.R;
 public class TreatmentpageActivity extends AppCompatActivity {
 
     private final String TAG = "Treatment-page Activity";
+    private SharedPreferences sharedPreferences;
 
     private ImageButton btnBack;
     private final FragmentManager manager = getSupportFragmentManager();
@@ -38,6 +42,15 @@ public class TreatmentpageActivity extends AppCompatActivity {
     private void setupComponent()
     {
         btnBack = findViewById(R.id.btnBack);
+        GlobalVariable globalVariable = (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     private void setupTreatmentFragment1()

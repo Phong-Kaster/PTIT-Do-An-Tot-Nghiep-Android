@@ -48,9 +48,8 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
         String uploadUri = Constant.UPLOAD_URI();
 
         int id = element.getId();
-        String speciality = "Chuyên khoa " + element.getSpeciality().getName();
-        String price = "Giá khám/lần: " + element.getPrice();
-        String name = "Bác sĩ " + element.getName();
+        String speciality = context.getString(R.string.speciality) + " " + element.getSpeciality().getName();
+        String name = context.getString(R.string.doctor) + " " + element.getName();
         @SuppressLint("ResourceType") String image = element.getAvatar().length() > 0 ?
                 uploadUri + element.getAvatar() : context.getString(R.drawable.default_speciality);
 
@@ -61,7 +60,6 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
         }
 
         holder.speciality.setText(speciality);
-        holder.price.setText(price);
         holder.name.setText(name);
         holder.layout.setOnClickListener(view->{
             Intent intent = new Intent(context, DoctorpageActivity.class);
@@ -80,7 +78,6 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
         private final LinearLayout layout;
         private final ImageView image;
         private final TextView name;
-        private final TextView price;
         private final TextView speciality;
 
 
@@ -89,7 +86,6 @@ public class DoctorRecyclerView extends RecyclerView.Adapter<DoctorRecyclerView.
             layout = itemView.findViewById(R.id.elementLayout);
             image = itemView.findViewById(R.id.elementImage);
             name = itemView.findViewById(R.id.elementName);
-            price = itemView.findViewById(R.id.elementPrice);
             speciality = itemView.findViewById(R.id.elementSpeciality);
         }
     }

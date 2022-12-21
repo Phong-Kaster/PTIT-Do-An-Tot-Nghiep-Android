@@ -113,6 +113,7 @@ public interface HTTPRequest {
     @FormUrlEncoded
     @POST("api/patient/booking")
     Call<BookingCreate> bookingCreate(@HeaderMap Map<String, String> headers,
+                                      @Field("doctor_id") String doctorId,
                                       @Field("service_id") String serviceId,
                                       @Field("booking_name") String bookingName,
                                       @Field("booking_phone") String bookingPhone,

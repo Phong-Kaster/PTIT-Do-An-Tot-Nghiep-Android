@@ -3,7 +3,10 @@ package com.example.do_an_tot_nghiep.Homepage;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,7 @@ import com.example.do_an_tot_nghiep.Configuration.HTTPService;
 import com.example.do_an_tot_nghiep.Container.NotificationReadAll;
 import com.example.do_an_tot_nghiep.Helper.Dialog;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Loginpage.LoginActivity;
 import com.example.do_an_tot_nghiep.Notificationpage.NotificationFragment;
 import com.example.do_an_tot_nghiep.R;
@@ -26,7 +30,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +54,7 @@ public class HomepageActivity extends AppCompatActivity {
     private Fragment fragment;
     private String fragmentTag;
 
+    private SharedPreferences sharedPreferences;
 
     /*Weak Activity & GETTER*/
     public static WeakReference<HomepageActivity> weakActivity;
@@ -83,6 +90,7 @@ public class HomepageActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setNumberOnNotificationIcon();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     /**
@@ -94,6 +102,8 @@ public class HomepageActivity extends AppCompatActivity {
         globalVariable = (GlobalVariable) this.getApplication();
         dialog = new Dialog(this);
 
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
         bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
     }
 

@@ -1,14 +1,21 @@
 package com.example.do_an_tot_nghiep.Doctorpage;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.do_an_tot_nghiep.Bookingpage.BookingpageActivity;
 import com.example.do_an_tot_nghiep.Configuration.Constant;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
 import com.example.do_an_tot_nghiep.Helper.LoadingScreen;
@@ -16,18 +23,20 @@ import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * @author Phong-Kaster
  * @since 20-11-2022
- * Doctorpage Activity
+ * Doctor-page Activity
  * this activity is used to show information of a doctor
  */
 public class DoctorpageActivity extends AppCompatActivity {
-    private static final String TAG = "DoctorpageActivity";
+    private static final String TAG = "Doctor-page Activity";
 
     private String doctorId;
     private CircleImageView imgAvatar;
@@ -42,6 +51,8 @@ public class DoctorpageActivity extends AppCompatActivity {
     private LoadingScreen loadingScreen;
 
     private ImageButton btnBack;
+    private AppCompatButton btnCreateBooking;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +65,41 @@ public class DoctorpageActivity extends AppCompatActivity {
         setupEvent();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /*tu bo nho ROM cua thiet bi lay ra ngon ngu da cai dat cho ung dung*/
+        String language = sharedPreferences.getString("language", getString(R.string.vietnamese));
+
+
+//        System.out.println(TAG);
+//        System.out.println(language);
+        String vietnamese = getString(R.string.vietnamese);
+        String deutsch = getString(R.string.deutsch);
+
+
+        Locale myLocale = new Locale("en");
+        if(Objects.equals(language, vietnamese))
+        {
+            myLocale = new Locale("vi");
+        }
+        if(Objects.equals(language,deutsch))
+        {
+            myLocale = new Locale("de");
+        }
+
+
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+
+
+        Configuration configuration = resources.getConfiguration();
+        configuration.setLocale(myLocale);
+
+
+        Locale.setDefault(myLocale);
+        resources.updateConfiguration(configuration, displayMetrics);
+    }
 
     /**
      * @since 20-11-2022
@@ -70,8 +116,11 @@ public class DoctorpageActivity extends AppCompatActivity {
         txtSpeciality = findViewById(R.id.txtSpeciality);
 
         globalVariable = (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
         loadingScreen = new LoadingScreen(this);
         btnBack = findViewById(R.id.btnBack);
+        btnCreateBooking = findViewById(R.id.btnCreateBooking);
     }
 
     /**
@@ -132,6 +181,12 @@ public class DoctorpageActivity extends AppCompatActivity {
     private void setupEvent()
     {
         btnBack.setOnClickListener(view->finish());
+
+        btnCreateBooking.setOnClickListener(view->{
+            Intent intent = new Intent(this, BookingpageActivity.class);
+            intent.putExtra("doctorId", doctorId);
+            startActivity(intent);
+        });
     }
 
     /**

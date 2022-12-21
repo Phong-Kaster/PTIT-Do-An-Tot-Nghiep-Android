@@ -2,6 +2,7 @@ package com.example.do_an_tot_nghiep.Treatmentpage;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,7 @@ public class TreatmentFragment1 extends Fragment {
         activity = requireActivity();
         dialog = new Dialog(context);
         loadingScreen = new LoadingScreen(activity);
+
         GlobalVariable globalVariable = (GlobalVariable) activity.getApplication();
 
         appointmentId = activity.getIntent().getStringExtra("appointmentId");

@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
 import com.example.do_an_tot_nghiep.Bookingpage.BookingFragment1;
+import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.R;
 
 /**
@@ -21,6 +24,7 @@ public class EmailpageActivity extends AppCompatActivity {
 
     private ImageButton btnBack;
     private final FragmentManager manager = getSupportFragmentManager();
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class EmailpageActivity extends AppCompatActivity {
         setupComponent();
         setupEvent();
     }
+
+
 
     /**
      * @since 03-12-2022
@@ -65,6 +71,15 @@ public class EmailpageActivity extends AppCompatActivity {
     private void setupComponent()
     {
         btnBack = findViewById(R.id.btnBack);
+        GlobalVariable globalVariable = (GlobalVariable) this.getApplication();
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
     /**

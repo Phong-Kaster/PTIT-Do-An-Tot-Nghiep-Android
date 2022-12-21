@@ -33,6 +33,16 @@
 
     </LinearLayout><!-- end LOGO -->
 
+    <TextView
+        android:paddingVertical="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/appointment_history"
+        android:textSize="15sp"
+        android:textColor="@color/colorTextBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointmentRecyclerView"
         android:layout_width="match_parent"

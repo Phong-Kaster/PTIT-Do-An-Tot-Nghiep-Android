@@ -2,6 +2,10 @@ package com.example.do_an_tot_nghiep.Helper;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
 import com.example.do_an_tot_nghiep.R;
 
@@ -10,6 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -95,5 +101,43 @@ public class Tooltip {
     public static long getDateDifference(Date date1, Date date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getTime() - date1.getTime();
         return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * @since 20-12-2022
+     * set application's language
+     * @param context is context of application
+     * @param sharedPreferences is shared preference
+     */
+    public static void setLocale(Context context, SharedPreferences sharedPreferences)
+    {
+        /*tu bo nho ROM cua thiet bi lay ra ngon ngu da cai dat cho ung dung*/
+        String language = sharedPreferences.getString("language", context.getString(R.string.vietnamese));
+
+        String vietnamese = context.getString(R.string.vietnamese);
+        String deutsch = context.getString(R.string.deutsch);
+
+
+        Locale myLocale = new Locale("en");
+        if(Objects.equals(language, vietnamese))
+        {
+            myLocale = new Locale("vi");
+        }
+        if(Objects.equals(language,deutsch))
+        {
+            myLocale = new Locale("de");
+        }
+
+
+        Resources resources = context.getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+
+
+        Configuration configuration = resources.getConfiguration();
+        configuration.setLocale(myLocale);
+
+
+        Locale.setDefault(myLocale);
+        resources.updateConfiguration(configuration, displayMetrics);
     }
 }

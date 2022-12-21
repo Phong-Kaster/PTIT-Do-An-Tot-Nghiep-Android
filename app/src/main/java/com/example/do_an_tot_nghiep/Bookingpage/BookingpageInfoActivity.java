@@ -50,7 +50,7 @@ public class BookingpageInfoActivity extends AppCompatActivity {
     private final String TAG = "Booking-page Info Activity";
 
     private String bookingId;
-    private BookingpageViewModel viewModel;
+    private String bookingStatus;
 
 
     private TextView txtBookingName;
@@ -126,7 +126,7 @@ public class BookingpageInfoActivity extends AppCompatActivity {
     private void setupViewModel()
     {
         /*declare*/
-        viewModel = new ViewModelProvider(this).get(BookingpageViewModel.class);
+        BookingpageViewModel viewModel = new ViewModelProvider(this).get(BookingpageViewModel.class);
         viewModel.instantiate();
 
         /*SEND REQUEST TO SERVER*/
@@ -189,6 +189,7 @@ public class BookingpageInfoActivity extends AppCompatActivity {
         btnPhoto.setOnClickListener(view->{
             Intent intent = new Intent(this, BookingpagePhotoActivity.class);
             intent.putExtra("bookingId", bookingId);
+            intent.putExtra("bookingStatus", bookingStatus);
             startActivity(intent);
         });
         btnCancel.setOnClickListener(view->{
@@ -232,6 +233,7 @@ public class BookingpageInfoActivity extends AppCompatActivity {
         String serviceImage = Constant.UPLOAD_URI() + booking.getService().getImage();
 
         String status = booking.getStatus();
+        bookingStatus = status;
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -246,15 +248,21 @@ public class BookingpageInfoActivity extends AppCompatActivity {
             btnCancel.setVisibility(TextView.GONE);
         }
 
+        String verified = this.getString(R.string.verified);
         String processing = this.getString(R.string.processing);
         String cancelled = this.getString(R.string.cancel);
         int colorProcessing = this.getColor(R.color.colorGreen);
         int colorCancelled = this.getColor(R.color.colorRed);
 
-        if(Objects.equals(status, "processing"))
+        if(Objects.equals(status, "verified"))
         {
-                txtBookingStatus.setText(processing);
-                txtBookingStatus.setTextColor(colorProcessing);
+            txtBookingStatus.setText(verified);
+            txtBookingStatus.setTextColor(colorProcessing);
+        }
+        else if( Objects.equals(status, "processing"))
+        {
+            txtBookingStatus.setText(processing);
+            txtBookingStatus.setTextColor(colorProcessing);
         }
         else
         {
