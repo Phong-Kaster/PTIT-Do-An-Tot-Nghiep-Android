@@ -246,4 +246,5 @@
     <string name="default_treatment_repeat_time">Zeit: 9:00 Uhr</string>
     <string name="repeat">Wiederholen</string>
     <string name="time">Zeit</string>
+    <string name="humidity">Feuchtigkeit</string>
 </resources>

@@ -25,4 +25,23 @@ public class HTTPService {
 
         return retrofit;
     }
+
+    /**
+     * @since 22-12-2022
+     * chỉ Homepage/HomeFragment là nơi duy nhất sử dụng các hàm phía bên dưới đây
+     */
+    public static final String OPEN_WEATHER_MAP = Constant.OPEN_WEATHER_MAP_PATH();
+    public static Retrofit getOpenWeatherMapInstance()
+    {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(OPEN_WEATHER_MAP)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        return retrofit;
+    }
 }

@@ -27,6 +27,7 @@ import com.example.do_an_tot_nghiep.Container.SpecialityReadAll;
 import com.example.do_an_tot_nghiep.Container.SpecialityReadByID;
 import com.example.do_an_tot_nghiep.Container.TreatmentReadAll;
 import com.example.do_an_tot_nghiep.Container.TreatmentReadByID;
+import com.example.do_an_tot_nghiep.Container.WeatherForecast;
 
 import java.util.Map;
 
@@ -196,4 +197,9 @@ public interface HTTPRequest {
     @GET("api/patient/treatment/{id}")
     Call<TreatmentReadByID> treatmentReadByID(@HeaderMap Map <String, String> header, @Path("id") String treatmentId);
 
+
+
+    /************** WEATHER FORCASE - OPEN WEATHER MAP.ORG **********/
+    @GET("https://api.openweathermap.org/data/2.5/weather")
+    Call<WeatherForecast> getCurrentWeather(@QueryMap Map<String, String> parameters);
 }

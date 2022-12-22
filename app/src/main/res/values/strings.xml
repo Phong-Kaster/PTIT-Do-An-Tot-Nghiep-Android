@@ -247,4 +247,6 @@
     <string name="default_treatment_repeat_time">Time: 9:00 AM</string>
     <string name="repeat">Repeat</string>
     <string name="time">Time</string>
+    <string name="celsius" translatable="false">°C</string>
+    <string name="humidity">Humidity</string>
 </resources>

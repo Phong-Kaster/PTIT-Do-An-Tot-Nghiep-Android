@@ -10,13 +10,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.do_an_tot_nghiep.Configuration.Constant;
+import com.example.do_an_tot_nghiep.Configuration.HTTPRequest;
+import com.example.do_an_tot_nghiep.Configuration.HTTPService;
+import com.example.do_an_tot_nghiep.Container.WeatherForecast;
 import com.example.do_an_tot_nghiep.Helper.GlobalVariable;
+import com.example.do_an_tot_nghiep.Helper.Tooltip;
 import com.example.do_an_tot_nghiep.Model.Doctor;
 import com.example.do_an_tot_nghiep.Model.Handbook;
 import com.example.do_an_tot_nghiep.Model.Setting;
@@ -28,10 +34,18 @@ import com.example.do_an_tot_nghiep.RecyclerView.HandbookRecyclerView;
 import com.example.do_an_tot_nghiep.RecyclerView.SpecialityRecyclerView;
 import com.example.do_an_tot_nghiep.Searchpage.SearchpageActivity;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * @author Phong-Kaster
@@ -57,6 +71,9 @@ public class HomeFragment extends Fragment{
     private Context context;
     private RecyclerView recyclerViewButton;
 
+    private TextView txtDate;
+    private TextView txtWeather;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,10 +83,15 @@ public class HomeFragment extends Fragment{
 
         setupComponent(view);
         setupViewModel();
+
         setupEvent();
+        getCurrentWeather();
+
         setupRecyclerViewButton();
         setupRecyclerViewHandbook();
         setupRecyclerViewRecommendedPages();
+
+
 
         return view;
     }
@@ -95,6 +117,9 @@ public class HomeFragment extends Fragment{
         searchBar = view.findViewById(R.id.searchBar);
         txtReadMoreSpeciality = view.findViewById(R.id.txtReadMoreSpeciality);
         txtReadMoreDoctor = view.findViewById(R.id.txtReadMoreDoctor);
+
+        txtWeather = view.findViewById(R.id.txtWeather);
+        txtDate = view.findViewById(R.id.txtDate);
     }
 
     /**
@@ -391,5 +416,73 @@ public class HomeFragment extends Fragment{
 
         LinearLayoutManager manager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerViewRecommendedPages.setLayoutManager(manager);
+    }
+
+    /**
+     * @since 22-12-2022
+     */
+    private void getCurrentWeather()
+    {
+        Retrofit service = HTTPService.getOpenWeatherMapInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+        /*Step 3*/
+        Map<String, String> parameters = new HashMap<>();
+        String latitude = "10.8333";// kinh độ TP.HCM
+        String longitude = "106.6667";// vĩ độ TP.HCM
+        String apiKey = Constant.OPEN_WEATHER_MAP_API_KEY();// api key của mình trên open weather map.org
+
+        parameters.put("lat", latitude);
+        parameters.put("lon", longitude);
+        parameters.put("appid", apiKey);
+        Call<WeatherForecast> container = api.getCurrentWeather(parameters);
+
+        /*Step 4*/
+        container.enqueue(new Callback<WeatherForecast>() {
+            @Override
+            public void onResponse(@NonNull Call<WeatherForecast> call, @NonNull Response<WeatherForecast> response) {
+                if(response.isSuccessful())
+                {
+                    WeatherForecast content = response.body();
+                    assert content != null;
+//                    System.out.println(TAG);
+//                    System.out.println("timezone: " + content.getTimeZone());
+//                    System.out.println("name: " + content.getName());
+                    printDateAndWeather(content);
+
+                }
+                if(response.errorBody() != null)
+                {
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println( e.getMessage() );
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<WeatherForecast> call, @NonNull Throwable t) {
+                System.out.println(TAG);
+                System.out.println("Error: " + t.getMessage());
+            }
+        });
+    }
+
+    /**
+     * @since 22-12-2022
+     * in ngày hôm nay và thời tiết lên màn hình
+     */
+    private void printDateAndWeather(WeatherForecast content)
+    {
+        String today = Tooltip.getReadableToday(context);
+        txtDate.setText(today);
+
+        String temperature = String.valueOf(content.getMain().getTemp());
+        String weatherInfo = temperature.substring(0,2) + getString(R.string.celsius);
+        txtWeather.setText(weatherInfo);
     }
 }

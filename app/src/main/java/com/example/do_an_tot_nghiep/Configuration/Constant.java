@@ -61,4 +61,28 @@ public class Constant {
     {
         return "https://www.youtube.com/watch?v=W4JA4dbscis&ab_channel=UmbrellaCorporation4";
     }
+
+    /**
+     * @since 22-12-2022
+     * đây là API key từ https://openweathermap.org/
+     * mình sử dụng API này để lấy nhiệt độ của TP.HCM
+     * https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+     * lat là kinh độ của thành phố
+     * lon là vĩ độ của thành phố
+     * API Key là key bên dưới
+     */
+    public static String OPEN_WEATHER_MAP_API_KEY()
+    {
+        return "4167c6d6038647807b56abd84b7d6626";
+    }
+
+    public static  String OPEN_WEATHER_MAP_API_KEY_2()
+    {
+        return "fc07e74110a9bcbc166c7887e51ec2db";
+    }
+
+    public static String OPEN_WEATHER_MAP_PATH()
+    {
+        return "https://api.openweathermap.org/data/2.5/weather/";
+    }
 }
