@@ -243,4 +243,8 @@
     <string name="deutsch" translatable="false">Deutsch</string>
     <string name="handbook">Handbook</string>
     <string name="recommended_pages">Recommended pages</string>
+    <string name="default_treatment_repeat_days">Repeat: daily</string>
+    <string name="default_treatment_repeat_time">Time: 9:00 AM</string>
+    <string name="repeat">Repeat</string>
+    <string name="time">Time</string>
 </resources>

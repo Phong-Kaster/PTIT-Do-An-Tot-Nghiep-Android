@@ -243,4 +243,8 @@
     <string name="verified">Đã xác thực</string>
     <string name="handbook">Cẩm nang</string>
     <string name="recommended_pages">Tạp chí sức khỏe</string>
+    <string name="default_treatment_repeat_days">Lịch uống thuốc: hàng ngày</string>
+    <string name="default_treatment_repeat_time">Thời gian uống thuốc: 9:00 AM</string>
+    <string name="repeat">Lịch uống thuốc</string>
+    <string name="time">Thời gian uống thuốc</string>
 </resources>

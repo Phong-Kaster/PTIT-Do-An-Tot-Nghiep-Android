@@ -23,10 +23,12 @@ public class HandbookRecyclerView extends RecyclerView.Adapter<HandbookRecyclerV
 
     private Context context;
     private List<Handbook> list;
+    private int layout;
 
-    public HandbookRecyclerView(Context context, List<Handbook> list) {
+    public HandbookRecyclerView(Context context, List<Handbook> list, int layout) {
         this.context = context;
         this.list = list;
+        this.layout = layout;
     }
 
     @NonNull
@@ -34,7 +36,7 @@ public class HandbookRecyclerView extends RecyclerView.Adapter<HandbookRecyclerV
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.recycler_view_element_handbook, parent, false);
+                .inflate(layout, parent, false);
 
         return new ViewHolder(view);
     }

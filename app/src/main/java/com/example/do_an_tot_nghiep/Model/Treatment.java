@@ -33,6 +33,14 @@ public class Treatment {
     @Expose
     private String instruction;
 
+    @SerializedName("repeat_days")
+    @Expose
+    private String repeatDays;
+
+    @SerializedName("repeat_time")
+    @Expose
+    private String repeatTime;
+
     public int getId() {
         return id;
     }
@@ -59,5 +67,13 @@ public class Treatment {
 
     public String getInstruction() {
         return instruction;
+    }
+
+    public String getRepeatDays() {
+        return repeatDays;
+    }
+
+    public String getRepeatTime() {
+        return repeatTime;
     }
 }

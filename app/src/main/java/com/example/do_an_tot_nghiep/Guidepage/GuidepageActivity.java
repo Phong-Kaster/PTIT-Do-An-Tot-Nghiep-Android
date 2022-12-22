@@ -100,6 +100,7 @@ public class GuidepageActivity extends AppCompatActivity {
             Uri uri = Uri.parse("https://www.google.com/maps?ll=10.782762,106.769197&z=16&t=m&hl=en&gl=US&mapclient=embed&cid=17079451197372658769");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
+            finish();
         });
     }
 }

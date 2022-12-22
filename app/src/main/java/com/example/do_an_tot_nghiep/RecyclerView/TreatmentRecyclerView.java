@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.do_an_tot_nghiep.Model.Treatment;
 import com.example.do_an_tot_nghiep.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class TreatmentRecyclerView extends RecyclerView.Adapter<TreatmentRecyclerView.ViewHolder> {
@@ -44,7 +46,11 @@ public class TreatmentRecyclerView extends RecyclerView.Adapter<TreatmentRecycle
         String times = context.getString(R.string.times) + ": " + treatment.getTimes();
         String purpose = context.getString(R.string.purpose) + ": " + treatment.getPurpose();
         String instruction = context.getString(R.string.instruction) + ": " + treatment.getInstruction();
+        String repeatDays = context.getString(R.string.repeat) + ": " + treatment.getRepeatDays();
+        String repeatTime = context.getString(R.string.time) + ": " + treatment.getRepeatTime();
 
+        holder.repeatDays.setText(repeatDays);
+        holder.repeatTime.setText(repeatTime);
         holder.name.setText(name);
         holder.type.setText(type);
         holder.times.setText(times);
@@ -64,6 +70,8 @@ public class TreatmentRecyclerView extends RecyclerView.Adapter<TreatmentRecycle
         private final TextView times;
         private final TextView purpose;
         private final TextView instruction;
+        private final TextView repeatDays;
+        private final TextView repeatTime;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -73,6 +81,8 @@ public class TreatmentRecyclerView extends RecyclerView.Adapter<TreatmentRecycle
             times = itemView.findViewById(R.id.elementTimes);
             purpose = itemView.findViewById(R.id.elementPurpose);
             instruction = itemView.findViewById(R.id.elementInstruction);
+            repeatDays = itemView.findViewById(R.id.elementRepeatDays);
+            repeatTime = itemView.findViewById(R.id.elementRepeatTime);
         }
     }
 }

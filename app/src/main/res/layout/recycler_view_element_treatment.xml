@@ -24,6 +24,24 @@
             android:textColor="@color/colorTextBlack" />
 
         <TextView
+            android:id="@+id/elementRepeatDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="@string/default_treatment_repeat_days"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/elementRepeatTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="@string/default_treatment_repeat_time"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="12sp" />
+
+        <TextView
             android:id="@+id/elementType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

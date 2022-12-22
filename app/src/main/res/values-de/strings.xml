@@ -242,4 +242,8 @@
     <string name="verified">Verifiziert</string>
     <string name="handbook">Handbuch</string>
     <string name="recommended_pages">Empfohlene Seiten</string>
+    <string name="default_treatment_repeat_days">Wiederholung: täglich</string>
+    <string name="default_treatment_repeat_time">Zeit: 9:00 Uhr</string>
+    <string name="repeat">Wiederholen</string>
+    <string name="time">Zeit</string>
 </resources>

@@ -63,14 +63,19 @@ public class ButtonRecyclerView extends RecyclerView.Adapter<ButtonRecyclerView.
                     intent.putExtra("filterKey", filterKey );
                     context.startActivity(intent);
                     break;
-                case "heartExamination":
+                case "generalExamination":
                     intent = new Intent(context, ServicepageActivity.class);
                     intent.putExtra("serviceId", "1" );
                     context.startActivity(intent);
                     break;
+                case "heartExamination":
+                    intent = new Intent(context, ServicepageActivity.class);
+                    intent.putExtra("serviceId", "6" );
+                    context.startActivity(intent);
+                    break;
                 case "pregnantExamination":
                     intent = new Intent(context, ServicepageActivity.class);
-                    intent.putExtra("serviceId", "2" );
+                    intent.putExtra("serviceId", "8" );
                     context.startActivity(intent);
                     break;
                 case "toothExamination":
@@ -83,15 +88,9 @@ public class ButtonRecyclerView extends RecyclerView.Adapter<ButtonRecyclerView.
                     intent.putExtra("serviceId", "11" );
                     context.startActivity(intent);
                     break;
-                case "generalExamination":
-                    intent = new Intent(context, ServicepageActivity.class);
-                    intent.putExtra("serviceId", "5" );
-                    context.startActivity(intent);
-                    break;
                 case "medicalTestExamination":
                     intent = new Intent(context, ServicepageActivity.class);
-                    intent.putExtra("filterKey", filterKey);
-                    intent.putExtra("keyword", "Xét nghiệm" );
+                    intent.putExtra("serviceId", "24" );
                     context.startActivity(intent);
                     break;
                 case "covid19":

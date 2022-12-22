@@ -117,10 +117,11 @@
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefreshLayout"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="160dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/appointmentQueueRecyclerView"
+                    android:nestedScrollingEnabled="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp" />
