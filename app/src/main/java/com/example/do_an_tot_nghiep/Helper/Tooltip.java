@@ -97,7 +97,7 @@ public class Tooltip {
             case 7:
                 dayValue = saturday;
                 break;
-            case 8:
+            case 1:
                 dayValue = sunday;
                 break;
         }
