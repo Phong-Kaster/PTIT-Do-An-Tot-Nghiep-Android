@@ -13,13 +13,19 @@
 - [**API Document**](#api-document)
 - [**Database**](#database)
 - [**Directory Structure**](#directory-structure)
-- [**Features**](#features)
+- [**Major Features**](#major-features)
   - [**1. Launch**](#1-launch)
   - [**2. Login**](#2-login)
   - [**3. Home**](#3-home)
   - [**4. Appointment**](#4-appointment)
   - [**5. Treatment \& Record**](#5-treatment--record)
   - [**6. Reminder**](#6-reminder)
+  - [**7. Booking**](#7-booking)
+  - [**8. Notification**](#8-notification)
+- [**Minor Features**](#minor-features)
+  - [**1. About Us**](#1-about-us)
+  - [**2. Appointment history \& Booking history**](#2-appointment-history--booking-history)
+  - [**3. Reminder**](#3-reminder)
 - [**Made with 💘 and Android**](#made-with--and-android)
 # [**Introduction**](#introduction)
 
@@ -118,14 +124,14 @@ Tên của các thư mục trong dự án này được đặt tên theo quy ư�
 
 - **MainActivity & MainViewModel** - sẽ là activity đầu tiên được khởi chạy khi mở ứng dụng này 
 
-# [**Features**](#features)
+# [**Major Features**](#features)
 
 Phần này mình sẽ giới thiệu về tất cả các giao diện và các chức năng chính trong ứng dụng Umbrella Health
 
 ## [**1. Launch**](#1-launch)
 
 <p align="center">
-    <img src="./photo/Android-003.jpg" height="600px"/>
+    <img src="./photo/Android003.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -135,7 +141,7 @@ Phần này mình sẽ giới thiệu về tất cả các giao diện và các 
 ## [**2. Login**](#2-login)
 
 <p align="center">
-    <img src="./photo/Android-004.jpg" height="600px"/>
+    <img src="./photo/Android004.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -152,9 +158,9 @@ Phần này mình sẽ giới thiệu về tất cả các giao diện và các 
 ## [**3. Home**](#3-home)
 
 <p align="center">
-    <img src="./photo/Android-005.jpg" height="600px"/>
-    <img src="./photo/Android-006.jpg" height="600px"/>
-    <img src="./photo/Android-007.jpg" height="600px"/>
+    <img src="./photo/Android005.jpg" height="600px"/>
+    <img src="./photo/Android006.jpg" height="600px"/>
+    <img src="./photo/Android007.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -188,8 +194,8 @@ Màn hình này bao gồm các thành phần như sau:
 ## [**4. Appointment**](#4-appointment)
 
 <p align="center">
-    <img src="./photo/Android-008.jpg" height="600px"/>
-    <img src="./photo/Android-009.jpg" height="600px"/>
+    <img src="./photo/Android008.jpg" height="600px"/>
+    <img src="./photo/Android009.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -201,8 +207,8 @@ Màn hình này sẽ hiển thị thông tin về bác sĩ, phòng khám, lý do
 Ngoài ra, nút **Đặt lịch hẹn** có tác dụng sẽ nhắc thông báo khi mà lượt khám của bệnh nhân sắp đến bằng cách cứ mỗi 45 giây ứng dụng sẽ gửi một HTTP Request lên hệ thống để tự động cập nhật danh sách khám bệnh hiện tại.
 
 <p align="center">
-    <img src="./photo/Android-010.jpg" height="600px"/>
-    <img src="./photo/Android-011.jpg" height="600px"/>
+    <img src="./photo/Android010.jpg" height="600px"/>
+    <img src="./photo/Android011.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -212,8 +218,8 @@ Ngoài ra, nút **Đặt lịch hẹn** có tác dụng sẽ nhắc thông báo 
 ## [**5. Treatment & Record**](#5-treatment--record)
 
 <p align="center">
-    <img src="./photo/Android-012.jpg" height="600px"/>
-    <img src="./photo/Android-013.jpg" height="600px"/>
+    <img src="./photo/Android012.jpg" height="600px"/>
+    <img src="./photo/Android013.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -226,7 +232,7 @@ Khám hoàn tất bệnh nhân có thể mở ứng dụng để xem lại phác
 2. Xem phác đồ điều trị 
 
 <p align="center">
-    <img src="./photo/Android-014.jpg" height="600px"/>
+    <img src="./photo/Android014.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -236,7 +242,7 @@ Khám hoàn tất bệnh nhân có thể mở ứng dụng để xem lại phác
 Người dùng có thể xem phác đồ điều trị chị và có thể tự tạo nhắc nhở thực hiện toa thuốc theo hướng dẫn của bác sĩ
 
 <p align="center">
-    <img src="./photo/Android-015.jpg" height="600px"/>
+    <img src="./photo/Android015.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -248,7 +254,7 @@ Người dùng có thể xem phác đồ điều trị chị và có thể tự 
 Khi người dùng nhấn vào nút **Đặt nhắc nhở**, màn hình sẽ hiện thị như hình minh họa bên dưới & người dùng có thể Tạo nhắc nhở ở tùy theo theo chỉ dẫn của bác sĩ 
 
 <p align="center">
-    <img src="./photo/Android-016.jpg" height="600px"/>
+    <img src="./photo/Android016.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -258,7 +264,7 @@ Khi người dùng nhấn vào nút **Đặt nhắc nhở**, màn hình sẽ hi�
 Khi ấn vào nút **Xác nhận**,  ứng dụng sẽ tìm tới các ứng dụng trong hệ thống để tạo nhắc nhở. Nếu có nhiều hơn một ứng dụng có thể đáp ứng được yêu cầu thì hệ chương trình sẽ hiển thị ra một cửa sổ để người dùng lựa chọn  
 
 <p align="center">
-    <img src="./photo/Android-017.jpg" height="600px"/>
+    <img src="./photo/Android017.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
@@ -268,12 +274,150 @@ Khi ấn vào nút **Xác nhận**,  ứng dụng sẽ tìm tới các ứng d�
 Kho ứng dụng đồng hồ trên các mẫu điện thoại là khác nhau nên giao diện hiển thị sẽ khác nhau đôi chút nhưng chức năng thì sẽ giống nhau 
 
 <p align="center">
-    <img src="./photo/Android-018.jpg" height="600px"/>
-    <img src="./photo/Android-019.jpg" height="600px"/>
+    <img src="./photo/Android018.jpg" height="600px"/>
+    <img src="./photo/Android019.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
 ***Giao diện khác nhau nhưng chức năng sẽ giống nhau***
+</h3>
+
+## [**7. Booking**](#7-booking)
+
+Như đã giới thiệu ở phần đầu tiên của tài liệu này chức năng đặt lịch hẹn không nhằm mục đích là để đặt thời gian riêng với bác sĩ mà chỉ đơn thuần là cung cấp thông tin bệnh lý. Nhắm tới 2 mục đích chính:
+
+1. Để rút ngắn thời gian đăng ký khám bệnh
+   
+2. Để bác sĩ có thể chẩn đoán bệnh nhanh hơn trong quá trình khám bệnh
+   
+Người bệnh sẽ chỉ nhận được số số thứ tự khám khi bệnh nhân đã có mặt tại bệnh viện 
+
+Khi đặt lịch khám sử dụng có thể để chọn nguyên nhân khám bệnh phù hợp 
+
+<p align="center">
+    <img src="./photo/Android028%20(0).jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Lựa chọn nguyên nhân khám bệnh phù hợp***
+</h3>
+
+
+Ở bước này người sử dụng có thể để chọn nguyên nhân khám bệnh phù hợp và tiến hành đăng ký luôn.
+<p align="center">
+    <img src="./photo/Android028%20(1).jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Lựa chọn nguyên nhân khám bệnh và tiến hành đăng ký bằng cách ấn vào nút Tạo lịch hẹn***
+</h3>
+
+Người dùng có thể xem thông tin của bác sỹ và tiến hành đặt lịch khám với bác sĩ bằng cách ấn vào nút đặt lịch hẹn 
+
+<p align="center">
+    <img src="./photo/Android028%20(2).jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Chỉ định luôn bác sĩ và tiến hành đăng ký bằng cách ấn vào nút Tạo lịch hẹn***
+</h3>
+
+
+Sau khi chọn xong người dùng sẽ nhập các thông tin cá nhân cần thiết để tiến hành đăng ký
+
+<p align="center">
+    <img src="./photo/Android020.jpg" height="600px"/>
+    <img src="./photo/Android021.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Đặt hẹn chỉ nhà nhằm mục đích rút ngắn thời gian đăng ký và chẳng khám bệnh bác sĩ. Không phải là đặt trước thời gian khám bệnh***
+</h3>
+
+Sau quá trình đăng ký thông tin bên trên người dùng có thể đăng tải những hình ảnh về toa thuốc, chẩn đoán của bác sĩ,....... mà trước đây đã đã trải qua nhưng bệnh vẫn chưa khỏi. Điều này sẽ giúp cho bác sĩ có thể biết được những liệu pháp mà bệnh nhân đã sử dụng & kê ra những đơn thuốc hiệu quả hơn
+
+<p align="center">
+    <img src="./photo/Android022.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Để xóa một tấm hình, chúng ta có thể vuốt tay từ bên phải qua trái ⬅***
+</h3>
+
+
+Sau khi đăng nhập thành công người sử dụng có thể lựa chọn một bạn có thể chuyển về trang chủ hay họ có thể chuyển tới trang hướng dẫn đi khám 
+
+<p align="center">
+    <img src="./photo/Android023.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Trở về màn hình chính hoặc xem hướng dẫn đi khám***
+</h3>
+
+## [**8. Notification**](#8-notification)
+
+Ứng dụng có thể thông báo với người dùng qua 2 hình thức, bao gồm:
+- Thông báo bằng thông báo hệ thống của Android System
+- Thông báo bằng bằng mục thông báo dành riêng trong ứng dụng 
+
+<p align="center">
+    <img src="./photo/Android024.jpg" height="600px"/>
+    <img src="./photo/Android025.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Thông báo được hiển thị trực quan để dễ theo dõi***
+</h3>
+
+# [**Minor Features**](#minor-features)
+
+Phần này mình sẽ giới thiệu với các tính năng nhỏ mang tinh thần là hỗ trợ, nâng cao trải nghiệm của người sử dụng.
+
+<p align="center">
+    <img src="./photo/Android026.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Các tính năng nhỏ sẽ được nằm tập hợp trong danh mục Cá nhân - menu cuối cùng trong thanh điều hướng***
+</h3>
+
+## [**1. About Us**](#1-about-us)
+
+Chức năng này được sử dụng ảnh để giới thiệu với người dùng về ứng dụng. Khi người dùng Nhấn vào vì chọn tướng nhứng thì ứng dụng sẽ mở một Web View dẫn tới đường link YouTube 
+
+
+<p align="center">
+    <img src="./photo/Android027.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Ứng dụng mở một video YouTube bằng WebView***
+</h3>
+
+## [**2. Appointment history & Booking history**](#2-appointment-history--booking-history)
+
+Lịch sử khám bệnh & Lịch sử đặt lịch hẹn là 2 phần danh mục được sử dụng để giúp người dùng có thể xem lại lịch sử khám bệnh. Hỗ trợ người dùng có thể xem lại các phác đồ điều trị & chẩn đoán của bác sĩ
+
+<p align="center">
+    <img src="./photo/Android029.jpg" height="600px"/>
+    <img src="./photo/Android030.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Xem lại lịch sử khám bệnh và đặt lịch hẹn***
+</h3>
+
+## [**3. Reminder**](#3-reminder)
+
+Ngoài việc tạo nhắc nhở khi mở phần Xem phác đồ điều trị, người dùng cũng có thể chủ động ấn vào mục nhắc nhở trên màn hình cá nhân để tự tạo nhắc nhở cho bản thân mình
+
+<p align="center">
+    <img src="./photo/Android031.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Tạo nhắc nhở***
 </h3>
 
 
