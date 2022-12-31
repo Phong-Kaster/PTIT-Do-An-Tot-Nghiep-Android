@@ -26,6 +26,12 @@
   - [**1. About Us**](#1-about-us)
   - [**2. Appointment history \& Booking history**](#2-appointment-history--booking-history)
   - [**3. Reminder**](#3-reminder)
+  - [**4. Personal Information**](#4-personal-information)
+  - [**5. Dark Mode**](#5-dark-mode)
+  - [**6. Email**](#6-email)
+  - [**7. Support Different    Languages**](#7-support-different----languages)
+  - [**8. Navigation with Google Map**](#8-navigation-with-google-map)
+- [**Post Script**](#post-script)
 - [**Made with 💘 and Android**](#made-with--and-android)
 # [**Introduction**](#introduction)
 
@@ -418,6 +424,117 @@ Ngoài việc tạo nhắc nhở khi mở phần Xem phác đồ điều trị, 
 <h3 align="center">
 
 ***Tạo nhắc nhở***
+</h3>
+
+## [**4. Personal Information**](#4-personal-information)
+
+Chức năng này được sử dụng để cập nhật lại thông tin cá nhân Bao gồm
+- Cập nhật ảnh đại diện
+- Cập nhật thông tin cá nhân: tên, tuổi, địa chỉ......
+
+<p align="center">
+    <img src="./photo/Android032.jpg" height="600px"/>
+    <img src="./photo/Android033.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Cập nhật thông tin cá nhân🤷‍♂️***
+</h3>
+
+## [**5. Dark Mode**](#5-dark-mode)
+
+Hỗ trợ chế độ ban đêm và người sử dụng có thể chủ động bật tắt vì theo ý muốn 
+
+<p align="center">
+    <img src="./photo/Android035.jpg" height="600px"/>
+    <img src="./photo/Android036.jpg" height="600px"/>
+    <img src="./photo/Android037.jpg" height="600px"/>
+    <img src="./photo/Android038.jpg" height="600px"/>
+</p>
+
+<p align="center">
+    <img src="./photo/Android034.jpg" height="600px"/>
+</p>
+
+<h3 align="center">
+
+***Chế độ ban đêm bật tắt theo ý muốn🌑🌘🌓🌒🌚***
+</h3>
+
+## [**6. Email**](#6-email)
+
+**Phản hồi với chúng tôi** là tính năng giúp cho người dùng có thể soạn email để gửi những khiếu nại, góp ý về cho nhà phát triển ứng dụng
+
+<p align="center">
+    <img src="./photo/Android039.jpg" height="600px"/>
+    <img src="./photo/Android040.jpg" height="600px"/>
+    <img src="./photo/Android041.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Gửi email để liên lạc với bộ phận chăm sóc khách hàng🚻***
+</h3>
+
+## [**7. Support Different <img src="https://flagicons.lipis.dev/flags/4x3/gb.svg" width="24px"> <img src="https://flagicons.lipis.dev/flags/4x3/de.svg" width="24px"> <img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" width="24px"> Languages**](#7-support-different-languages)
+
+Ứng dụng này hỗ trợ tổng cộng 3 ngôn ngữ bao gồm: 
+
+- <img src="https://flagicons.lipis.dev/flags/4x3/gb.svg" width="24px"> Tiếng Anh 
+  
+- <img src="https://flagicons.lipis.dev/flags/4x3/de.svg" width="24px"> Tiếng Đức 
+  
+- <img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" width="24px"> Tiếng Việt 
+
+
+<p align="center">
+    <img src="./photo/Android042.jpg" height="600px"/>
+    <img src="./photo/Android043.jpg" height="600px"/>
+    <img src="./photo/Android044.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Từ trái qua phải: tiếng Anh, tiếng Đức & tiếng Việt***
+</h3>
+
+## [**8. Navigation with Google Map**](#8-navigation-with-google-map)
+
+Người dùng nếu như không nắm được lộ trình tới bệnh viện thì có thể chọn vào mục hướng dẫn đi khám để mở ra bản đồ và lộ trình di chuyển bằng ứng dụng Google Maps 
+ 
+<p align="center">
+    <img src="./photo/Android045.jpg" height="600px"/>
+    <img src="./photo/Android046.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Xem bản đồ và hướng dẫn đi khám trực tiếp trên di động***
+</h3>
+
+Người dùng có thể ấn vào nút `Mở bằng Google Map` để để điều hướng tới ứng dụng Google Maps trên điện thoại di động 
+
+<p align="center">
+    <img src="./photo/Android047.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Ứng dụng Google Maps sẽ dẫn đường tới bệnh viện***
+</h3>
+
+# [**Post Script**](#post-script)
+
+Phía trên là toàn bộ các chức năng và giao diện mà mình đã thực hiện trong trong đồ án tốt nghiệp này. 
+
+Có thể nói tất cả những tính năng kết kể trên là toàn bộ những tính năng phức tạp nhất mà mình có thể thực hiện được ở Đồ án tốt nghiệp đại học này - Ngày 26-12-2022 - ngày Lễ bảo vệ đồ án tốt nghiệp của mình . 
+
+Phong hi vọng phần chia sẻ ở phía trên sẽ ít nhiều đem lại hữu ích cho các bạn.
+
+Hôm nay là thứ 7, ngày 31-12-2022 - tức ngày cuối cùng của năm 2022 theo dương lịch. Phong xin gửi lời chúc những bạn đang đọc được những dòng lưu bút này một năm 2023 nhiều niềm vui, hạnh phúc bên người thân và gia đình🎈🎆🎇🧨✨🎉🎊🎡
+
+<p align="center">
+    <img src="./photo/happy-new-year-2023.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***CHÚC MỪNG NĂM MỚI 2023***
 </h3>
 
 
