@@ -12,7 +12,7 @@ public class Constant {
      */
     public static String UPLOAD_URI()
     {
-        return "http://192.168.195.96:8080/PTIT-Do-An-Tot-Nghiep/api/assets/uploads/";
+        return "http://192.168.1.221:8080/PTIT-Do-An-Tot-Nghiep/api/assets/uploads/";
     }
 
 
@@ -22,7 +22,7 @@ public class Constant {
      */
     public static String APP_PATH()
     {
-        return "http://192.168.195.96:8080/PTIT-Do-An-Tot-Nghiep/";
+        return "http://192.168.1.221:8080/PTIT-Do-An-Tot-Nghiep/";
     }
 
     /**

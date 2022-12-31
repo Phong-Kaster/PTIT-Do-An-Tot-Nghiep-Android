@@ -15,6 +15,11 @@
 - [**Directory Structure**](#directory-structure)
 - [**Features**](#features)
   - [**1. Launch**](#1-launch)
+  - [**2. Login**](#2-login)
+  - [**3. Home**](#3-home)
+  - [**4. Appointment**](#4-appointment)
+  - [**5. Treatment \& Record**](#5-treatment--record)
+  - [**6. Reminder**](#6-reminder)
 - [**Made with 💘 and Android**](#made-with--and-android)
 # [**Introduction**](#introduction)
 
@@ -83,10 +88,10 @@ Nếu các bạn có nhu cầu muốn tham khảo, hãy ấn vào [**đây**](ht
 Đầu tiên mình sẽ giới thiệu về cấu trúc thư mục trong đồ án này. Hãy quan sát hình hình trụ bên dưới để có cái nhìn tổng quan nhất bật về toàn bộ cấu trúc của thư mục này
 
 <p align="center">
-    <img src="./photo/android-001.png" width="400px"/>
+    <img src="./photo/android-001.png" width="500px"/>
 </p>
 <p align="center">
-    <img src="./photo/android-002.png" width="400px"/>
+    <img src="./photo/Android-002.png" width="500px"/>
 </p>
 <h3 align="center">
 
@@ -120,11 +125,156 @@ Phần này mình sẽ giới thiệu về tất cả các giao diện và các 
 ## [**1. Launch**](#1-launch)
 
 <p align="center">
-    <img src="./photo/android-003.jpg" width="400px"/>
+    <img src="./photo/android-003.jpg" height="600px"/>
 </p>
 <h3 align="center">
 
 ***Màn hình khởi chạy khi mở ứng dụng***
 </h3>
+
+## [**2. Login**](#2-login)
+
+<p align="center">
+    <img src="./photo/android-004.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Màn hình đăng nhập***
+</h3>
+
+Ứng dụng hỗ trợ người dùng hai tùy chọn để đăng nhập vào chương trình, bao gồm:
+
+1. Đăng nhập bằng số điện thoại di động với mã OTP
+
+2. Đăng nhập bằng tài khoản Google 
+
+
+## [**3. Home**](#3-home)
+
+<p align="center">
+    <img src="./photo/android-005.jpg" height="600px"/>
+    <img src="./photo/android-006.jpg" height="600px"/>
+    <img src="./photo/android-007.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Màn hình Home➡***
+</h3>
+
+Màn hình Home với hình ảnh minh họa bên từ trái qua là trình tự nội dung mà chúng ta sẽ nhìn thấy trên màn hình khi vuốt từ trên xuống dưới
+
+Màn hình này bao gồm các thành phần như sau:
+
+1. Logo
+   
+2. Ngày giờ 
+   
+3. Nhiệt độ  tại khu vực hiện tại ( OpenWeatherMap.org )
+
+4. Thanh tìm kiếm
+
+5. Các nút tắt để Tạo lịch hẹn với bác sĩ
+
+6. Danh mục chuyên khoa phổ biến để hiển thị các chuyên khoa của các bác sĩ
+
+7. Danh mục Cẩm Nang để thể hiện các bài viết
+
+8. Danh mục tạp chí sức khỏe Hiển thị các đường dẫn tới các trang web chính thống liên quan tới sức khỏe và y tế
+
+9. Danh mục bác sĩ nổi bật được sử dụng để hiển thị các bác sĩ đang làm việc trong bệnh viện 
+
+10. Thanh điều hướng với 4 menu chính: Trang chủ 🏠, lịch hẹn 📆, thông báo 🔔 và cá nhân😀
+
+## [**4. Appointment**](#4-appointment)
+
+<p align="center">
+    <img src="./photo/android-008.jpg" height="600px"/>
+    <img src="./photo/android-009.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Màn hình lịch hẹn bên phải là khi chưa có lịch hẹn và bên trái là khi đang có lịch khám với bác sĩ***
+</h3>
+
+Màn hình này sẽ hiển thị thông tin về bác sĩ, phòng khám, lý do mà bệnh nhân đăng ký khám,.....
+
+Ngoài ra, nút **Đặt lịch hẹn** có tác dụng sẽ nhắc thông báo khi mà lượt khám của bệnh nhân sắp đến bằng cách cứ mỗi 45 giây ứng dụng sẽ gửi một HTTP Request lên hệ thống để tự động cập nhật danh sách khám bệnh hiện tại.
+
+<p align="center">
+    <img src="./photo/android-010.jpg" height="600px"/>
+    <img src="./photo/android-011.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Khi đến giờ khám của bệnh nhân ứng dụng sẽ sẽ phát thông báo và nhạc chuông để nhắc nhở người dùng***
+</h3>
+
+## [**5. Treatment & Record**](#5-treatment--record)
+
+<p align="center">
+    <img src="./photo/android-012.jpg" height="600px"/>
+    <img src="./photo/android-013.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Sau khi lập khám hoàn tất bệnh nhân có thể xem lại phác đồ điều trị và bệnh án***
+</h3>
+
+Khám hoàn tất bệnh nhân có thể mở ứng dụng để xem lại phác đồ điều trị và bệnh án của mình tương ứng với hai nút chức năng
+
+1. Xem bệnh án
+2. Xem phác đồ điều trị 
+
+<p align="center">
+    <img src="./photo/android-014.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Màn hình xem bệnh án***
+</h3>
+
+Người dùng có thể xem phác đồ điều trị chị và có thể tự tạo nhắc nhở thực hiện toa thuốc theo hướng dẫn của bác sĩ
+
+<p align="center">
+    <img src="./photo/android-015.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Xem phác đồ điều trị với nút Đặt nhắc nhở***
+</h3>
+
+## [**6. Reminder**](#6-reminder)
+
+Khi người dùng nhấn vào nút **Đặt nhắc nhở**, màn hình sẽ hiện thị như hình minh họa bên dưới & người dùng có thể Tạo nhắc nhở ở tùy theo theo chỉ dẫn của bác sĩ 
+
+<p align="center">
+    <img src="./photo/android-016.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Người dùng có thể chủ động đặt thời gian nhắc nhở 📅***
+</h3>
+
+Khi ấn vào nút **Xác nhận**,  ứng dụng sẽ tìm tới các ứng dụng trong hệ thống để tạo nhắc nhở. Nếu có nhiều hơn một ứng dụng có thể đáp ứng được yêu cầu thì hệ chương trình sẽ hiển thị ra một cửa sổ để người dùng lựa chọn  
+
+<p align="center">
+    <img src="./photo/android-017.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Có thể lựa chọn ứng dụng 🔔🔔***
+</h3>
+
+Kho ứng dụng đồng hồ trên các mẫu điện thoại là khác nhau nên giao diện hiển thị sẽ khác nhau đôi chút nhưng chức năng thì sẽ giống nhau 
+
+<p align="center">
+    <img src="./photo/android-018.jpg" height="600px"/>
+    <img src="./photo/android-019.jpg" height="600px"/>
+</p>
+<h3 align="center">
+
+***Giao diện khác nhau nhưng chức năng sẽ giống nhau***
+</h3>
+
 
 # [**Made with 💘 and Android**](#made-with-love-and-android)
