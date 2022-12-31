@@ -88,10 +88,10 @@ Nếu các bạn có nhu cầu muốn tham khảo, hãy ấn vào [**đây**](ht
 Đầu tiên mình sẽ giới thiệu về cấu trúc thư mục trong đồ án này. Hãy quan sát hình hình trụ bên dưới để có cái nhìn tổng quan nhất bật về toàn bộ cấu trúc của thư mục này
 
 <p align="center">
-    <img src="./photo/Android-001.png" width="500px"/>
+    <img src="./photo/Structure01.png" width="500px"/>
 </p>
 <p align="center">
-    <img src="./photo/Android-002.png" width="500px"/>
+    <img src="./photo/Structure02.png" width="500px"/>
 </p>
 <h3 align="center">
 
