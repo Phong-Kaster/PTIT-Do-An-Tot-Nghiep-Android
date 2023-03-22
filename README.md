@@ -31,7 +31,7 @@
   - [**6. Email**](#6-email)
   - [**7. Support Different    Languages**](#7-support-different----languages)
   - [**8. Navigation with Google Map**](#8-navigation-with-google-map)
-  - [**Pop-up when clicking Back button**](#pop-up-when-clicking-back-button)
+  - [**9. Pop-up when clicking Back button**](#9-pop-up-when-clicking-back-button)
 - [**Post Script**](#post-script)
 - [**Made with 💘 and Android**](#made-with--and-android)
 # [**Introduction**](#introduction)
@@ -520,7 +520,7 @@ Người dùng có thể ấn vào nút `Mở bằng Google Map` để để đi
 ***Ứng dụng Google Maps sẽ dẫn đường tới bệnh viện***
 </h3>
 
-## [**Pop-up when clicking Back button**](#pop-up-when-clicking-back-button)
+## [**9. Pop-up when clicking Back button**](#pop-up-when-clicking-back-button)
 
 Nếu người dùng ở màn hình chính mà vô tình hoặc muốn thoát ứng dụng. Một cửa sổ sẽ hiển thị lên 
 để xác nhận xem người dùng có muốn thoát chương trình hay không ?
